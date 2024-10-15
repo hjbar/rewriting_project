@@ -75,3 +75,9 @@ let print_words () =
   in
 
   ()
+
+(* Afficher les règles engendrées par les mots *)
+
+let print_rules () =
+  let rules = Rule.get_rules ~alpha_len:3 ~word_len:3 in
+  List.iter Rule.println rules

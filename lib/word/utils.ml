@@ -1,4 +1,10 @@
-(* Génère tous les mots de taille n *)
+open Def
+
+(* Some utilities functions *)
+
+let make s : word = s
+
+(* Génère tous les mots de taille n avec un alphabet de taille m *)
 
 let get_words ~alpha_len ~word_len =
   if word_len < 0 then failwith @@ Format.sprintf "Word_len %d is not sufficient" word_len;
