@@ -2,7 +2,7 @@ open Def
 
 (* Some utilities functions *)
 
-let make ?(name = Some "R") w1 w2 : rule = (name, w1, w2)
+let make ?(name = "R") w1 w2 : rule = (Some name, w1, w2)
 
 (* Génère toutes les règles à partir de mots de taille n avec un alphabet de taille m *)
 
@@ -22,7 +22,7 @@ let get_rules ~alpha_len ~word_len : rule list =
         List.fold_left
           (fun acc w2 ->
             if w1 <> w2 then
-              let name = Format.sprintf "R%d" @@ idx () |> Option.some in
+              let name = Format.sprintf "R%d" @@ idx () in
               make ~name w1 w2 :: acc
             else acc )
           acc words )
