@@ -99,6 +99,47 @@ let test_get_words () =
 
   Print.println_ok "test_get_words : OK"
 
+let test_search_and_replace () =
+  let res = search_and_replace "" "" "" in
+  let obj = Some "" in
+  assert (res = obj);
+
+  let res = search_and_replace "a" "bab" "ccc" in
+  let obj = Some "bcccb" in
+  assert (res = obj);
+
+  let res = search_and_replace "aa" "aaa" "bbbb" in
+  let obj = Some "bbbba" in
+  assert (res = obj);
+
+  let res = search_and_replace "aab" "aaab" "c" in
+  let obj = Some "ac" in
+  assert (res = obj);
+
+  let res = search_and_replace "aa" "aa" "cc" in
+  let obj = Some "cc" in
+  assert (res = obj);
+
+  let res = search_and_replace "aaaaa" "baaaaac" "" in
+  let obj = Some "bc" in
+  assert (res = obj);
+
+  let res = search_and_replace "aaa" "aaa" "" in
+  let obj = Some "" in
+  assert (res = obj);
+
+  let res = search_and_replace "ccc" "aa" "bbb" in
+  let obj = None in
+  assert (res = obj);
+
+  let res = search_and_replace "aaa" "aa" "bbb" in
+  let obj = None in
+  assert (res = obj);
+
+  Print.println_ok "test_search_and_replace : OK"
+
 (* All tests *)
 
-let test () = test_get_words ()
+let test () =
+  test_get_words ();
+  test_search_and_replace ()
