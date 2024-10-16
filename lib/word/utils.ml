@@ -12,29 +12,23 @@ let get_words ~alpha_len ~word_len =
   if alpha_len > 26 then failwith @@ Format.sprintf "Alpha_len %d is too large" alpha_len;
 
   let starting_code = Char.code 'a' in
-  let tab = Array.init word_len (fun _ -> []) in
+  let tab = Array.init (max 2 (word_len + 1)) (fun _ -> []) in
+  let alpha = List.init alpha_len (fun i -> starting_code + i |> Char.chr |> Char.escaped) in
 
-  let rec loop = function
-    | 0 -> ()
-    | 1 ->
-      let words =
-        List.init alpha_len (fun i -> Char.chr (starting_code + i) |> Char.escaped)
-      in
-      tab.(0) <- words
-    | n ->
-      loop (n - 1);
-      let prev_words = tab.(n - 2) in
-      let base_words = tab.(0) in
-      let words =
-        List.fold_left
-          (fun acc prev_word ->
-            List.fold_left (fun acc base_word -> (prev_word ^ base_word) :: acc) acc base_words
-            )
-          [] prev_words
-      in
-      tab.(n - 1) <- words
-  in
+  tab.(0) <- [];
+  if word_len <> 0 then tab.(1) <- alpha;
 
-  loop word_len;
-  let words = Array.fold_left (fun acc words -> acc @ words) [] tab in
-  List.sort compare words
+  for i = 2 to word_len do
+    let prev_words = tab.(i - 1) in
+
+    let cur_words =
+      List.fold_left
+        (fun acc prev_word ->
+          List.fold_left (fun acc alpha_word -> (prev_word ^ alpha_word) :: acc) acc alpha )
+        [] prev_words
+    in
+
+    tab.(i) <- cur_words
+  done;
+
+  Array.fold_left (fun acc words -> acc @ words) [] tab |> List.sort compare
