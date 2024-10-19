@@ -6,4 +6,4 @@ let test_fun f =
   f ();
   print_sep ()
 
-let test_all () = List.iter test_fun [ Word.test; Rule.test ]
+let test_all () = List.iter test_fun [ Word.test; Rule.test; Rs.test ]
