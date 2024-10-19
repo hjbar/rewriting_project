@@ -1,1 +1,3 @@
-let () = Test.test_all ()
+let () =
+  Test.test_all ();
+  Draft.example ()

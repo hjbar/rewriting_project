@@ -4,6 +4,8 @@ open Def
 
 let make ?(name = "R") w1 w2 : rule = (Some name, w1, w2)
 
+let eq (_, w1, w2) (_, w1', w2') = w1 = w1' && w2 = w2'
+
 (* Génère toutes les règles à partir de mots de taille n avec un alphabet de taille m *)
 
 let get_rules ~alpha_len ~word_len : rule list =

@@ -83,6 +83,24 @@ let test_normalize () =
 
   Print.println_ok "test_normalize : OK"
 
+let test_critical_pairs () =
+  let res = critical_rules (Rule.make "ab" "c") (Rule.make "ba" "d") in
+  let obj = [ ("bc", "db"); ("ca", "ad") ] in
+  assert (List.for_all (fun p -> List.mem p res) obj && List.length res = List.length obj);
+
+  let res = critical_rules (Rule.make "ba" "d") (Rule.make "ab" "c") in
+  let obj = [ ("db", "bc"); ("ad", "ca") ] in
+  assert (List.for_all (fun p -> List.mem p res) obj && List.length res = List.length obj);
+
+  (* TODO: autres possibilités : (cab, badab); (c, bad) ?? *)
+  let res = critical_rules (Rule.make "babab" "c") (Rule.make "bab" "d") in
+  let obj = [ ("cab", "dad"); ("c", "dab") ] in
+  assert (List.for_all (fun p -> List.mem p res) obj && List.length res = List.length obj);
+
+  Print.println_ok "test_critical_pairs : OK"
+
 (* All tests *)
 
-let test () = test_normalize ()
+let test () =
+  test_normalize ();
+  test_critical_pairs ()

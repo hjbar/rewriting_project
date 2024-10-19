@@ -4,6 +4,8 @@ open Def
 
 let make s : word = s
 
+let eq w1 w2 = w1 = w2
+
 (* Génère tous les mots de taille n avec un alphabet de taille m *)
 
 let get_words ~alpha_len ~word_len =
@@ -51,3 +53,44 @@ let search_and_replace s1 word s2 =
   in
 
   loop "" word
+
+(* Compare deux mots avec du gaz *)
+
+let comp_per_char w1 w2 =
+  let w1_len = String.length w1 in
+  if w1_len > String.length w2 then failwith "len of w1 > len of w2 in comp_per_char";
+
+  let rec loop w1 w2 i =
+    if i >= w1_len then true
+    else begin
+      match (w1.[i], w2.[i]) with
+      | '$', _ | _, '$' -> loop w1 w2 (i + 1)
+      | c1, c2 when c1 = c2 -> loop w1 w2 (i + 1)
+      | _ -> false
+    end
+  in
+
+  loop w1 w2 0
+
+(* Unifie deux mots avec du gaz *)
+
+let unify w1 w2 =
+  let w1_len = String.length w1 in
+  let w2_len = String.length w2 in
+  if w1_len > w2_len then failwith "len of w1 > len of w2 in unify";
+
+  let rec loop i s =
+    if i >= w2_len then s
+    else if i >= w1_len then begin
+      match w2.[i] with '$' -> loop (i + 1) s | c -> loop (i + 1) (s ^ Char.escaped c)
+    end
+    else begin
+      match (w1.[i], w2.[i]) with
+      | '$', '$' -> loop (i + 1) s
+      | '$', c | c, '$' -> loop (i + 1) (s ^ Char.escaped c)
+      | c1, c2 when c1 = c2 -> loop (i + 1) (s ^ Char.escaped c1)
+      | _ -> failwith "w1 and w2 can't be unify"
+    end
+  in
+
+  loop 0 ""
