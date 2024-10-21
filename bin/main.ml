@@ -1,3 +1,3 @@
 let () =
   Test.test_all ();
-  Draft.example ()
+  Example.ex_knuth_bendix ()

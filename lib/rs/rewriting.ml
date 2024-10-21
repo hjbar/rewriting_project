@@ -71,7 +71,7 @@ let knuth_bendix rs =
       List.map
         begin
           fun ((name, w1, w2) as r) ->
-            let rules = List.filter (fun r' -> not (Rule.eq r r')) !rules in
+            let rules = List.filter (fun r' -> not @@ Rule.eq r r') !rules in
             let rs = { rs with rules } in
             (name, normalize rs w1, normalize rs w2)
         end
@@ -81,7 +81,7 @@ let knuth_bendix rs =
     queue := !queue @ [ r ]
   in
 
-  while !queue <> [] do
+  while not @@ List.is_empty !queue do
     let r = List.hd !queue in
     queue := List.tl !queue;
 
