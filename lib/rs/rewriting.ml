@@ -81,7 +81,7 @@ let knuth_bendix rs =
     queue := !queue @ [ r ]
   in
 
-  while not @@ List.is_empty !queue do
+  while !queue <> [] do
     let r = List.hd !queue in
     queue := List.tl !queue;
 

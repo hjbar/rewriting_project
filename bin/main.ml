@@ -1,3 +1,8 @@
+open Print
+
 let () =
   Test.test_all ();
-  Example.ex_knuth_bendix ()
+  println_flush "--- --- --- --- ---\nExamples :";
+  Example.ex_knuth_bendix ();
+  println_flush "--- --- --- --- ---\nDrafts :";
+  Draft.draft ()
