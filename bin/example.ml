@@ -9,4 +9,4 @@ let ex_knuth_bendix () =
   println_flush "Le système de réécriture de base :";
   Rs.println rs;
   println_flush "Le système après la complétion de Knuth-Bendix :";
-  Rs.println rs'
+  Rs.print rs'

@@ -1,8 +1,28 @@
+(* Ressources *)
+
 open Print
 
+(* Constantes *)
+
+let do_test = true
+
+let do_example = true
+
+let do_draft = false
+
+(* Functions *)
+
+let run mode msg f =
+  let sep = String.init 30 (fun _ -> '&') in
+  if mode then begin
+    println_flush @@ Format.sprintf "%s\n\n%s :" sep msg;
+    f ();
+    println_flush @@ Format.sprintf "\n%s" sep
+  end
+
+(* MAIN *)
+
 let () =
-  Test.test_all ();
-  println_flush "--- --- --- --- ---\nExamples :";
-  Example.ex_knuth_bendix ();
-  println_flush "--- --- --- --- ---\nDrafts :";
-  Draft.draft ()
+  run do_test "Tests" Test.test_all;
+  run do_example "Examples" Example.ex_knuth_bendix;
+  run do_draft "Drafts" Draft.draft
