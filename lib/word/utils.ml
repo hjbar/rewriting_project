@@ -35,7 +35,7 @@ let get_words ~alpha_len ~word_len =
 
   Array.fold_left (fun acc words -> acc @ words) [] tab |> List.sort compare
 
-(* Cherche un sous-mot et le remplace *)
+(* Cherche la premiere occurrence d'un sous-mot et le remplace *)
 
 let search_and_replace s1 word s2 =
   let s1_length = String.length s1 in
@@ -48,6 +48,26 @@ let search_and_replace s1 word s2 =
       let sub_word = String.sub word 0 s1_length in
       if s1 = sub_word then
         old ^ s2 ^ String.sub word s1_length (word_length - s1_length) |> Option.some
+      else loop (old ^ String.sub word 0 1) (String.sub word 1 (word_length - 1))
+    end
+  in
+
+  loop "" word
+
+(* Renvoi toutes les possibilités de remplacer le sous-mot *)
+
+let search_and_replace_all s1 word s2 =
+  let s1_length = String.length s1 in
+
+  let rec loop old word =
+    let word_length = String.length word in
+
+    if s1_length > word_length then []
+    else begin
+      let sub_word = String.sub word 0 s1_length in
+      if s1 = sub_word then
+        let w = old ^ s2 ^ String.sub word s1_length (word_length - s1_length) in
+        w :: loop (old ^ String.sub word 0 1) (String.sub word 1 (word_length - 1))
       else loop (old ^ String.sub word 0 1) (String.sub word 1 (word_length - 1))
     end
   in

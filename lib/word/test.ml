@@ -138,6 +138,17 @@ let test_search_and_replace () =
 
   Print.println_ok "test_search_and_replace : OK"
 
+let test_search_and_replace_all () =
+  let res = search_and_replace_all "babab" "bababab" "c" in
+  let obj = [ "cab"; "bac" ] in
+  assert (List.length res = List.length obj && List.for_all (fun w -> List.mem w obj) res);
+
+  let res = search_and_replace_all "bab" "bababab" "d" in
+  let obj = [ "dabab"; "badab"; "babad" ] in
+  assert (List.length res = List.length obj && List.for_all (fun w -> List.mem w obj) res);
+
+  Print.println_ok "test_search_and_replace_all : OK"
+
 let test_comp_per_char () =
   let res = comp_per_char "aa" "aa" in
   let obj = true in
@@ -308,5 +319,6 @@ let test_unify () =
 let test () =
   test_get_words ();
   test_search_and_replace ();
+  test_search_and_replace_all ();
   test_comp_per_char ();
   test_unify ()

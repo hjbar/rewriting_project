@@ -8,7 +8,7 @@ let do_test = true
 
 let do_example = true
 
-let do_draft = false
+let do_draft = true
 
 (* Functions *)
 
