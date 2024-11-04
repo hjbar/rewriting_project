@@ -1,7 +1,70 @@
+open Def
 open Rewriting
 open Utils
 
 (* Testing functions *)
+
+let test_orient () =
+  let rs =
+    make ~orient:Right
+      Rule.[ make "aaa" "aa"; make "aab" "bbb"; make "acc" "c"; make "bxx" "ccc" ]
+  in
+  let res = orient rs in
+  let obj = Some rs in
+  assert (res = obj);
+
+  let rs =
+    make ~orient:Left
+      Rule.[ make "aaa" "aa"; make "aab" "bbb"; make "acc" "c"; make "bxx" "ccc" ]
+  in
+  let res = orient rs in
+  let obj = Some { rs with orient = Right } in
+  assert (res = obj);
+
+  let rs =
+    make ~orient:Right
+      Rule.[ make "aa" "aa"; make "aab" "bbbb"; make "a" "caa"; make "bxx" "ccc" ]
+  in
+  let res = orient rs in
+  let obj = Some { rs with orient = Left } in
+  assert (res = obj);
+
+  let rs =
+    make ~orient:Right
+      Rule.[ make "aaa" "aa"; make "aab" "bbbb"; make "a" "caa"; make "bxax" "ccc" ]
+  in
+  let res = orient rs in
+  let obj = None in
+  assert (res = obj);
+
+  Print.println_ok "test_orient : OK"
+
+let test_orient_all () =
+  let r1 = Rule.make "aaa" "aa" in
+  let r2 = Rule.make "bbb" "bb" in
+  let res = orient_all r1 r2 in
+  let obj =
+    ({ orient = Right; rules = [ r1 ] }, { orient = Right; rules = [ r2 ] }, "aaa", "bbb")
+  in
+  assert (res = obj);
+
+  let r1 = Rule.make "aa" "bbb" in
+  let r2 = Rule.make "bb" "aaa" in
+  let res = orient_all r1 r2 in
+  let obj =
+    ({ orient = Left; rules = [ r1 ] }, { orient = Left; rules = [ r2 ] }, "bbb", "aaa")
+  in
+  assert (res = obj);
+
+  let r1 = Rule.make "aaa" "cc" in
+  let r2 = Rule.make "cc" "bbb" in
+  let res = orient_all r1 r2 in
+  let obj =
+    ({ orient = Right; rules = [ r1 ] }, { orient = Right; rules = [ r2 ] }, "aaa", "cc")
+  in
+  assert (res = obj);
+
+  Print.println_ok "test_orient_all : OK"
 
 let test_normalize () =
   let rs = make ~orient:Right [ Rule.make "a" "bbb"; Rule.make "c" "ddd" ] in
@@ -97,6 +160,10 @@ let test_critical_pairs () =
   let obj = [ ("bc", "db"); ("ca", "ad") ] in
   assert (List.for_all (fun p -> List.mem p res) obj && List.length res = List.length obj);
 
+  let res = critical_rules (Rule.make "c" "ab") (Rule.make "d" "ba") in
+  let obj = [ ("bc", "db"); ("ca", "ad") ] in
+  assert (List.for_all (fun p -> List.mem p res) obj && List.length res = List.length obj);
+
   let res = critical_rules (Rule.make "ba" "d") (Rule.make "ab" "c") in
   let obj = [ ("db", "bc"); ("ad", "ca") ] in
   assert (List.for_all (fun p -> List.mem p res) obj && List.length res = List.length obj);
@@ -118,6 +185,8 @@ let test_critical_pairs () =
 (* All tests *)
 
 let test () =
+  test_orient ();
+  test_orient_all ();
   test_normalize ();
   test_normalize_all ();
   test_critical_pairs ()

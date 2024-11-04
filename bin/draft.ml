@@ -1,12 +1,66 @@
 open Print
 
 let draft () =
-  let rules = Rule.get_rules ~alpha_len:2 ~word_len:5 in
-  let soft_rules = List.filter (fun (_, w1, w2) -> String.(length w1 >= length w2)) rules in
-  let rss = List.map (fun r -> Rs.make [ r ]) soft_rules in
-  let krs = List.map Rs.knuth_bendix rss in
+  let sep = String.make 30 '=' in
+  let debug = false in
+
+  let rs_list = Rule.get_rules ~alpha_len:2 ~word_len:3 |> List.map (fun r -> Rs.make [ r ]) in
+
+  let completed = ref 0 in
+  let completion = ref 0 in
+
+  let limit_norm = 1000 in
+  let limit_pairs = 500 in
+
   List.iter
-    (fun rs ->
-      println_flush "Système de réécriture complété :";
-      Rs.println rs )
-    krs
+    begin
+      fun rs ->
+        try
+          incr completion;
+          let rs' = Rs.knuth_bendix ~limit_norm ~limit_pairs rs in
+
+          if List.length rs.rules = List.length rs'.rules then begin
+            if debug then begin
+              println_flush sep;
+
+              println_flush "Système de réécriture avant :";
+              Rs.println rs;
+              print_newline ();
+              println_error "FAILED";
+
+              println_flush sep
+            end
+          end
+          else begin
+            println_flush sep;
+
+            println_flush "Système de réécriture avant :";
+            Rs.println rs;
+            print_newline ();
+            println_flush "Système de réécriture après :";
+            Rs.println rs';
+            print_newline ();
+            println_ok "COMPLETED";
+
+            println_flush sep;
+            incr completed
+          end
+        with
+        | Rs.Abort s ->
+          if debug then begin
+            println_flush sep;
+
+            println_flush "Système de réécriture avant :";
+            Rs.println rs;
+            print_newline ();
+            println_warning s;
+
+            println_flush sep
+          end
+        | exn -> raise exn
+    end
+    rs_list;
+
+  let rate = float !completed /. float !completion *. 100. |> int_of_float in
+  println_data
+  @@ Format.sprintf "%d completed systems out of %d, %d%s" !completed !completion rate "%"
