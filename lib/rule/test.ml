@@ -41,6 +41,49 @@ let test_get_rules () =
 
   Print.println_ok "test_get_rules : OK"
 
+let test_isomorphism_filter () =
+  let res = isomorphism_filter [ make "a" "b"; make "b" "c"; make "c" "d" ] in
+  let obj = [ make "a" "b" ] in
+  assert (res = obj);
+
+  let res = isomorphism_filter [ make "abc" "cba"; make "efg" "gfe"; make "cab" "bac" ] in
+  let obj = [ make "abc" "cba" ] in
+  assert (res = obj);
+
+  let res =
+    isomorphism_filter
+      [ make "a" "b"
+      ; make "b" "c"
+      ; make "c" "d"
+      ; make "abc" "cba"
+      ; make "efg" "gfe"
+      ; make "cab" "bac"
+      ]
+  in
+  let obj = [ make "a" "b"; make "abc" "cba" ] in
+  assert (res = obj);
+
+  let res =
+    isomorphism_filter
+      [ make "ab" "c"
+      ; make "ab" "bd"
+      ; make "ac" "de"
+      ; make "ae" "b"
+      ; make "bc" "d"
+      ; make "bc" "cb"
+      ; make "pl" "ze"
+      ; make "pl" "b"
+      ]
+  in
+  let obj =
+    [ make "ab" "c"; make "ab" "bc"; make "ab" "cd"; make "ab" "ba" ] |> List.sort compare
+  in
+  assert (res = obj);
+
+  Print.println_ok "test_isomorphism_filter : OK"
+
 (* All tests *)
 
-let test () = test_get_rules ()
+let test () =
+  test_get_rules ();
+  test_isomorphism_filter ()

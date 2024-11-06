@@ -4,7 +4,11 @@ let draft () =
   let sep = String.make 30 '=' in
   let debug = false in
 
-  let rs_list = Rule.get_rules ~alpha_len:2 ~word_len:3 |> List.map (fun r -> Rs.make [ r ]) in
+  let rs_list =
+    Rule.get_rules ~alpha_len:2 ~word_len:3
+    |> Rule.isomorphism_filter
+    |> List.map (fun r -> Rs.make [ r ])
+  in
 
   let completed = ref 0 in
   let completion = ref 0 in
