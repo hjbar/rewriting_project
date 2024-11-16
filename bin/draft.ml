@@ -22,33 +22,17 @@ let draft () =
         try
           incr completion;
           let rs' = Rs.knuth_bendix ~limit_norm ~limit_pairs rs in
+          incr completed;
 
-          if List.length rs.rules = List.length rs'.rules then begin
-            if debug then begin
-              println_flush sep;
-
-              println_flush "Système de réécriture avant :";
-              Rs.println rs;
-              print_newline ();
-              println_error "FAILED";
-
-              println_flush sep
-            end
-          end
-          else begin
-            println_flush sep;
-
-            println_flush "Système de réécriture avant :";
-            Rs.println rs;
-            print_newline ();
-            println_flush "Système de réécriture après :";
-            Rs.println rs';
-            print_newline ();
-            println_ok "COMPLETED";
-
-            println_flush sep;
-            incr completed
-          end
+          println_flush sep;
+          println_flush "Système de réécriture avant :";
+          Rs.println rs;
+          print_newline ();
+          println_flush "Système de réécriture après :";
+          Rs.println rs';
+          print_newline ();
+          println_ok "COMPLETED";
+          println_flush sep
         with
         | Rs.Abort s ->
           if debug then begin

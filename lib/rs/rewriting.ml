@@ -172,6 +172,7 @@ let knuth_bendix ?(limit_norm = max_int) ?limit_pairs rs =
 
           let w1' = normalize rs w1 in
           let w2' = normalize rs w2 in
+          let w1', w2' = (max w1' w2', min w1' w2') in
 
           if not @@ Word.eq w1' w2' then add @@ make_rule w1' w2'
       end
