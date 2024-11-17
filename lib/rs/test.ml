@@ -1,99 +1,74 @@
-open Def
 open Rewriting
 open Utils
 
 (* Testing functions *)
 
-let test_orient () =
-  let rs =
-    make ~orient:Right
-      Rule.[ make "aaa" "aa"; make "aab" "bbb"; make "acc" "c"; make "bxx" "ccc" ]
-  in
-  let res = orient rs in
-  let obj = Some rs in
+let test_orient_rule () =
+  let res = Rule.make "aaa" "aa" |> orient_rule in
+  let obj = Rule.make "aaa" "aa" in
   assert (res = obj);
 
-  let rs =
-    make ~orient:Left
-      Rule.[ make "aaa" "aa"; make "aab" "bbb"; make "acc" "c"; make "bxx" "ccc" ]
-  in
-  let res = orient rs in
-  let obj = Some { rs with orient = Right } in
+  let res = Rule.make "aa" "aaa" |> orient_rule in
+  let obj = Rule.make "aaa" "aa" in
   assert (res = obj);
 
-  let rs =
-    make ~orient:Right
-      Rule.[ make "aa" "aa"; make "aab" "bbbb"; make "a" "caa"; make "bxx" "ccc" ]
-  in
-  let res = orient rs in
-  let obj = Some { rs with orient = Left } in
+  let res = Rule.make "aaa" "aaa" |> orient_rule in
+  let obj = Rule.make "aaa" "aaa" in
   assert (res = obj);
 
-  let rs =
-    make ~orient:Right
-      Rule.[ make "aaa" "aa"; make "aab" "bbbb"; make "a" "caa"; make "bxax" "ccc" ]
-  in
-  let res = orient rs in
-  let obj = None in
+  let res = Rule.make "aa" "ba" |> orient_rule in
+  let obj = Rule.make "ba" "aa" in
   assert (res = obj);
 
-  Print.println_ok "test_orient : OK"
+  Print.println_ok "test_orient_rule : OK"
 
-let test_orient_all () =
-  let r1 = Rule.make "aaa" "aa" in
-  let r2 = Rule.make "bbb" "bb" in
-  let res = orient_all r1 r2 in
+let test_orient_rs () =
+  let res =
+    make Rule.[ make "aaa" "aa"; make "aab" "bbb"; make "acc" "c"; make "bxx" "ccc" ]
+    |> orient_rs
+  in
   let obj =
-    ({ orient = Right; rules = [ r1 ] }, { orient = Right; rules = [ r2 ] }, "aaa", "bbb")
+    make Rule.[ make "aaa" "aa"; make "bbb" "aab"; make "acc" "c"; make "ccc" "bxx" ]
   in
   assert (res = obj);
 
-  let r1 = Rule.make "aa" "bbb" in
-  let r2 = Rule.make "bb" "aaa" in
-  let res = orient_all r1 r2 in
+  let res =
+    make Rule.[ make "aa" "aa"; make "aab" "bbbb"; make "a" "caa"; make "bxx" "ccc" ]
+    |> orient_rs
+  in
   let obj =
-    ({ orient = Left; rules = [ r1 ] }, { orient = Left; rules = [ r2 ] }, "bbb", "aaa")
+    make Rule.[ make "aa" "aa"; make "bbbb" "aab"; make "caa" "a"; make "ccc" "bxx" ]
   in
   assert (res = obj);
 
-  let r1 = Rule.make "aaa" "cc" in
-  let r2 = Rule.make "cc" "bbb" in
-  let res = orient_all r1 r2 in
-  let obj =
-    ({ orient = Right; rules = [ r1 ] }, { orient = Right; rules = [ r2 ] }, "aaa", "cc")
-  in
-  assert (res = obj);
-
-  Print.println_ok "test_orient_all : OK"
+  Print.println_ok "test_orient_rs : OK"
 
 let test_normalize () =
-  let rs = make ~orient:Right [ Rule.make "a" "bbb"; Rule.make "c" "ddd" ] in
+  let rs = make [ Rule.make "a" "bbb"; Rule.make "c" "ddd" ] in
   let w = "" in
   let res = normalize rs w in
   let obj = "" in
   assert (res = obj);
 
-  let rs = make ~orient:Right [ Rule.make "a" "bbb" ] in
+  let rs = make [ Rule.make "a" "bbb" ] in
   let w = "aaa" in
   let res = normalize rs w in
   let obj = "bbbbbbbbb" in
   assert (res = obj);
 
-  let rs = make ~orient:Left [ Rule.make "a" "bbb" ] in
+  let rs = make [ Rule.make "bbb" "a" ] in
   let w = "aaa" in
   let res = normalize rs w in
   let obj = "aaa" in
   assert (res = obj);
 
-  let rs = make ~orient:Right [ Rule.make "a" "bbb" ] in
+  let rs = make [ Rule.make "a" "bbb" ] in
   let w = "aca" in
   let res = normalize rs w in
   let obj = "bbbcbbb" in
   assert (res = obj);
 
-  let rs =
-    make ~orient:Right [ Rule.make "a" "bbb"; Rule.make "b" "ccc"; Rule.make "c" "ddd" ]
-  in
+  let rs = make [ Rule.make "a" "bbb"; Rule.make "b" "ccc"; Rule.make "c" "ddd" ] in
   let w = "aaa" in
   let res = normalize rs w in
   let obj =
@@ -101,17 +76,13 @@ let test_normalize () =
   in
   assert (res = obj);
 
-  let rs =
-    make ~orient:Left [ Rule.make "a" "bbb"; Rule.make "b" "ccc"; Rule.make "c" "ddd" ]
-  in
+  let rs = make [ Rule.make "bbb" "a"; Rule.make "ccc" "b"; Rule.make "ddd" "c" ] in
   let w = "aaa" in
   let res = normalize rs w in
   let obj = "aaa" in
   assert (res = obj);
 
-  let rs =
-    make ~orient:Left [ Rule.make "a" "bbb"; Rule.make "b" "ccc"; Rule.make "c" "ddd" ]
-  in
+  let rs = make [ Rule.make "bbb" "a"; Rule.make "ccc" "b"; Rule.make "ddd" "c" ] in
   let w =
     "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
   in
@@ -119,9 +90,7 @@ let test_normalize () =
   let obj = "aaa" in
   assert (res = obj);
 
-  let rs =
-    make ~orient:Left [ Rule.make "ddd" "c"; Rule.make "ccc" "b"; Rule.make "bbb" "a" ]
-  in
+  let rs = make [ Rule.make "c" "ddd"; Rule.make "b" "ccc"; Rule.make "a" "bbb" ] in
   let w = "aaa" in
   let res = normalize rs w in
   let obj =
@@ -130,14 +99,13 @@ let test_normalize () =
   assert (res = obj);
 
   let rs =
-    make ~orient:Right
-      [ Rule.make "a" "b"
-      ; Rule.make "b" "d"
-      ; Rule.make "c" "f"
-      ; Rule.make "d" "e"
-      ; Rule.make "e" "g"
-      ; Rule.make "f" "h"
-      ]
+    [ Rule.make "a" "b"
+    ; Rule.make "b" "d"
+    ; Rule.make "c" "f"
+    ; Rule.make "d" "e"
+    ; Rule.make "e" "g"
+    ; Rule.make "f" "h"
+    ]
   in
   let w = "abcdef" in
   let res = normalize rs w in
@@ -147,7 +115,7 @@ let test_normalize () =
   Print.println_ok "test_normalize : OK"
 
 let test_normalize_all () =
-  let rs = make ~orient:Right [ Rule.make "babab" "c"; Rule.make "bab" "d" ] in
+  let rs = make [ Rule.make "babab" "c"; Rule.make "bab" "d" ] in
   let w = "bababab" in
   let res = normalize_all rs w in
   let obj = [ "cab"; "bac"; "dad"; "badab" ] in
@@ -161,7 +129,7 @@ let test_critical_pairs () =
   assert (List.for_all (fun p -> List.mem p res) obj && List.length res = List.length obj);
 
   let res = critical_rules (Rule.make "c" "ab") (Rule.make "d" "ba") in
-  let obj = [ ("bc", "db"); ("ca", "ad") ] in
+  let obj = [] in
   assert (List.for_all (fun p -> List.mem p res) obj && List.length res = List.length obj);
 
   let res = critical_rules (Rule.make "ba" "d") (Rule.make "ab" "c") in
@@ -185,8 +153,8 @@ let test_critical_pairs () =
 (* All tests *)
 
 let test () =
-  test_orient ();
-  test_orient_all ();
+  test_orient_rule ();
+  test_orient_rs ();
   test_normalize ();
   test_normalize_all ();
   test_critical_pairs ()
