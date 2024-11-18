@@ -126,8 +126,8 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_rs
   let make_rule w1 w2 = Rule.make ~name:(name ()) w1 w2 |> orient_rule in
 
   let rs = orient_rs rs in
-  let queue = ref rs in
   let rules = ref rs in
+  let queue = rs |> List.to_seq |> Queue.of_seq in
 
   let add r =
     rules := r :: !rules;
@@ -142,12 +142,11 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_rs
         !rules;
 
     rules := List.filter (fun (_, w1, w2) -> not @@ Word.eq w1 w2) !rules;
-    queue := !queue @ [ r ]
+    Queue.push r queue
   in
 
-  while !queue <> [] do
-    let r = List.hd !queue in
-    queue := List.tl !queue;
+  while not @@ Queue.is_empty queue do
+    let r = Queue.pop queue in
 
     let critical_pairs =
       !rules
