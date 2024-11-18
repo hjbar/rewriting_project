@@ -1,3 +1,3 @@
 (executable
  (name main)
- (libraries print word rule rs))
+ (libraries print parse word rule rs))

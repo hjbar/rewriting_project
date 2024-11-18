@@ -6,9 +6,13 @@ open Print
 
 let do_test = true
 
-let do_example = true
+let do_example = false
 
-let do_draft = true
+let do_success = false
+
+let do_complete = true
+
+let do_imply = false
 
 (* Functions *)
 
@@ -25,4 +29,6 @@ let run mode msg f =
 let () =
   run do_test "Tests" Test.test_all;
   run do_example "Examples" Example.ex_knuth_bendix;
-  run do_draft "Drafts" Draft.draft
+  run do_success "Success" Success.success;
+  run do_complete "Complete" Complete.complete;
+  run do_imply "Imply" Imply.imply
