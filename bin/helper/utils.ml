@@ -13,11 +13,26 @@ let get_filename ~alpha_len ~word_len =
 
 (* Fonctions de lecture *)
 
-let open_out_file dir file =
+let open_out_trunc dir file =
   if not @@ Sys.file_exists dir then Sys.mkdir dir 0o777;
-  open_out_gen [ Open_wronly; Open_creat ] 0o666 file
+  open_out_gen [ Open_wronly; Open_creat; Open_trunc ] 0o666 file
+
+let open_out_append dir file =
+  if not @@ Sys.file_exists dir then Sys.mkdir dir 0o777;
+  open_out_gen [ Open_wronly; Open_creat; Open_append ] 0o666 file
 
 (* Fonctions d'écriture *)
+
+let output_tab out_c = output_string out_c "\t"
+
+let output_newline out_c = output_string out_c "\n"
+
+let output_rule out_c rule =
+  output_string out_c @@ Format.sprintf {|"%s"|} @@ Rule.to_string rule
+
+let output_imply out_c source target =
+  output_string out_c
+  @@ Format.sprintf {|"%s" -> "%s"|} (Rule.to_string source) (Rule.to_string target)
 
 let write_rule out_c (name, w1, w2) =
   let name = Option.value name ~default:"R" in

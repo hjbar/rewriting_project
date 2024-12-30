@@ -13,7 +13,7 @@ let complete_rs ~alpha_len ~word_len =
 
   let dir, filename, path = get_filename ~alpha_len ~word_len in
   let htbl = Parse.parse_file dir filename in
-  let out_c = open_out_file dir path in
+  let out_c = open_out_append dir path in
 
   (* completion *)
   List.iter

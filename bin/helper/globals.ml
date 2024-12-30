@@ -20,7 +20,7 @@ let limit_pairs = 500
 
 (* Étapes optionnelles *)
 
-let do_test = false
+let do_test = true
 
 let do_example = false
 
@@ -32,4 +32,4 @@ let do_success = false
 
 let do_complete = true
 
-let do_imply = false
+let do_imply = true

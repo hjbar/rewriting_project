@@ -1,0 +1,11 @@
+digraph finite_state_machine {
+	rankdir=TB;
+	node [shape = ellipse];
+	"R2: a --> b" -> "R5: aa --> ab"
+	"R2: a --> b" -> "R7: aa --> ba"
+	"R2: a --> b" -> "R8: aa --> bb"
+	"R2: a --> b" -> "R10: ab --> ba"
+	"R2: a --> b" -> "R11: ab --> bb"
+	"R4: a --> bb" -> "R10: ab --> ba"
+	"R6: aa --> b" -> "R10: ab --> ba"
+}
