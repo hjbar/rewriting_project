@@ -93,21 +93,81 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_ru
   !rules
 
 let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
+  (* On vérifie que le rs n'est pas vide *)
+  if rs = [] then abort "Le système de réécriture est vide";
+
+  (* On initialise quelques fonctions *)
   let normalize = normalize ~limit:limit_norm in
   let critical_rules = critical_rules ~limit:limit_norm in
   let kd_bis = knuth_bendix_bis ~limit_pairs normalize critical_rules in
 
+  (* Message d'erreur en cas d'échec *)
   let error_msg = ref "" in
 
   (* On teste différentes orientations *)
-  try
+  let kd_first_step () =
     List.iter
       begin
         fun orient_rule ->
           try return @@ kd_bis orient_rule rs
           with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
       end
-      orient_rule_list;
+      orient_rule_list
+  in
+
+  (* On teste des générateurs *)
+  let get_gen_left w =
+    let len = String.length w in
+    let res = ref [] in
+
+    for i = 0 to len - 1 do
+      res := String.sub w i (len - i) :: !res
+    done;
+
+    !res
+  in
+
+  let get_gen_right rs =
+    let max_char = ref 'a' in
+
+    List.iter
+      begin
+        fun (_, w1, w2) ->
+          String.iter (fun c -> max_char := max !max_char c) w1;
+          String.iter (fun c -> max_char := max !max_char c) w2
+      end
+      rs;
+
+    Char.code !max_char + 1 |> Char.chr |> Char.escaped
+  in
+
+  let kd_second_step () =
+    let gen_right = get_gen_right rs in
+
+    let tries gen_left =
+      List.iter
+        begin
+          fun orient_rule ->
+            List.iter
+              begin
+                fun s ->
+                  let rs = rs @ [ Rule.make s gen_right ] in
+                  try return @@ kd_bis orient_rule rs
+                  with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
+              end
+              gen_left
+        end
+        orient_rule_list
+    in
+
+    let _, w1, _ = List.hd rs in
+    tries @@ get_gen_left w1
+  in
+
+  (* Si on ne réussit pas, on soulève une erreur *)
+  try
+    kd_first_step ();
+    kd_second_step ();
 
     abort !error_msg
   with Return rs -> rs
