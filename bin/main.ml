@@ -1,27 +1,15 @@
 (* Ressources *)
 
 open Print
-
-(* Constantes *)
-
-let do_test = true
-
-let do_example = false
-
-let do_success = false
-
-let do_complete = true
-
-let do_imply = false
+open Globals
 
 (* Functions *)
 
 let run mode msg f =
-  let sep = String.init 30 (fun _ -> '&') in
   if mode then begin
-    println_flush @@ Format.sprintf "%s\n\n%s :" sep msg;
+    println_flush @@ Format.sprintf "%s\n\n%s :" sep3 msg;
     f ();
-    println_flush @@ Format.sprintf "\n%s" sep
+    println_flush @@ Format.sprintf "\n%s" sep3
   end
 
 (* MAIN *)

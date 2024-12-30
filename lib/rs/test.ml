@@ -1,5 +1,7 @@
-open Rewriting
 open Utils
+open Order
+open Normalize
+open Rewriting
 
 (* Testing functions *)
 

@@ -19,46 +19,33 @@ R4 : a --> bb ;;
 K0 : ba --> ab ;;
 R4 : bb --> a ;;
 ##
-R5 : aa --> a ;;
+R5 : aa --> ab ;;
 **
-R5 : aa --> a ;;
+R5 : ab --> aa ;;
 ##
-R6 : aa --> ab ;;
-**
-R6 : ab --> aa ;;
-##
-R7 : aa --> b ;;
+R6 : aa --> b ;;
 **
 K0 : ba --> ab ;;
-R7 : aa --> b ;;
+R6 : aa --> b ;;
 ##
-R8 : aa --> ba ;;
+R7 : aa --> ba ;;
 **
-R8 : ba --> aa ;;
+R7 : ba --> aa ;;
 ##
-R9 : aa --> bb ;;
+R8 : aa --> bb ;;
 **
 K0 : baa --> aab ;;
-R9 : bb --> aa ;;
+R8 : bb --> aa ;;
 ##
-R10 : ab --> a ;;
+R9 : ab --> b ;;
 **
-R10 : ab --> a ;;
+R9 : ab --> b ;;
 ##
-R11 : ab --> aa ;;
+R10 : ab --> ba ;;
 **
-R11 : ab --> aa ;;
+R10 : ba --> ab ;;
 ##
-R12 : ab --> b ;;
+R11 : ab --> bb ;;
 **
-R12 : ab --> b ;;
-##
-R13 : ab --> ba ;;
-**
-R13 : ba --> ab ;;
-##
-R14 : ab --> bb ;;
-**
-K0 : aab --> bab ;;
-R14 : bb --> ab ;;
+R11 : ab --> bb ;;
 ##

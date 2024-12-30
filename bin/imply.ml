@@ -1,26 +1,13 @@
 (* IMPORT STUFF *)
 
 open Print
-
-(* UTILS FUNCTIONS *)
-
-let get_all_rules ~alpha_len ~word_len =
-  Rule.get_rules ~alpha_len ~word_len |> Rule.isomorphism_filter
-
-let get_filename ~alpha_len ~word_len =
-  let dir = "archives" in
-  let filename = Format.sprintf "alpha_len-%d_word_len-%d.data" alpha_len word_len in
-  (dir, filename)
-
-let lookup ht rule : Rs.rs =
-  let rs = Rs.make [ rule ] in
-  Hashtbl.find ht rs
+open Utils
+open Globals
 
 (* SUCCESS FUNCTION *)
 
 let print_implies ~alpha_len ~word_len =
-  let sep = String.make 30 '=' in
-  let dir, filename = get_filename ~alpha_len ~word_len in
+  let dir, filename, _path = get_filename ~alpha_len ~word_len in
   let ht = Parse.parse_file dir filename in
   let rules = get_all_rules ~alpha_len ~word_len in
 
@@ -58,16 +45,15 @@ let print_implies ~alpha_len ~word_len =
 (* MAIN *)
 
 let imply () =
-  let sep = String.make 30 '*' in
   let run ~alpha_len ~word_len =
     println_newline ();
-    println_flush sep;
+    println_flush sep2;
 
     println_flush
     @@ Format.sprintf "Success for alpha_len = %d and word_len = %d" alpha_len word_len;
     print_implies ~alpha_len ~word_len;
 
-    println_flush sep;
+    println_flush sep2;
     println_newline ()
   in
 

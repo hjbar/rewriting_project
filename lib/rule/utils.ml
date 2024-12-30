@@ -66,5 +66,11 @@ let isomorphism_filter rules : rule list =
     (name, w1', w2')
   in
 
-  rules |> List.map mapping_list
-  |> List.sort_uniq (fun (_, w1, w2) (_, w1', w2') -> compare (w1, w2) (w1', w2'))
+  let filter (_, w1, w2) (_, w3, w4) =
+    let norm w1 w2 = (min w1 w2, max w1 w2) in
+    compare (norm w1 w2) (norm w3 w4)
+  in
+
+  let rename i (_, w1, w2) = (Format.sprintf "R%d" i |> Option.some, w1, w2) in
+
+  rules |> List.map mapping_list |> List.sort_uniq filter |> List.mapi rename

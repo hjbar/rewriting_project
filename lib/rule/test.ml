@@ -42,13 +42,20 @@ let test_get_rules () =
   Print.println_ok "test_get_rules : OK"
 
 let test_isomorphism_filter () =
+  let rec compare_rs l1 l2 =
+    match (l1, l2) with
+    | [], [] -> true
+    | (_, w1, w2) :: l1, (_, w3, w4) :: l2 -> w1 = w3 && w2 = w4 && compare_rs l1 l2
+    | _ -> false
+  in
+
   let res = isomorphism_filter [ make "a" "b"; make "b" "c"; make "c" "d" ] in
   let obj = [ make "a" "b" ] in
-  assert (res = obj);
+  assert (compare_rs res obj);
 
   let res = isomorphism_filter [ make "abc" "cba"; make "efg" "gfe"; make "cab" "bac" ] in
   let obj = [ make "abc" "cba" ] in
-  assert (res = obj);
+  assert (compare_rs res obj);
 
   let res =
     isomorphism_filter
@@ -61,7 +68,7 @@ let test_isomorphism_filter () =
       ]
   in
   let obj = [ make "a" "b"; make "abc" "cba" ] in
-  assert (res = obj);
+  assert (compare_rs res obj);
 
   let res =
     isomorphism_filter
@@ -78,7 +85,43 @@ let test_isomorphism_filter () =
   let obj =
     [ make "ab" "c"; make "ab" "bc"; make "ab" "cd"; make "ab" "ba" ] |> List.sort compare
   in
-  assert (res = obj);
+  assert (compare_rs res obj);
+
+  let res =
+    isomorphism_filter
+      [ (Some "R0", "a", "aa")
+      ; (Some "R1", "a", "ab")
+      ; (Some "R2", "a", "b")
+      ; (Some "R3", "a", "ba")
+      ; (Some "R4", "a", "bb")
+      ; (Some "R5", "aa", "a")
+      ; (Some "R6", "aa", "ab")
+      ; (Some "R7", "aa", "b")
+      ; (Some "R8", "aa", "ba")
+      ; (Some "R9", "aa", "bb")
+      ; (Some "R10", "ab", "a")
+      ; (Some "R11", "ab", "aa")
+      ; (Some "R12", "ab", "b")
+      ; (Some "R13", "ab", "ba")
+      ; (Some "R14", "ab", "bb")
+      ]
+  in
+  let obj =
+    [ (Some "R0", "a", "aa")
+    ; (Some "R1", "a", "ab")
+    ; (Some "R2", "a", "b")
+    ; (Some "R3", "a", "ba")
+    ; (Some "R4", "a", "bb")
+    ; (Some "R6", "aa", "ab")
+    ; (Some "R7", "aa", "b")
+    ; (Some "R8", "aa", "ba")
+    ; (Some "R9", "aa", "bb")
+    ; (Some "R12", "ab", "b")
+    ; (Some "R13", "ab", "ba")
+    ; (Some "R14", "ab", "bb")
+    ]
+  in
+  assert (compare_rs res obj);
 
   Print.println_ok "test_isomorphism_filter : OK"
 
