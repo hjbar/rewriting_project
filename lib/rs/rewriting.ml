@@ -99,19 +99,15 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
 
   let error_msg = ref "" in
 
-  let res =
-    List.fold_left
+  (* On teste différentes orientations *)
+  try
+    List.iter
       begin
-        fun acc orient_rule ->
-          if Option.is_some acc then acc
-          else begin
-            try kd_bis orient_rule rs |> Option.some
-            with Abort s ->
-              error_msg := Format.sprintf "%s%s\n" !error_msg s;
-              None
-          end
+        fun orient_rule ->
+          try return @@ kd_bis orient_rule rs
+          with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
       end
-      None orient_rule_list
-  in
+      orient_rule_list;
 
-  match res with None -> raise @@ Abort !error_msg | Some res -> res
+    abort !error_msg
+  with Return rs -> rs
