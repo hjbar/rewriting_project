@@ -28,11 +28,11 @@ let output_tab out_c = output_string out_c "\t"
 let output_newline out_c = output_string out_c "\n"
 
 let output_rule out_c rule =
-  output_string out_c @@ Format.sprintf {|"%s"|} @@ Rule.to_string rule
+  output_string out_c @@ Format.sprintf {|"%s"|} @@ Rule.to_string_eq rule
 
 let output_imply out_c source target =
   output_string out_c
-  @@ Format.sprintf {|"%s" -> "%s"|} (Rule.to_string source) (Rule.to_string target)
+  @@ Format.sprintf {|"%s" -> "%s"|} (Rule.to_string_eq source) (Rule.to_string_eq target)
 
 let write_rule out_c (name, w1, w2) =
   let name = Option.value name ~default:"R" in
@@ -62,6 +62,11 @@ let get_rate ~completed ~completion =
 let lookup ht rule : Rs.rs =
   let rs = Rs.make [ rule ] in
   Hashtbl.find ht rs
+
+let update ht source target =
+  match Hashtbl.find_opt ht source with
+  | None -> Hashtbl.replace ht source [ target ]
+  | Some l -> Hashtbl.replace ht source (target :: l)
 
 (* Fonctions d'affichage *)
 
