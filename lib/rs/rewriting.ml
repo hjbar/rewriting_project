@@ -160,8 +160,9 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
         orient_rule_list
     in
 
-    let _, w1, _ = List.hd rs in
-    tries @@ get_gen_left w1
+    let _, w1, w2 = List.hd rs in
+    tries @@ get_gen_left w1;
+    tries @@ get_gen_left w2
   in
 
   (* Si on ne réussit pas, on soulève une erreur *)
