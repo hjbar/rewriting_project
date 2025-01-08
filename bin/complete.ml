@@ -52,10 +52,19 @@ let complete_rs ~alpha_len ~word_len =
 (* MAIN *)
 
 let complete () =
-  println_flush sep;
-  complete_rs ~alpha_len:2 ~word_len:1;
-  println_flush sep;
-  complete_rs ~alpha_len:2 ~word_len:2;
-  println_flush sep;
-  complete_rs ~alpha_len:2 ~word_len:3;
-  println_flush sep
+  let run ~alpha_len ~word_len =
+    println_newline ();
+    println_flush sep;
+
+    println_flush
+    @@ Format.sprintf "Complete for alpha_len = %d and word_len = %d" alpha_len word_len;
+    complete_rs ~alpha_len ~word_len;
+
+    println_flush sep;
+    println_newline ()
+  in
+
+  run ~alpha_len:2 ~word_len:1;
+  run ~alpha_len:2 ~word_len:2;
+  run ~alpha_len:2 ~word_len:3;
+  run ~alpha_len:2 ~word_len:4

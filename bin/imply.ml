@@ -158,7 +158,7 @@ let imply () =
     println_flush sep2;
 
     println_flush
-    @@ Format.sprintf "Success for alpha_len = %d and word_len = %d" alpha_len word_len;
+    @@ Format.sprintf "Imply for alpha_len = %d and word_len = %d" alpha_len word_len;
     print_implies ~alpha_len ~word_len;
 
     println_flush sep2;
@@ -167,4 +167,5 @@ let imply () =
 
   run ~alpha_len:2 ~word_len:1;
   run ~alpha_len:2 ~word_len:2;
-  run ~alpha_len:2 ~word_len:3
+  run ~alpha_len:2 ~word_len:3;
+  run ~alpha_len:2 ~word_len:4
