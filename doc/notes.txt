@@ -1,3 +1,6 @@
+45 minutes to compute :
+
+
 ==============================
 Complete for alpha_len = 2 and word_len = 4
 ==============================
