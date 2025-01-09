@@ -19,15 +19,8 @@ let complete_rs ~alpha_len ~word_len =
   List.iter
     begin
       fun rs ->
-        if Hashtbl.mem htbl rs then begin
-          incr completion;
-          incr completed;
-
-          let rs' = Hashtbl.find htbl rs in
-          print_completion debug_success rs rs';
-          write_completion out_c rs rs'
-        end
-        else begin
+        match Hashtbl.find_opt htbl rs with
+        | None -> begin
           try
             incr completion;
             let rs' = Rs.knuth_bendix ~limit_norm ~limit_pairs rs in
@@ -39,6 +32,12 @@ let complete_rs ~alpha_len ~word_len =
           | Rs.Abort s -> print_failure debug_failed s rs
           | exn -> raise exn
         end
+        | Some rs' ->
+          incr completion;
+          incr completed;
+
+          print_completion debug_success rs rs';
+          write_completion out_c rs rs'
     end
     rs_list;
 
