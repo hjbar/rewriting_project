@@ -4,30 +4,9 @@ open Print
 open Utils
 open Globals
 
-(* GRAPHVIZ *)
+(* CALCULE LES IMPLICATIONS *)
 
-let write_graph_head out_c =
-  output_string out_c "digraph finite_state_machine {";
-  output_newline out_c;
-
-  output_tab out_c;
-  output_string out_c "rankdir=TB;";
-  output_newline out_c;
-
-  output_tab out_c;
-  output_string out_c "node [shape = ellipse];";
-  output_newline out_c
-
-let write_graph_bot out_c = output_string out_c "}"
-
-(* SUCCESS FUNCTION *)
-
-let print_implies ~alpha_len ~word_len =
-  (* On import les systèmes déjà complétés *)
-  let dir, filename, _path = get_filename ~alpha_len ~word_len in
-  let ht = Parse.parse_file dir filename in
-  let rules = get_all_rules ~alpha_len ~word_len in
-
+let compute_implies rules systems =
   (* Pour stocker les informations concernant les implications *)
   let implies = Hashtbl.create 16 in
   let arr = Array.init (List.length rules) (fun _i -> false) in
@@ -46,7 +25,7 @@ let print_implies ~alpha_len ~word_len =
         (* On calcule les implications de la règle source *)
         let () =
           try
-            let rs = lookup ht source in
+            let rs = lookup systems source in
 
             List.iteri
               begin
@@ -77,10 +56,17 @@ let print_implies ~alpha_len ~word_len =
     end
     rules;
 
-  (* On simplifie les implications *)
+  (* Renvoie les implications et les équations non utilisées *)
+  (implies, arr)
+
+(* SIMPLIFIE LES IMPLICATIONS *)
+
+let simplify_implies implies =
+  (* For safety of hashtbl iteration *)
   let remove_elem l elem = l := List.filter (fun elem' -> elem <> elem') !l in
   let tmp = Hashtbl.copy implies in
 
+  (* Simplifie implies by transitivity *)
   Hashtbl.iter
     begin
       fun source targets ->
@@ -97,13 +83,17 @@ let print_implies ~alpha_len ~word_len =
 
         Hashtbl.replace implies source !update_targets
     end
-    tmp;
+    tmp
 
-  (* On crée le Diagramme de Hasse *)
-  let path = Format.sprintf "%s/%s--%s" dir (Filename.remove_extension filename) "graph.dot" in
+(* GÉNÈRE LA DIAGRAMME DE HASSE *)
+
+let make_hasse dir implies =
+  (* Récupère le path et ouvre le fichier *)
+  let path = Format.sprintf "%s/%s" dir "graph.dot" in
   let out_c = open_out_trunc dir path in
   write_graph_head out_c;
 
+  (* Écrit le graphe *)
   Hashtbl.iter
     begin
       fun source targets ->
@@ -118,20 +108,24 @@ let print_implies ~alpha_len ~word_len =
     end
     implies;
 
+  (* Ferme le fichier *)
   write_graph_bot out_c;
   close_out out_c;
 
+  (* Génère le pdf *)
   Sys.command
   @@ Format.sprintf "dot -Tpdf %s -o %s" path (Filename.remove_extension path ^ ".pdf")
-  |> ignore;
+  |> ignore
 
-  (* On crée le graphe annexe *)
-  let path =
-    Format.sprintf "%s/%s--%s" dir (Filename.remove_extension filename) "annexe.dot"
-  in
+(* GÉNÈRE LE GRAPH ANNEXE *)
+
+let make_annexe dir rules arr =
+  (* Récupère le path et ouvre le fichier *)
+  let path = Format.sprintf "%s/%s" dir "annexe.dot" in
   let out_c = open_out_trunc dir path in
   write_graph_head out_c;
 
+  (* Écrit le graphe *)
   Array.iteri
     begin
       fun i implies ->
@@ -143,12 +137,34 @@ let print_implies ~alpha_len ~word_len =
     end
     arr;
 
+  (* Ferme le fichier *)
   write_graph_bot out_c;
   close_out out_c;
 
+  (* Génère le pdf *)
   Sys.command
   @@ Format.sprintf "dot -Tpdf %s -o %s" path (Filename.remove_extension path ^ ".pdf")
   |> ignore
+
+(* COMPUTE IMPLIES AND MAKE GRAPHS *)
+
+let compute_all ~alpha_len ~word_len =
+  (* On import les systèmes déjà complétés *)
+  let dir, filename, _path = get_filename ~alpha_len ~word_len in
+  let ht = Parse.parse_file dir filename in
+  let rules = get_all_rules ~alpha_len ~word_len in
+
+  (* On calcule les implications *)
+  let implies, arr = compute_implies rules ht in
+
+  (* On simplifie les implications *)
+  simplify_implies implies;
+
+  (* On crée le Diagramme de Hasse *)
+  make_hasse dir implies;
+
+  (* On crée le graphe annexe *)
+  make_annexe dir rules arr
 
 (* MAIN *)
 
@@ -159,7 +175,7 @@ let imply () =
 
     println_flush
     @@ Format.sprintf "Imply for alpha_len = %d and word_len = %d" alpha_len word_len;
-    print_implies ~alpha_len ~word_len;
+    compute_all ~alpha_len ~word_len;
 
     println_flush sep2;
     println_newline ()

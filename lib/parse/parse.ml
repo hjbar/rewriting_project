@@ -1,6 +1,7 @@
 let open_in_file file = open_in_gen [ Open_rdonly; Open_creat ] 0o666 file
 
-let create_dir dir = if not @@ Sys.file_exists dir then Sys.mkdir dir 0o777
+let create_dir dir =
+  if not @@ Sys.file_exists dir then Sys.command @@ Format.sprintf "mkdir -p %s" dir |> ignore
 
 let parse_file dir filename =
   create_dir dir;

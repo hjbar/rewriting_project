@@ -6,19 +6,19 @@ open Globals
 (* Fonctions sur le nom des fichiers *)
 
 let get_filename ~alpha_len ~word_len =
-  let dir = "archives" in
-  let filename = Format.sprintf "alpha_len-%d_word_len-%d.data" alpha_len word_len in
+  let dir = Format.sprintf "archives/alpha_len-%d_word_len-%d" alpha_len word_len in
+  let filename = "systems.data" in
   let path = Format.sprintf "%s/%s" dir filename in
   (dir, filename, path)
 
 (* Fonctions de lecture *)
 
 let open_out_trunc dir file =
-  if not @@ Sys.file_exists dir then Sys.mkdir dir 0o777;
+  if not @@ Sys.file_exists dir then Sys.command @@ Format.sprintf "mkdir -p %s" dir |> ignore;
   open_out_gen [ Open_wronly; Open_creat; Open_trunc ] 0o666 file
 
 let open_out_append dir file =
-  if not @@ Sys.file_exists dir then Sys.mkdir dir 0o777;
+  if not @@ Sys.file_exists dir then Sys.command @@ Format.sprintf "mkdir -p %s" dir |> ignore;
   open_out_gen [ Open_wronly; Open_creat; Open_append ] 0o666 file
 
 (* Fonctions d'écriture *)
@@ -45,6 +45,22 @@ let write_completion out_c rs rs_completed =
   output_string out_c "**\n";
   write_rs out_c rs_completed;
   output_string out_c "##\n"
+
+(* Fonctions pour graphiz *)
+
+let write_graph_head out_c =
+  output_string out_c "digraph finite_state_machine {";
+  output_newline out_c;
+
+  output_tab out_c;
+  output_string out_c "rankdir=TB;";
+  output_newline out_c;
+
+  output_tab out_c;
+  output_string out_c "node [shape = ellipse];";
+  output_newline out_c
+
+let write_graph_bot out_c = output_string out_c "}"
 
 (* Fonctions sur les règles et la complétion *)
 
