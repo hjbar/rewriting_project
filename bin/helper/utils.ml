@@ -34,6 +34,11 @@ let output_imply out_c source target =
   output_string out_c
   @@ Format.sprintf {|"%s" -> "%s"|} (Rule.to_string_eq source) (Rule.to_string_eq target)
 
+let output_relations out_c sources targets =
+  let sources_str = sources |> List.map Rule.to_string_eq |> String.concat "\n" in
+  let targets_str = targets |> List.map Rule.to_string_eq |> String.concat "\n" in
+  output_string out_c @@ Format.sprintf {|"%s" -> "%s"|} sources_str targets_str
+
 let write_rule out_c (name, w1, w2) =
   let name = Option.value name ~default:"R" in
   output_string out_c @@ Format.sprintf "%s : %s --> %s ;;\n" name w1 w2

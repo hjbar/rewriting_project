@@ -63,7 +63,13 @@ let complete () =
     println_newline ()
   in
 
-  run ~alpha_len:2 ~word_len:1;
-  run ~alpha_len:2 ~word_len:2;
-  run ~alpha_len:2 ~word_len:3;
-  run ~alpha_len:2 ~word_len:4
+  List.iter
+    begin
+      fun alpha_len ->
+        List.iter
+          begin
+            fun word_len -> run ~alpha_len ~word_len
+          end
+          word_lengths
+    end
+    alpha_lengths

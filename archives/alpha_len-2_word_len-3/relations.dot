@@ -1,0 +1,27 @@
+digraph finite_state_machine {
+	rankdir=TB;
+	node [shape = ellipse];
+	"a = bbb" -> "ab = ba"
+	"a = bb" -> "ab = bbb
+ab = ba
+aa = bba
+aa = bab
+aa = abb"
+	"aa = b" -> "aba = bb
+ab = ba
+aab = bb
+aaa = ba
+aaa = ab"
+	"a = b" -> "abb = baa
+aba = bbb
+aba = bab
+ab = bb
+ab = ba
+aab = bba
+aaa = bbb
+aaa = bab
+aa = bb
+aa = ba
+aa = ab"
+	"aaa = b" -> "ab = ba"
+}
