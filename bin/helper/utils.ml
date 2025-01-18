@@ -34,7 +34,11 @@ let output_imply out_c source target =
   output_string out_c
   @@ Format.sprintf {|"%s" -> "%s"|} (Rule.to_string_eq source) (Rule.to_string_eq target)
 
-let output_relations out_c sources targets =
+let output_relations out_c sources =
+  let sources_str = sources |> List.map Rule.to_string_eq |> String.concat "\n" in
+  output_string out_c @@ Format.sprintf {|"%s"|} sources_str
+
+let output_both_relations out_c sources targets =
   let sources_str = sources |> List.map Rule.to_string_eq |> String.concat "\n" in
   let targets_str = targets |> List.map Rule.to_string_eq |> String.concat "\n" in
   output_string out_c @@ Format.sprintf {|"%s" -> "%s"|} sources_str targets_str
