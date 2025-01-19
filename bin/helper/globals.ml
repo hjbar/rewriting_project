@@ -38,10 +38,10 @@ let word_lengths = [ 1; 2; 3; 4 ]
 
 (* Limites de calculs *)
 
-let max_norm = 10000
+let max_norm = 1458
 
 let max_pairs = 58
 
-let limit_norm = float max_norm *. 1.5 |> int_of_float
+let limit_norm = 1500
 
-let limit_pairs = float max_pairs *. 1.5 |> int_of_float
+let limit_pairs = 60
