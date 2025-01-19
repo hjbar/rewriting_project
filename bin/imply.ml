@@ -368,6 +368,7 @@ let imply () =
 
     println_flush
     @@ Format.sprintf "Imply for alpha_len = %d and word_len = %d" alpha_len word_len;
+    print_newline ();
     compute_all ~alpha_len ~word_len;
 
     println_flush sep2;

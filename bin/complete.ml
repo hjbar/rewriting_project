@@ -57,6 +57,7 @@ let complete () =
 
     println_flush
     @@ Format.sprintf "Complete for alpha_len = %d and word_len = %d" alpha_len word_len;
+    print_newline ();
     complete_rs ~alpha_len ~word_len;
 
     println_flush sep;
