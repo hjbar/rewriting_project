@@ -38,10 +38,12 @@ let word_lengths = [ 1; 2; 3; 4 ]
 
 (* Limites de calculs *)
 
+let excess_limit = false
+
 let max_norm = 32
 
 let max_pairs = 20
 
-let limit_norm = max_norm + (max_norm / 2)
-
-let limit_pairs = max_pairs + (max_pairs / 2)
+let limit_norm, limit_pairs =
+  let d = if excess_limit then 10 else 2 in
+  (max_norm * d, max_pairs * d)
