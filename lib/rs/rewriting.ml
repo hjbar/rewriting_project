@@ -1,5 +1,6 @@
 open Utils
 open Order
+open Generator
 open Normalize
 
 (* Trouve les paires critiques d'un système de ré-écriture *)
@@ -116,31 +117,6 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
   in
 
   (* On teste des générateurs *)
-  let get_gen_left w =
-    let len = String.length w in
-    let res = ref [] in
-
-    for i = 0 to len - 1 do
-      res := String.sub w i (len - i) :: !res
-    done;
-
-    !res
-  in
-
-  let get_gen_right rs =
-    let max_char = ref 'a' in
-
-    List.iter
-      begin
-        fun (_, w1, w2) ->
-          String.iter (fun c -> max_char := max !max_char c) w1;
-          String.iter (fun c -> max_char := max !max_char c) w2
-      end
-      rs;
-
-    Char.code !max_char + 1 |> Char.chr |> Char.escaped
-  in
-
   let kd_second_step () =
     let gen_right = get_gen_right rs in
 
@@ -160,9 +136,13 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
         orient_rule_list
     in
 
-    let _, w1, w2 = List.hd rs in
-    tries @@ get_gen_left w1;
-    tries @@ get_gen_left w2
+    List.iter
+      begin
+        fun (_, w1, w2) ->
+          tries @@ get_gen_left w1;
+          tries @@ get_gen_left w2
+      end
+      rs
   in
 
   (* Si on ne réussit pas, on soulève une erreur *)
