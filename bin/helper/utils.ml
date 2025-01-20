@@ -71,6 +71,11 @@ let write_graph_head out_c =
 
 let write_graph_bot out_c = output_string out_c "}"
 
+let compile_graph path =
+  Sys.command
+  @@ Format.sprintf "dot -Tpdf %s -o %s" path (Filename.remove_extension path ^ ".pdf")
+  |> ignore
+
 (* Fonctions sur les règles et la complétion *)
 
 let get_all_rules ~alpha_len ~word_len =

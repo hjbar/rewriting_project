@@ -115,9 +115,7 @@ let make_hasse dir implies =
   close_out out_c;
 
   (* Génère le pdf *)
-  Sys.command
-  @@ Format.sprintf "dot -Tpdf %s -o %s" path (Filename.remove_extension path ^ ".pdf")
-  |> ignore
+  compile_graph path
 
 (* GÉNÈRE LE GRAPH ANNEXE *)
 
@@ -144,9 +142,7 @@ let make_annexe dir rules arr =
   close_out out_c;
 
   (* Génère le pdf *)
-  Sys.command
-  @@ Format.sprintf "dot -Tpdf %s -o %s" path (Filename.remove_extension path ^ ".pdf")
-  |> ignore
+  compile_graph path
 
 (* GÉNÈRE LE SOUS-GRAPH HOMOGÈNE *)
 
@@ -183,9 +179,7 @@ let make_homogeneous dir implies =
   close_out out_c;
 
   (* Génère le pdf *)
-  Sys.command
-  @@ Format.sprintf "dot -Tpdf %s -o %s" path (Filename.remove_extension path ^ ".pdf")
-  |> ignore
+  compile_graph path
 
 (* GÉNÈRE LE SOUS-GRAPH REV *)
 
@@ -225,9 +219,7 @@ let make_rev dir implies =
   close_out out_c;
 
   (* Génère le pdf *)
-  Sys.command
-  @@ Format.sprintf "dot -Tpdf %s -o %s" path (Filename.remove_extension path ^ ".pdf")
-  |> ignore
+  compile_graph path
 
 (* GÉNÈRE LE GRAPHE À PLUSIEURS RELATIONS *)
 
@@ -326,9 +318,7 @@ let make_relations dir implies =
   close_out out_c;
 
   (* Génère le pdf *)
-  Sys.command
-  @@ Format.sprintf "dot -Tpdf %s -o %s" path (Filename.remove_extension path ^ ".pdf")
-  |> ignore
+  compile_graph path
 
 (* COMPUTE IMPLIES AND MAKE GRAPHS *)
 
