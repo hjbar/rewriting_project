@@ -1,0 +1,21 @@
+R529 : [ aab --> abbaa ]
+
+On essaye de normaliser w : aaaab
+
+On rentre dans la boucle infinie suivante :
+
+------------
+|          |
+|          v
+|       *aaAAB*
+|          |
+|          v
+|      *aAABbaa*
+|          |
+|          v
+|     *AABbAABaa*
+|          |
+|          v
+|    *abbAABAABaa*
+|          |
+------------

@@ -34,7 +34,7 @@ let sep3 = String.init 30 (fun _ -> '&')
 
 let alpha_lengths = [ 2 ]
 
-let word_lengths = [ 1; 2; 3; 4 ]
+let word_lengths = [ 1; 2; 3; 4; 5 ]
 
 (* Limites de calculs *)
 
