@@ -49,7 +49,7 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_ru
   let queue = rs |> List.to_seq |> Queue.of_seq in
 
   let add r =
-    rules := r :: !rules;
+    rules := !rules @ [ r ];
 
     rules :=
       List.map

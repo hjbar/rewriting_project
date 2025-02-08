@@ -1,5 +1,3 @@
-R205: ab --> abaa
-R208: ab --> abba
 R216: ab --> baba
 R221: ab --> bbab
 R234: aba --> baab

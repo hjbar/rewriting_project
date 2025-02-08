@@ -1,121 +1,37 @@
-45 minutes to compute :
-
-
 ==============================
 Complete for alpha_len = 2 and word_len = 4
-==============================
-Système de réécriture avant :
-R205: ab --> abaa
 
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too many recursions in normalize
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-
-==============================
-==============================
-Système de réécriture avant :
-R208: ab --> abba
-
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too many recursions in normalize
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too much critical rules in knuth_bendix
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-
-==============================
 ==============================
 Système de réécriture avant :
 R216: ab --> baba
 
 Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize_all
 Too many recursions in normalize_all
 Too many recursions in normalize
 Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize_all
 Too many recursions in normalize_all
 Too many recursions in normalize_all
 Too many recursions in normalize_all
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize_all
 Too many recursions in normalize_all
 Too many recursions in normalize_all
@@ -151,7 +67,7 @@ Too many recursions in normalize
 Too many recursions in normalize
 Too much critical rules in knuth_bendix
 Too much critical rules in knuth_bendix
-Too many recursions in normalize
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too much critical rules in knuth_bendix
 Too much critical rules in knuth_bendix
@@ -171,38 +87,38 @@ Too many recursions in normalize_all
 Système de réécriture avant :
 R234: aba --> baab
 
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too many recursions in normalize_all
+Too many recursions in normalize_all
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
-Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too many recursions in normalize_all
+Too many recursions in normalize_all
 Too many recursions in normalize_all
 Too many recursions in normalize_all
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize_all
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize_all
 Too many recursions in normalize_all
 Too many recursions in normalize_all
@@ -217,6 +133,23 @@ Too many recursions in normalize_all
 Système de réécriture avant :
 R265: abab --> abba
 
+Too much critical rules in knuth_bendix
+Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too many recursions in normalize
+Too many recursions in normalize
+Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too many recursions in normalize
+Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
@@ -225,40 +158,23 @@ Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
@@ -268,103 +184,103 @@ Too many recursions in normalize
 Système de réécriture avant :
 R271: abab --> baab
 
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
+Too much critical rules in knuth_bendix
 
 ==============================
 ==============================
 Système de réécriture avant :
 R306: abba --> baba
 
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too many recursions in normalize
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
-Too many recursions in normalize
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
+Too much critical rules in knuth_bendix
 Too many recursions in normalize
 Too many recursions in normalize
 Too many recursions in normalize
 
 ==============================
-322 completed systems out of 330, 97%
+324 completed systems out of 330, 98%
 ==============================

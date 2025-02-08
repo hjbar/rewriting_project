@@ -1,3 +1,7 @@
+(* Type d'exec *)
+
+let do_main_alt = false
+
 (* Outils de debug *)
 
 let debug_success = false

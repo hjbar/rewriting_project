@@ -15,8 +15,11 @@ let run mode msg f =
 (* MAIN *)
 
 let () =
-  run do_test "Tests" Test.test_all;
-  run do_example "Examples" Example.ex_knuth_bendix;
-  run do_success "Success" Success.success;
-  run do_complete "Complete" Complete.complete;
-  run do_imply "Imply" Imply.imply
+  if not do_main_alt then begin
+    run do_test "Tests" Test.test_all;
+    run do_example "Examples" Example.ex_knuth_bendix;
+    run do_success "Success" Success.success;
+    run do_complete "Complete" Complete.complete;
+    run do_imply "Imply" Imply.imply
+  end
+  else Main_alt.main_alt ()
