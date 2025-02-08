@@ -1,5 +1,30 @@
 open Utils
 
+(* Affichage de déboggage *)
+
+let print_word w =
+  let red = "\027[31m" in
+  let green = "\027[32m" in
+  let blue = "\027[36m" in
+  let purple = "\027[35m" in
+  let reset = "\027[0m" in
+
+  let to_color cpt =
+    match cpt mod 4 with 0 -> red | 1 -> green | 2 -> blue | 3 -> purple | _ -> assert false
+  in
+
+  let rec loop cpt = function
+    | [] -> ()
+    | 'a' :: 'b' :: 'b' :: l (* Motif à modifier *) ->
+      Format.printf "%sABB%s" (* Format à modifier *) (to_color cpt) reset;
+      loop (cpt + 1) l
+    | c :: l ->
+      Format.printf "%c" c;
+      loop cpt l
+  in
+
+  w |> String.to_seq |> List.of_seq |> loop 0
+
 (* Normalise un mot en fonction des règles de ré-écriture *)
 
 let normalize ?(limit = max_int) rs word =

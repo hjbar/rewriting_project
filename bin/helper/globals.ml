@@ -28,7 +28,7 @@ let sep = String.make 30 '='
 
 let sep2 = String.make 30 '*'
 
-let sep3 = String.init 30 (fun _ -> '&')
+let sep3 = String.make 30 '&'
 
 (* Alphabets et longueurs *)
 

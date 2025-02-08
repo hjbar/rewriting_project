@@ -4,6 +4,26 @@ open Print
 open Utils
 open Globals
 
+(* EXCEPTION *)
+
+exception Next of Rs.rs * Word.word
+
+let is_banned =
+  let l =
+    [ ([ (None, "aab", "abbaa") ], "aaaab")
+    ; ([ (None, "baa", "aabba") ], "baaaa")
+    ; ([ (None, "abb", "bbaab") ], "aabbb")
+    ]
+  in
+  fun rs w ->
+    List.exists
+      begin
+        fun (rs', w') ->
+          w = w'
+          && List.for_all2 (fun (_, w1, w2) (_, w1', w2') -> w1 = w1' && w2 = w2') rs rs'
+      end
+      l
+
 (* CALCULE LES IMPLICATIONS *)
 
 let compute_implies rules systems =
@@ -33,6 +53,9 @@ let compute_implies rules systems =
               begin
                 fun j ((_, w1, w2) as target) ->
                   if i <> j then begin
+                    if is_banned rs w1 then raise @@ Next (rs, w1);
+                    if is_banned rs w2 then raise @@ Next (rs, w2);
+
                     let w1' = Rs.normalize rs w1 in
                     let w2' = Rs.normalize rs w2 in
 
@@ -48,11 +71,17 @@ let compute_implies rules systems =
                   end
               end
               rules
-          with Not_found ->
+          with
+          | Not_found ->
             (* La source n'a pas son système complété *)
             println_flush
             @@ Format.sprintf "The rule %s in not completed yet"
             @@ Rule.to_string source
+          | Next (rs, w) ->
+            (* Implication que l'on éviter de calculer pour une raison ou une autre *)
+            println_flush
+            @@ Format.sprintf "We go next with the rs : (%s) and the word : (%s)"
+                 (Rs.to_string rs) (Word.to_string w)
         in
         if debug_imply then println_flush sep
     end
