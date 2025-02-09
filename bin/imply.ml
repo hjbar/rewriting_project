@@ -249,33 +249,6 @@ let make_rev dir implies =
   (* Génère le pdf *)
   compile_graph path
 
-(* GÉNÈRE LE GRAPHE DES SOUS-GRAPHES *)
-
-let make_subgraphs dir implies =
-  (* On garde le graph homogène *)
-  let homogeneous = Hashtbl.create 16 in
-
-  Hashtbl.iter
-    begin
-      fun source targets ->
-        Hashtbl.replace homogeneous source
-        @@ List.filter (fun target -> is_homogeneous source target) targets
-    end
-    implies;
-
-  (* Récupère le path et ouvre le fichier *)
-  let path = Format.sprintf "%s/%s" dir "subgraph.dot" in
-  let out_c = open_out_trunc dir path in
-
-  (* Écrit le graph *)
-  Subgraph.write_graph out_c homogeneous;
-
-  (* Ferme le fichier *)
-  close_out out_c;
-
-  (* Compile *)
-  compile_graph path
-
 (* GÉNÈRE LE GRAPHE À PLUSIEURS RELATIONS *)
 
 let make_relations dir implies =
@@ -373,6 +346,33 @@ let make_relations dir implies =
   close_out out_c;
 
   (* Génère le pdf *)
+  compile_graph path
+
+(* GÉNÈRE LE GRAPHE DES SOUS-GRAPHES *)
+
+let make_subgraphs dir implies =
+  (* On garde le graph homogène *)
+  let homogeneous = Hashtbl.create 16 in
+
+  Hashtbl.iter
+    begin
+      fun source targets ->
+        Hashtbl.replace homogeneous source
+        @@ List.filter (fun target -> is_homogeneous source target) targets
+    end
+    implies;
+
+  (* Récupère le path et ouvre le fichier *)
+  let path = Format.sprintf "%s/%s" dir "subgraph.dot" in
+  let out_c = open_out_trunc dir path in
+
+  (* Écrit le graph *)
+  Subgraph.write_graph out_c homogeneous;
+
+  (* Ferme le fichier *)
+  close_out out_c;
+
+  (* Compile *)
   compile_graph path
 
 (* COMPUTE IMPLIES AND MAKE GRAPHS *)
