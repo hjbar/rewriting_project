@@ -2165,6 +2165,7 @@ digraph finite_state_machine {
 	"a = bba" -> "aa = bbaa"
 	"a = bba" -> "aa = abba"
 	"a = bba" -> "a = bbbba"
+	"aaaaa = abab" -> "aabab = ababa"
 	"a = aaab" -> "aaabb = ab"
 	"a = aaab" -> "aaaab = aaaba"
 	"a = aaab" -> "aa = aaaba"

@@ -175,16 +175,15 @@ let make_annexe dir rules arr =
 
 (* GÉNÈRE LE SOUS-GRAPH HOMOGÈNE *)
 
+(* Fonction pour savoir si on a une implication homogène *)
+let is_homogeneous (_, w1, w2) (_, w1', w2') =
+  String.(length w1 = length w2 && length w1' = length w2')
+
 let make_homogeneous dir implies =
   (* Récupère le path et ouvre le fichier *)
   let path = Format.sprintf "%s/%s" dir "homogeneous.dot" in
   let out_c = open_out_trunc dir path in
   write_graph_head out_c;
-
-  (* Fonction pour savoir si on a une implication homogène *)
-  let is_homogeneous (_, w1, w2) (_, w1', w2') =
-    String.(length w1 = length w2 && length w1' = length w2')
-  in
 
   (* Écrit le graph *)
   Hashtbl.iter
@@ -248,6 +247,33 @@ let make_rev dir implies =
   close_out out_c;
 
   (* Génère le pdf *)
+  compile_graph path
+
+(* GÉNÈRE LE GRAPHE DES SOUS-GRAPHES *)
+
+let make_subgraphs dir implies =
+  (* On garde le graph homogène *)
+  let homogeneous = Hashtbl.create 16 in
+
+  Hashtbl.iter
+    begin
+      fun source targets ->
+        Hashtbl.replace homogeneous source
+        @@ List.filter (fun target -> is_homogeneous source target) targets
+    end
+    implies;
+
+  (* Récupère le path et ouvre le fichier *)
+  let path = Format.sprintf "%s/%s" dir "subgraph.dot" in
+  let out_c = open_out_trunc dir path in
+
+  (* Écrit le graph *)
+  Subgraph.write_graph out_c homogeneous;
+
+  (* Ferme le fichier *)
+  close_out out_c;
+
+  (* Compile *)
   compile_graph path
 
 (* GÉNÈRE LE GRAPHE À PLUSIEURS RELATIONS *)
@@ -376,7 +402,10 @@ let compute_all ~alpha_len ~word_len =
   make_rev dir implies;
 
   (* On crée le sous-graphe à plusieurs relations *)
-  make_relations dir implies
+  make_relations dir implies;
+
+  (* On crée le graphe des sous-graphs *)
+  if do_subgraph then make_subgraphs dir implies
 
 (* MAIN *)
 

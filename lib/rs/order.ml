@@ -13,17 +13,17 @@ let orient_rs rs = List.map orient_rule rs
 (* Autres orientations *)
 
 type kind_orient =
-  | Length
-  | InvLength
-  | Dico
-  | InvDico
   | Default
+  | Length
+  | Dico
+  | InvLength
+  | InvDico
 
 let orient_by_length ((name, w1, w2) as rule) =
   if String.(length w1 >= length w2) then rule else (name, w2, w1)
 
 let orient_by_invlength ((name, w1, w2) as rule) =
-  if String.(length w1 < length w2) then rule else (name, w2, w1)
+  if String.(length w1 <= length w2) then rule else (name, w2, w1)
 
 let orient_by_dico (name, w1, w2) = (name, max w1 w2, min w1 w2)
 

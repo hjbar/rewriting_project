@@ -26,6 +26,8 @@ let do_complete = true
 
 let do_imply = true
 
+let do_subgraph = false
+
 (* Sep pour affichage *)
 
 let sep = String.make 30 '='

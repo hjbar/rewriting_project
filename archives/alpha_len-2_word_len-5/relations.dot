@@ -860,9 +860,6 @@ abaab = abbaa
 aabbb = bbbaa
 aabab = babaa
 aaaab = baaaa"
-	"aaaa = bab
-aaaab = babb
-aaaaa = abab"
 	"aabb = bbaa
 aabbb = bbaab
 aabba = bbaaa
@@ -1522,6 +1519,8 @@ aaab = aaaba"
 aabb = bbaab
 aaba = bbaaa
 aaab = abbaa"
+	"aaaaa = abab
+aabab = ababa"
 	"aba = bab
 abbab = babba
 ababa = abbab
@@ -1617,6 +1616,8 @@ aaaab = abbbb"
 aabbb = baaab
 aabba = baaaa
 aaabb = abaaa"
+	"aaaa = bab
+aaaab = babb"
 	"ababa = bbb
 abbbb = bbbba"
 	"abab = bbbbb
@@ -6945,6 +6946,19 @@ aabbb = abbbb
 aabba = abbba
 aaabb = abbbb
 aaabb = aabbb"
+	"aaaa = bab
+aaaab = babb" -> "aaaaa = abab
+aabab = ababa"
+	"aaaa = bab
+aaaab = babb" -> "aaaaa = baba
+ababa = babaa"
+	"aaaa = bab
+aaaab = babb" -> "abab = baba
+ababb = bbaba
+ababb = babab
+ababa = babaa
+aabab = babaa
+aabab = ababa"
 	"aaaa = aba
 aaaab = abab" -> "aaaaa = aaba
 aaaba = aabaa"
@@ -11688,18 +11702,6 @@ aaabb = aabab
 aaaba = aabaa
 aaaab = aabaa
 aaaab = aaaba"
-	"aaaa = bab
-aaaab = babb
-aaaaa = abab" -> "aaaaa = baba
-ababa = babaa"
-	"aaaa = bab
-aaaab = babb
-aaaaa = abab" -> "abab = baba
-ababb = bbaba
-ababb = babab
-ababa = babaa
-aabab = babaa
-aabab = ababa"
 	"aab = baa
 abaab = abbaa
 aabbb = bbbaa

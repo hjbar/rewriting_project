@@ -1,0 +1,12 @@
+digraph {
+
+	rankdir=TB;
+	node [shape = ellipse];
+
+	subgraph cluster_0 {
+
+		label = "subgraph_0";
+
+	}
+
+}
