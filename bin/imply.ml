@@ -116,265 +116,6 @@ let simplify_implies implies =
     end
     tmp
 
-(* GÉNÈRE LA DIAGRAMME DE HASSE *)
-
-let make_hasse dir implies =
-  (* Récupère le path et ouvre le fichier *)
-  let path = Format.sprintf "%s/%s" dir "graph.dot" in
-  let out_c = open_out_trunc dir path in
-  write_graph_head out_c;
-
-  (* Écrit le graphe *)
-  Hashtbl.iter
-    begin
-      fun source targets ->
-        List.iter
-          begin
-            fun target ->
-              output_tab out_c;
-              output_imply out_c source target;
-              output_newline out_c
-          end
-          targets
-    end
-    implies;
-
-  (* Ferme le fichier *)
-  write_graph_bot out_c;
-  close_out out_c;
-
-  (* Génère le pdf *)
-  compile_graph path
-
-(* GÉNÈRE LE GRAPH ANNEXE *)
-
-let make_annexe dir rules arr =
-  (* Récupère le path et ouvre le fichier *)
-  let path = Format.sprintf "%s/%s" dir "annexe.dot" in
-  let out_c = open_out_trunc dir path in
-  write_graph_head out_c;
-
-  (* Écrit le graphe *)
-  Array.iteri
-    begin
-      fun i implies ->
-        if not implies then begin
-          output_tab out_c;
-          output_rule out_c @@ List.nth rules i;
-          output_newline out_c
-        end
-    end
-    arr;
-
-  (* Ferme le fichier *)
-  write_graph_bot out_c;
-  close_out out_c;
-
-  (* Génère le pdf *)
-  compile_graph path
-
-(* GÉNÈRE LE SOUS-GRAPH HOMOGÈNE *)
-
-(* Fonction pour savoir si on a une implication homogène *)
-let is_homogeneous (_, w1, w2) (_, w1', w2') =
-  String.(length w1 = length w2 && length w1' = length w2')
-
-let make_homogeneous dir implies =
-  (* Récupère le path et ouvre le fichier *)
-  let path = Format.sprintf "%s/%s" dir "homogeneous.dot" in
-  let out_c = open_out_trunc dir path in
-  write_graph_head out_c;
-
-  (* Écrit le graph *)
-  Hashtbl.iter
-    begin
-      fun source targets ->
-        List.iter
-          begin
-            fun target ->
-              if is_homogeneous source target then begin
-                output_tab out_c;
-                output_imply out_c source target;
-                output_newline out_c
-              end
-          end
-          targets
-    end
-    implies;
-
-  (* Ferme le fichier *)
-  write_graph_bot out_c;
-  close_out out_c;
-
-  (* Génère le pdf *)
-  compile_graph path
-
-(* GÉNÈRE LE SOUS-GRAPH REV *)
-
-let make_rev dir implies =
-  (* Récupère le path et ouvre le fichier *)
-  let path = Format.sprintf "%s/%s" dir "rev.dot" in
-  let out_c = open_out_trunc dir path in
-  write_graph_head out_c;
-
-  (* Renverse la string *)
-  let rev_string s =
-    s |> String.to_seq |> List.of_seq |> List.rev |> List.to_seq |> String.of_seq
-  in
-
-  (* Fonction pour savoir si on a une équation par renversement *)
-  let is_rev (_, w1, w1') (_, w2, w2') = rev_string w1 = w1' || rev_string w2 = w2' in
-
-  (* Écrit le graph *)
-  Hashtbl.iter
-    begin
-      fun source targets ->
-        List.iter
-          begin
-            fun target ->
-              if is_rev source target then begin
-                output_tab out_c;
-                output_imply out_c source target;
-                output_newline out_c
-              end
-          end
-          targets
-    end
-    implies;
-
-  (* Ferme le fichier *)
-  write_graph_bot out_c;
-  close_out out_c;
-
-  (* Génère le pdf *)
-  compile_graph path
-
-(* GÉNÈRE LE GRAPHE À PLUSIEURS RELATIONS *)
-
-let make_relations dir implies =
-  let remove_elem l elem = List.filter (fun elem' -> elem <> elem') l in
-
-  (* Récupère le path et ouvre le fichier *)
-  let path = Format.sprintf "%s/%s" dir "relations.dot" in
-  let out_c = open_out_trunc dir path in
-  write_graph_head out_c;
-
-  (* Transformation *)
-  let relations = Hashtbl.create 16 in
-  Hashtbl.iter
-    begin
-      fun source targets ->
-        let dep, arr =
-          List.fold_left
-            begin
-              fun (dep, arr) target ->
-                match Hashtbl.find_opt implies target with
-                | None | Some [] -> (target :: dep, arr)
-                | _ -> (dep, target :: arr)
-            end
-            ([ source ], []) targets
-        in
-        let dep, arr = List.(rev dep, rev arr) in
-        Hashtbl.replace relations dep arr
-    end
-    implies;
-
-  let index = Hashtbl.create 16 in
-  List.iter
-    begin
-      fun l -> Hashtbl.replace index (List.hd l) l
-    end
-    (relations |> Hashtbl.to_seq_keys |> List.of_seq);
-
-  let new_relations = Hashtbl.create 16 in
-  Hashtbl.iter
-    begin
-      fun sources targets ->
-        List.iter
-          begin
-            fun target ->
-              match Hashtbl.find_opt index target with
-              | None -> ()
-              | Some l -> begin
-                Hashtbl.replace relations sources
-                @@ remove_elem (Hashtbl.find relations sources) target;
-                match Hashtbl.find_opt new_relations sources with
-                | None -> Hashtbl.replace new_relations sources [ l ]
-                | Some l' -> Hashtbl.replace new_relations sources (l :: l')
-              end
-          end
-          targets
-    end
-    relations;
-
-  (* Écrit le graph *)
-  Hashtbl.iter
-    begin
-      fun sources targets ->
-        match targets with
-        | [] ->
-          output_tab out_c;
-          output_relations out_c sources;
-          output_newline out_c
-        | targets ->
-          output_tab out_c;
-          output_both_relations out_c sources targets;
-          output_newline out_c
-    end
-    relations;
-
-  Hashtbl.iter
-    begin
-      fun sources targets ->
-        match targets with
-        | [] ->
-          output_tab out_c;
-          output_relations out_c sources;
-          output_newline out_c
-        | targets ->
-          List.iter
-            (fun targets ->
-              output_tab out_c;
-              output_both_relations out_c sources targets;
-              output_newline out_c )
-            targets
-    end
-    new_relations;
-
-  (* Ferme le fichier *)
-  write_graph_bot out_c;
-  close_out out_c;
-
-  (* Génère le pdf *)
-  compile_graph path
-
-(* GÉNÈRE LE GRAPHE DES SOUS-GRAPHES *)
-
-let make_subgraphs dir implies =
-  (* On garde le graph homogène *)
-  let homogeneous = Hashtbl.create 16 in
-
-  Hashtbl.iter
-    begin
-      fun source targets ->
-        Hashtbl.replace homogeneous source
-        @@ List.filter (fun target -> is_homogeneous source target) targets
-    end
-    implies;
-
-  (* Récupère le path et ouvre le fichier *)
-  let path = Format.sprintf "%s/%s" dir "subgraph.dot" in
-  let out_c = open_out_trunc dir path in
-
-  (* Écrit le graph *)
-  Subgraph.write_graph out_c homogeneous;
-
-  (* Ferme le fichier *)
-  close_out out_c;
-
-  (* Compile *)
-  compile_graph path
-
 (* COMPUTE IMPLIES AND MAKE GRAPHS *)
 
 let compute_all ~alpha_len ~word_len =
@@ -390,22 +131,22 @@ let compute_all ~alpha_len ~word_len =
   simplify_implies implies;
 
   (* On crée le Diagramme de Hasse *)
-  make_hasse dir implies;
+  Graph_hasse.make_hasse dir implies;
 
   (* On crée le graphe annexe *)
-  make_annexe dir rules arr;
+  Graph_annexe.make_annexe dir rules arr;
 
   (* On crée le sous-graphe homogène *)
-  make_homogeneous dir implies;
+  Graph_homogeneous.make_homogeneous dir implies;
 
   (* On crée le sous-graphe par renversement *)
-  make_rev dir implies;
+  Graph_rev.make_rev dir implies;
 
   (* On crée le sous-graphe à plusieurs relations *)
-  make_relations dir implies;
+  Graph_relations.make_relations dir implies;
 
   (* On crée le graphe des sous-graphs *)
-  if do_subgraph then make_subgraphs dir implies
+  if List.mem word_len subgraph_lengths then Graph_subgraph.make_subgraphs dir implies
 
 (* MAIN *)
 

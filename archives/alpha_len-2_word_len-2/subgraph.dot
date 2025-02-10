@@ -6,135 +6,194 @@ digraph {
 	subgraph cluster_0 {
 
 		label = "subgraph_0";
+		"0: aa = ba"
+		"0: a = b" -> "0: ab = bb"
+		"0: a = b" -> "0: ab = ba"
+		"0: a = b" -> "0: aa = bb"
+		"0: a = b" -> "0: aa = ba"
+		"0: a = b" -> "0: aa = ab"
+		"0: aa = bb"
+		"0: ab = ba"
+		"0: aa = ab"
+		"0: ab = bb"
 
 	}
 
 	subgraph cluster_1 {
 
 		label = "subgraph_1";
+		"1: a = b" -> "1: ab = bb"
+		"1: a = b" -> "1: ab = ba"
+		"1: a = b" -> "1: aa = bb"
 		"1: a = b" -> "1: aa = ab"
+		"1: aa = bb"
+		"1: ab = ba"
+		"1: aa = ab"
+		"1: ab = bb"
 
 	}
 
 	subgraph cluster_2 {
 
 		label = "subgraph_2";
-		"2: a = b" -> "2: aa = ba"
+		"2: aa = ba"
+		"2: aa = bb"
+		"2: ab = ba"
+		"2: aa = ab"
+		"2: ab = bb"
 
 	}
 
 	subgraph cluster_3 {
 
 		label = "subgraph_3";
-		"3: a = b" -> "3: aa = ba"
-		"3: a = b" -> "3: aa = ab"
+		"3: aa = bb"
+		"3: ab = ba"
+		"3: aa = ab"
+		"3: ab = bb"
 
 	}
 
 	subgraph cluster_4 {
 
 		label = "subgraph_4";
-		"4: a = b" -> "4: aa = bb"
+		"4: aa = ba"
+		"4: a = b" -> "4: ab = bb"
+		"4: a = b" -> "4: ab = ba"
+		"4: a = b" -> "4: aa = ba"
+		"4: a = b" -> "4: aa = ab"
+		"4: ab = ba"
+		"4: aa = ab"
+		"4: ab = bb"
 
 	}
 
 	subgraph cluster_5 {
 
 		label = "subgraph_5";
-		"5: a = b" -> "5: aa = bb"
+		"5: a = b" -> "5: ab = bb"
+		"5: a = b" -> "5: ab = ba"
 		"5: a = b" -> "5: aa = ab"
+		"5: ab = ba"
+		"5: aa = ab"
+		"5: ab = bb"
 
 	}
 
 	subgraph cluster_6 {
 
 		label = "subgraph_6";
-		"6: a = b" -> "6: aa = bb"
-		"6: a = b" -> "6: aa = ba"
+		"6: aa = ba"
+		"6: ab = ba"
+		"6: aa = ab"
+		"6: ab = bb"
 
 	}
 
 	subgraph cluster_7 {
 
 		label = "subgraph_7";
-		"7: a = b" -> "7: aa = bb"
-		"7: a = b" -> "7: aa = ba"
-		"7: a = b" -> "7: aa = ab"
+		"7: ab = ba"
+		"7: aa = ab"
+		"7: ab = bb"
 
 	}
 
 	subgraph cluster_8 {
 
 		label = "subgraph_8";
-		"8: a = b" -> "8: ab = ba"
+		"8: aa = ba"
+		"8: a = b" -> "8: ab = bb"
+		"8: a = b" -> "8: aa = bb"
+		"8: a = b" -> "8: aa = ba"
+		"8: a = b" -> "8: aa = ab"
+		"8: aa = bb"
+		"8: aa = ab"
+		"8: ab = bb"
 
 	}
 
 	subgraph cluster_9 {
 
 		label = "subgraph_9";
-		"9: a = b" -> "9: ab = ba"
+		"9: a = b" -> "9: ab = bb"
+		"9: a = b" -> "9: aa = bb"
 		"9: a = b" -> "9: aa = ab"
+		"9: aa = bb"
+		"9: aa = ab"
+		"9: ab = bb"
 
 	}
 
 	subgraph cluster_10 {
 
 		label = "subgraph_10";
-		"10: a = b" -> "10: ab = ba"
-		"10: a = b" -> "10: aa = ba"
+		"10: aa = ba"
+		"10: aa = bb"
+		"10: aa = ab"
+		"10: ab = bb"
 
 	}
 
 	subgraph cluster_11 {
 
 		label = "subgraph_11";
-		"11: a = b" -> "11: ab = ba"
-		"11: a = b" -> "11: aa = ba"
-		"11: a = b" -> "11: aa = ab"
+		"11: aa = bb"
+		"11: aa = ab"
+		"11: ab = bb"
 
 	}
 
 	subgraph cluster_12 {
 
 		label = "subgraph_12";
-		"12: a = b" -> "12: ab = ba"
-		"12: a = b" -> "12: aa = bb"
+		"12: aa = ba"
+		"12: a = b" -> "12: ab = bb"
+		"12: a = b" -> "12: aa = ba"
+		"12: a = b" -> "12: aa = ab"
+		"12: aa = ab"
+		"12: ab = bb"
 
 	}
 
 	subgraph cluster_13 {
 
 		label = "subgraph_13";
-		"13: a = b" -> "13: ab = ba"
-		"13: a = b" -> "13: aa = bb"
+		"13: a = b" -> "13: ab = bb"
 		"13: a = b" -> "13: aa = ab"
+		"13: aa = ab"
+		"13: ab = bb"
 
 	}
 
 	subgraph cluster_14 {
 
 		label = "subgraph_14";
-		"14: a = b" -> "14: ab = ba"
-		"14: a = b" -> "14: aa = bb"
-		"14: a = b" -> "14: aa = ba"
+		"14: aa = ba"
+		"14: aa = ab"
+		"14: ab = bb"
 
 	}
 
 	subgraph cluster_15 {
 
 		label = "subgraph_15";
-		"15: a = b" -> "15: ab = ba"
-		"15: a = b" -> "15: aa = bb"
-		"15: a = b" -> "15: aa = ba"
-		"15: a = b" -> "15: aa = ab"
+		"15: aa = ab"
+		"15: ab = bb"
 
 	}
 
 	subgraph cluster_16 {
 
 		label = "subgraph_16";
+		"16: aa = ba"
 		"16: a = b" -> "16: ab = bb"
+		"16: a = b" -> "16: ab = ba"
+		"16: a = b" -> "16: aa = bb"
+		"16: a = b" -> "16: aa = ba"
+		"16: aa = bb"
+		"16: ab = ba"
+		"16: ab = bb"
 
 	}
 
@@ -142,32 +201,42 @@ digraph {
 
 		label = "subgraph_17";
 		"17: a = b" -> "17: ab = bb"
-		"17: a = b" -> "17: aa = ab"
+		"17: a = b" -> "17: ab = ba"
+		"17: a = b" -> "17: aa = bb"
+		"17: aa = bb"
+		"17: ab = ba"
+		"17: ab = bb"
 
 	}
 
 	subgraph cluster_18 {
 
 		label = "subgraph_18";
-		"18: a = b" -> "18: ab = bb"
-		"18: a = b" -> "18: aa = ba"
+		"18: aa = ba"
+		"18: aa = bb"
+		"18: ab = ba"
+		"18: ab = bb"
 
 	}
 
 	subgraph cluster_19 {
 
 		label = "subgraph_19";
-		"19: a = b" -> "19: ab = bb"
-		"19: a = b" -> "19: aa = ba"
-		"19: a = b" -> "19: aa = ab"
+		"19: aa = bb"
+		"19: ab = ba"
+		"19: ab = bb"
 
 	}
 
 	subgraph cluster_20 {
 
 		label = "subgraph_20";
+		"20: aa = ba"
 		"20: a = b" -> "20: ab = bb"
-		"20: a = b" -> "20: aa = bb"
+		"20: a = b" -> "20: ab = ba"
+		"20: a = b" -> "20: aa = ba"
+		"20: ab = ba"
+		"20: ab = bb"
 
 	}
 
@@ -175,35 +244,38 @@ digraph {
 
 		label = "subgraph_21";
 		"21: a = b" -> "21: ab = bb"
-		"21: a = b" -> "21: aa = bb"
-		"21: a = b" -> "21: aa = ab"
+		"21: a = b" -> "21: ab = ba"
+		"21: ab = ba"
+		"21: ab = bb"
 
 	}
 
 	subgraph cluster_22 {
 
 		label = "subgraph_22";
-		"22: a = b" -> "22: ab = bb"
-		"22: a = b" -> "22: aa = bb"
-		"22: a = b" -> "22: aa = ba"
+		"22: aa = ba"
+		"22: ab = ba"
+		"22: ab = bb"
 
 	}
 
 	subgraph cluster_23 {
 
 		label = "subgraph_23";
-		"23: a = b" -> "23: ab = bb"
-		"23: a = b" -> "23: aa = bb"
-		"23: a = b" -> "23: aa = ba"
-		"23: a = b" -> "23: aa = ab"
+		"23: ab = ba"
+		"23: ab = bb"
 
 	}
 
 	subgraph cluster_24 {
 
 		label = "subgraph_24";
+		"24: aa = ba"
 		"24: a = b" -> "24: ab = bb"
-		"24: a = b" -> "24: ab = ba"
+		"24: a = b" -> "24: aa = bb"
+		"24: a = b" -> "24: aa = ba"
+		"24: aa = bb"
+		"24: ab = bb"
 
 	}
 
@@ -211,36 +283,36 @@ digraph {
 
 		label = "subgraph_25";
 		"25: a = b" -> "25: ab = bb"
-		"25: a = b" -> "25: ab = ba"
-		"25: a = b" -> "25: aa = ab"
+		"25: a = b" -> "25: aa = bb"
+		"25: aa = bb"
+		"25: ab = bb"
 
 	}
 
 	subgraph cluster_26 {
 
 		label = "subgraph_26";
-		"26: a = b" -> "26: ab = bb"
-		"26: a = b" -> "26: ab = ba"
-		"26: a = b" -> "26: aa = ba"
+		"26: aa = ba"
+		"26: aa = bb"
+		"26: ab = bb"
 
 	}
 
 	subgraph cluster_27 {
 
 		label = "subgraph_27";
-		"27: a = b" -> "27: ab = bb"
-		"27: a = b" -> "27: ab = ba"
-		"27: a = b" -> "27: aa = ba"
-		"27: a = b" -> "27: aa = ab"
+		"27: aa = bb"
+		"27: ab = bb"
 
 	}
 
 	subgraph cluster_28 {
 
 		label = "subgraph_28";
+		"28: aa = ba"
 		"28: a = b" -> "28: ab = bb"
-		"28: a = b" -> "28: ab = ba"
-		"28: a = b" -> "28: aa = bb"
+		"28: a = b" -> "28: aa = ba"
+		"28: ab = bb"
 
 	}
 
@@ -248,30 +320,312 @@ digraph {
 
 		label = "subgraph_29";
 		"29: a = b" -> "29: ab = bb"
-		"29: a = b" -> "29: ab = ba"
-		"29: a = b" -> "29: aa = bb"
-		"29: a = b" -> "29: aa = ab"
+		"29: ab = bb"
 
 	}
 
 	subgraph cluster_30 {
 
 		label = "subgraph_30";
-		"30: a = b" -> "30: ab = bb"
-		"30: a = b" -> "30: ab = ba"
-		"30: a = b" -> "30: aa = bb"
-		"30: a = b" -> "30: aa = ba"
+		"30: aa = ba"
+		"30: ab = bb"
 
 	}
 
 	subgraph cluster_31 {
 
 		label = "subgraph_31";
-		"31: a = b" -> "31: ab = bb"
-		"31: a = b" -> "31: ab = ba"
-		"31: a = b" -> "31: aa = bb"
-		"31: a = b" -> "31: aa = ba"
-		"31: a = b" -> "31: aa = ab"
+		"31: ab = bb"
+
+	}
+
+	subgraph cluster_32 {
+
+		label = "subgraph_32";
+		"32: aa = ba"
+		"32: a = b" -> "32: ab = ba"
+		"32: a = b" -> "32: aa = bb"
+		"32: a = b" -> "32: aa = ba"
+		"32: a = b" -> "32: aa = ab"
+		"32: aa = bb"
+		"32: ab = ba"
+		"32: aa = ab"
+
+	}
+
+	subgraph cluster_33 {
+
+		label = "subgraph_33";
+		"33: a = b" -> "33: ab = ba"
+		"33: a = b" -> "33: aa = bb"
+		"33: a = b" -> "33: aa = ab"
+		"33: aa = bb"
+		"33: ab = ba"
+		"33: aa = ab"
+
+	}
+
+	subgraph cluster_34 {
+
+		label = "subgraph_34";
+		"34: aa = ba"
+		"34: aa = bb"
+		"34: ab = ba"
+		"34: aa = ab"
+
+	}
+
+	subgraph cluster_35 {
+
+		label = "subgraph_35";
+		"35: aa = bb"
+		"35: ab = ba"
+		"35: aa = ab"
+
+	}
+
+	subgraph cluster_36 {
+
+		label = "subgraph_36";
+		"36: aa = ba"
+		"36: a = b" -> "36: ab = ba"
+		"36: a = b" -> "36: aa = ba"
+		"36: a = b" -> "36: aa = ab"
+		"36: ab = ba"
+		"36: aa = ab"
+
+	}
+
+	subgraph cluster_37 {
+
+		label = "subgraph_37";
+		"37: a = b" -> "37: ab = ba"
+		"37: a = b" -> "37: aa = ab"
+		"37: ab = ba"
+		"37: aa = ab"
+
+	}
+
+	subgraph cluster_38 {
+
+		label = "subgraph_38";
+		"38: aa = ba"
+		"38: ab = ba"
+		"38: aa = ab"
+
+	}
+
+	subgraph cluster_39 {
+
+		label = "subgraph_39";
+		"39: ab = ba"
+		"39: aa = ab"
+
+	}
+
+	subgraph cluster_40 {
+
+		label = "subgraph_40";
+		"40: aa = ba"
+		"40: a = b" -> "40: aa = bb"
+		"40: a = b" -> "40: aa = ba"
+		"40: a = b" -> "40: aa = ab"
+		"40: aa = bb"
+		"40: aa = ab"
+
+	}
+
+	subgraph cluster_41 {
+
+		label = "subgraph_41";
+		"41: a = b" -> "41: aa = bb"
+		"41: a = b" -> "41: aa = ab"
+		"41: aa = bb"
+		"41: aa = ab"
+
+	}
+
+	subgraph cluster_42 {
+
+		label = "subgraph_42";
+		"42: aa = ba"
+		"42: aa = bb"
+		"42: aa = ab"
+
+	}
+
+	subgraph cluster_43 {
+
+		label = "subgraph_43";
+		"43: aa = bb"
+		"43: aa = ab"
+
+	}
+
+	subgraph cluster_44 {
+
+		label = "subgraph_44";
+		"44: aa = ba"
+		"44: a = b" -> "44: aa = ba"
+		"44: a = b" -> "44: aa = ab"
+		"44: aa = ab"
+
+	}
+
+	subgraph cluster_45 {
+
+		label = "subgraph_45";
+		"45: a = b" -> "45: aa = ab"
+		"45: aa = ab"
+
+	}
+
+	subgraph cluster_46 {
+
+		label = "subgraph_46";
+		"46: aa = ba"
+		"46: aa = ab"
+
+	}
+
+	subgraph cluster_47 {
+
+		label = "subgraph_47";
+		"47: aa = ab"
+
+	}
+
+	subgraph cluster_48 {
+
+		label = "subgraph_48";
+		"48: aa = ba"
+		"48: a = b" -> "48: ab = ba"
+		"48: a = b" -> "48: aa = bb"
+		"48: a = b" -> "48: aa = ba"
+		"48: aa = bb"
+		"48: ab = ba"
+
+	}
+
+	subgraph cluster_49 {
+
+		label = "subgraph_49";
+		"49: a = b" -> "49: ab = ba"
+		"49: a = b" -> "49: aa = bb"
+		"49: aa = bb"
+		"49: ab = ba"
+
+	}
+
+	subgraph cluster_50 {
+
+		label = "subgraph_50";
+		"50: aa = ba"
+		"50: aa = bb"
+		"50: ab = ba"
+
+	}
+
+	subgraph cluster_51 {
+
+		label = "subgraph_51";
+		"51: aa = bb"
+		"51: ab = ba"
+
+	}
+
+	subgraph cluster_52 {
+
+		label = "subgraph_52";
+		"52: aa = ba"
+		"52: a = b" -> "52: ab = ba"
+		"52: a = b" -> "52: aa = ba"
+		"52: ab = ba"
+
+	}
+
+	subgraph cluster_53 {
+
+		label = "subgraph_53";
+		"53: a = b" -> "53: ab = ba"
+		"53: ab = ba"
+
+	}
+
+	subgraph cluster_54 {
+
+		label = "subgraph_54";
+		"54: aa = ba"
+		"54: ab = ba"
+
+	}
+
+	subgraph cluster_55 {
+
+		label = "subgraph_55";
+		"55: ab = ba"
+
+	}
+
+	subgraph cluster_56 {
+
+		label = "subgraph_56";
+		"56: aa = ba"
+		"56: a = b" -> "56: aa = bb"
+		"56: a = b" -> "56: aa = ba"
+		"56: aa = bb"
+
+	}
+
+	subgraph cluster_57 {
+
+		label = "subgraph_57";
+		"57: a = b" -> "57: aa = bb"
+		"57: aa = bb"
+
+	}
+
+	subgraph cluster_58 {
+
+		label = "subgraph_58";
+		"58: aa = ba"
+		"58: aa = bb"
+
+	}
+
+	subgraph cluster_59 {
+
+		label = "subgraph_59";
+		"59: aa = bb"
+
+	}
+
+	subgraph cluster_60 {
+
+		label = "subgraph_60";
+		"60: aa = ba"
+		"60: a = b" -> "60: aa = ba"
+
+	}
+
+	subgraph cluster_61 {
+
+		label = "subgraph_61";
+		"61: a = b"
+
+	}
+
+	subgraph cluster_62 {
+
+		label = "subgraph_62";
+		"62: aa = ba"
+
+	}
+
+	subgraph cluster_63 {
+
+		label = "subgraph_63";
+		""
 
 	}
 
