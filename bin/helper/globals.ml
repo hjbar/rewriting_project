@@ -40,7 +40,7 @@ let alpha_lengths = [ 2 ]
 
 let word_lengths = [ 1; 2; 3; 4; 5 ]
 
-let subgraph_lengths = [ 1; 2 ]
+let subgraph_lengths = [ 1; 2; 3 ]
 
 (* Limites de calculs *)
 
