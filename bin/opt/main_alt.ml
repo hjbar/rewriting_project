@@ -1,14 +1,13 @@
 let len4_failed =
   Rs.
     [ make [ (Some "R216", "ab", "baba") ]
-    ; make [ (Some "R221", "ab", "bbab") ]
     ; make [ (Some "R234", "aba", "baab") ]
     ; make [ (Some "R265", "abab", "abba") ]
     ; make [ (Some "R271", "abab", "baab") ]
     ; make [ (Some "R306", "abba", "baba") ]
     ]
 
-let do_nb = max_int
+let do_nb = List.length len4_failed
 
 let main_alt () =
   List.iteri

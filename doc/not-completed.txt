@@ -1,0 +1,16 @@
+---
+
+System : ab --> baba
+
+Reductions :
+  ab --> (b*)ab(a*)
+
+---
+
+System : baba --> ab
+
+Reduction :
+  baba --> ab
+  baab --> abba
+  ababbaa --> baaab
+  baaabba --> abbaaab

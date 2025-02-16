@@ -1,5 +1,4 @@
 R216: ab --> baba
-R221: ab --> bbab
 R234: aba --> baab
 R265: abab --> abba
 R271: abab --> baab

@@ -82,10 +82,10 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_ru
         fun (w1, w2) ->
           let rs = !rules in
 
-          let w1' = normalize rs w1 in
-          let w2' = normalize rs w2 in
+          let w1 = normalize rs w1 in
+          let w2 = normalize rs w2 in
 
-          if not @@ Word.eq w1' w2' then add @@ make_rule w1' w2'
+          if not @@ Word.eq w1 w2 then add @@ make_rule w1 w2
       end
       critical_pairs
   done;
@@ -145,10 +145,23 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
       rs
   in
 
+  (* On teste tous les générateurs *)
+  let kd_third_step () =
+    List.iter
+      begin
+        fun orient_rule ->
+          let rs = add_all_gen rs in
+          try return @@ kd_bis orient_rule rs
+          with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
+      end
+      orient_rule_list
+  in
+
   (* Si on ne réussit pas, on soulève une erreur *)
   try
     kd_first_step ();
     kd_second_step ();
+    kd_third_step ();
 
     abort !error_msg
   with Return rs -> rs
