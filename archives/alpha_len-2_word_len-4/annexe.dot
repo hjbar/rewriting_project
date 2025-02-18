@@ -20,7 +20,6 @@ digraph finite_state_machine {
 	"aabb = bba"
 	"ab = abba"
 	"ab = baaa"
-	"ab = baba"
 	"ab = bbaa"
 	"ab = bbba"
 	"aba = baab"

@@ -8,6 +8,7 @@ open Globals
 
 let complete_rs ~alpha_len ~word_len =
   (* init *)
+  let do_subsets = List.mem word_len subset_gens in
   let rs_list = get_all_rs ~alpha_len ~word_len in
   let completed, completion = (ref 0, ref 0) in
 
@@ -23,7 +24,7 @@ let complete_rs ~alpha_len ~word_len =
         | None -> begin
           try
             incr completion;
-            let rs' = Rs.knuth_bendix ~limit_norm ~limit_pairs rs in
+            let rs' = Rs.knuth_bendix ~limit_norm ~limit_pairs ~do_subsets rs in
 
             incr completed;
             print_completion debug_success rs rs';

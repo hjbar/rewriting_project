@@ -4189,6 +4189,18 @@ R918 : aba --> baaaa ;;
 **
 R918 : baaaa --> aba ;;
 ##
+R920 : aba --> baab ;;
+**
+R920 : deb --> c ;;
+R : ed --> c ;;
+R : be --> d ;;
+R : a --> e ;;
+K0 : dcb --> ec ;;
+K1 : ce --> dc ;;
+K2 : dcd --> cc ;;
+K3 : cccb --> ddcc ;;
+K5 : ccd --> ecc ;;
+##
 R921 : aba --> baaba ;;
 **
 R921 : bcc --> c ;;

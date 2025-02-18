@@ -6,7 +6,7 @@ let do_main_alt = false
 
 let debug_success = false
 
-let debug_failed = true
+let debug_failed = false
 
 let debug_imply = false
 
@@ -39,6 +39,8 @@ let sep3 = String.make 30 '&'
 let alpha_lengths = [ 2 ]
 
 let word_lengths = [ 1; 2; 3; 4; 5 ]
+
+let subset_gens = [ 1; 2; 3; 4 ]
 
 let subgraph_lengths = [ 1; 2 ]
 

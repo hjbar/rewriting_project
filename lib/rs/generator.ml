@@ -25,9 +25,18 @@ let get_gen_right rs =
 
   Char.code !max_char + 1 |> Char.chr |> Char.escaped
 
-(* Ajoute tous les générateurs au système de réécriture *)
+(* Utils functions to get generators *)
 
-let add_all_gen rs =
+let compare_list l1 l2 = match List.compare_lengths l1 l2 with 0 -> compare l1 l2 | c -> c
+
+let rec subsets = function
+  | [] -> [ [] ]
+  | x :: l ->
+    let subsets = subsets l in
+    let new_subsets = List.map (fun subset -> x :: subset) subsets in
+    subsets @ new_subsets
+
+let get_words_gen f word_list rs =
   let cache = Hashtbl.create 16 in
   let res = ref [] in
 
@@ -51,12 +60,49 @@ let add_all_gen rs =
       (get_gen_left w)
   in
 
+  List.iter update word_list;
+  f @@ List.rev !res
+
+(* Get different sets of generators *)
+
+let all_gen rs =
+  let res = ref [] in
+
   List.iter
     begin
       fun (_, w1, w2) ->
-        update w1;
-        update w2
+        let rw1 =
+          w1 |> String.to_seq |> List.of_seq |> List.rev |> List.to_seq |> String.of_seq
+        in
+        let rw2 =
+          w2 |> String.to_seq |> List.of_seq |> List.rev |> List.to_seq |> String.of_seq
+        in
+
+        List.iter
+          (fun subset -> res := get_words_gen Fun.id subset rs :: !res)
+          (subsets [ w1; w2; rw1; rw2 ])
     end
     rs;
 
-  rs @ List.rev !res
+  !res |> List.sort_uniq compare_list
+
+let all_sub_gen rs =
+  let res = ref [] in
+
+  List.iter
+    begin
+      fun (_, w1, w2) ->
+        let rw1 =
+          w1 |> String.to_seq |> List.of_seq |> List.rev |> List.to_seq |> String.of_seq
+        in
+        let rw2 =
+          w2 |> String.to_seq |> List.of_seq |> List.rev |> List.to_seq |> String.of_seq
+        in
+
+        List.iter
+          (fun subset -> res := get_words_gen subsets subset rs @ !res)
+          (subsets [ w1; w2; rw1; rw2 ])
+    end
+    rs;
+
+  !res |> List.sort_uniq compare_list

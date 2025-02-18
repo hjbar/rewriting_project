@@ -93,7 +93,7 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_ru
   (* On renvoie le système complété *)
   !rules
 
-let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
+let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets = true) rs =
   (* On vérifie que le rs n'est pas vide *)
   if rs = [] then abort "Le système de réécriture est vide";
 
@@ -128,6 +128,7 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
               begin
                 fun s ->
                   let rs = rs @ [ Rule.make s gen_right ] in
+
                   try return @@ kd_bis orient_rule rs
                   with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
               end
@@ -145,14 +146,42 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
       rs
   in
 
-  (* On teste tous les générateurs *)
+  (* On teste tous les sous-ensembles des générateurs *)
   let kd_third_step () =
+    let gens = all_gen rs in
+
     List.iter
       begin
         fun orient_rule ->
-          let rs = add_all_gen rs in
-          try return @@ kd_bis orient_rule rs
-          with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
+          List.iter
+            begin
+              fun rs' ->
+                let rs = rs @ rs' in
+
+                try return @@ kd_bis orient_rule rs
+                with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
+            end
+            gens
+      end
+      orient_rule_list
+  in
+
+  (* On teste tous les sous-ensembles des générateurs *)
+  let kd_fourth_step () =
+    let gens = all_sub_gen rs in
+
+    List.iter
+      begin
+        fun orient_rule ->
+          List.iter
+            begin
+              fun rs' ->
+                let rs = rs @ rs' in
+
+                try return @@ kd_bis orient_rule rs
+                with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
+            end
+            gens
       end
       orient_rule_list
   in
@@ -162,6 +191,7 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
     kd_first_step ();
     kd_second_step ();
     kd_third_step ();
+    if do_subsets then kd_fourth_step ();
 
     abort !error_msg
   with Return rs -> rs
