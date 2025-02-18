@@ -2546,6 +2546,15 @@ R573 : aaba --> abaaa ;;
 **
 R573 : abaaa --> aaba ;;
 ##
+R574 : aaba --> abaab ;;
+**
+R : ab --> f ;;
+R : fa --> j ;;
+K1 : jf --> aj ;;
+K2 : aja --> jj ;;
+K5 : jb --> ff ;;
+K6 : jja --> fjj ;;
+##
 R575 : aaba --> abab ;;
 **
 R : aba --> c ;;
@@ -2817,6 +2826,16 @@ R : aabaa --> c ;;
 K0 : cb --> ac ;;
 K2 : caa --> abc ;;
 K3 : cabaa --> aabac ;;
+##
+R625 : aabaa --> abab ;;
+**
+R : ab --> e ;;
+R : ea --> h ;;
+K1 : aha --> ee ;;
+K2 : hha --> eee ;;
+K3 : eeha --> ahee ;;
+K4 : eeb --> ahe ;;
+K5 : hb --> ee ;;
 ##
 R626 : aabaa --> ababa ;;
 **
@@ -3465,6 +3484,21 @@ R767 : aabba --> abaaa ;;
 **
 R767 : abaaa --> aabba ;;
 ##
+R768 : aabba --> abaab ;;
+**
+R : abba --> d ;;
+R : baab --> i ;;
+K0 : ai --> ad ;;
+K1 : adaab --> abaad ;;
+K2 : adba --> abad ;;
+K3 : di --> dd ;;
+K4 : iaab --> baad ;;
+K6 : ddaab --> dbaad ;;
+K7 : ddba --> dbad ;;
+K8 : dbba --> abbd ;;
+K9 : dab --> abi ;;
+K10 : iba --> bad ;;
+##
 R770 : aabba --> ababa ;;
 **
 R770 : ababa --> aabba ;;
@@ -3988,15 +4022,61 @@ R876 : bc --> ab ;;
 R : aab --> c ;;
 K0 : ac --> cc ;;
 ##
+R877 : ab --> baaba ;;
+**
+R : a --> d ;;
+R : ddb --> g ;;
+K0 : dg --> ggd ;;
+K1 : bgd --> db ;;
+K2 : dbdb --> bgg ;;
+K3 : bgggd --> dbg ;;
+K4 : bgbgg --> dbbdb ;;
+K5 : bggdb --> dbbgg ;;
+K6 : bgggbgg --> dbgbdb ;;
+K8 : dbgg --> gdb ;;
+K9 : bgggg --> gb ;;
+##
+R878 : ab --> baabb ;;
+**
+R878 : beb --> ab ;;
+R : aab --> e ;;
+K0 : eeb --> ae ;;
+K1 : beab --> e ;;
+K2 : eeab --> aae ;;
+K3 : aaae --> eee ;;
+K4 : eeae --> aeee ;;
+K5 : bee --> ae ;;
+K6 : beae --> aae ;;
+K7 : eeaae --> aaeee ;;
+K8 : baae --> aeab ;;
+K9 : beaae --> eee ;;
+K11 : bae --> aeb ;;
+##
 R879 : ab --> bab ;;
 **
 R879 : bc --> c ;;
 R : ab --> c ;;
 K1 : ac --> cc ;;
 ##
+R880 : ab --> baba ;;
+**
+R : a --> d ;;
+R : db --> g ;;
+K0 : dg --> ggd ;;
+K1 : bgd --> g ;;
+K2 : bgg --> gb ;;
+##
 R881 : ab --> babaa ;;
 **
 R881 : babaa --> ab ;;
+##
+R882 : ab --> babab ;;
+**
+R882 : bf --> db ;;
+R : a --> d ;;
+R : dbdb --> f ;;
+K0 : ddb --> fdb ;;
+K4 : df --> ff ;;
 ##
 R883 : ab --> babb ;;
 **
@@ -4009,6 +4089,21 @@ K3 : acb --> bac ;;
 K4 : bcac --> ccc ;;
 K5 : accc --> ccac ;;
 K6 : accac --> ccccc ;;
+##
+R885 : ab --> babbb ;;
+**
+R885 : egg --> f ;;
+R : gf --> e ;;
+R : ag --> f ;;
+R : b --> g ;;
+K0 : af --> ee ;;
+K1 : ffgg --> ee ;;
+K2 : ege --> ff ;;
+K3 : efgg --> gee ;;
+K4 : aee --> ffe ;;
+K5 : ffge --> eef ;;
+K8 : efge --> geef ;;
+K9 : aef --> fff ;;
 ##
 R886 : ab --> bb ;;
 **
@@ -4232,6 +4327,4449 @@ K4 : cac --> acc ;;
 R925 : aba --> babaa ;;
 **
 R925 : babaa --> aba ;;
+##
+R926 : aba --> babab ;;
+**
+R : bab --> e ;;
+R : aba --> h ;;
+K1 : he --> ah ;;
+K2 : bae --> h ;;
+K4 : ha --> eh ;;
+K8 : hb --> ae ;;
+K9 : ea --> bh ;;
+##
+R927 : aba --> babb ;;
+**
+R927 : babb --> aba ;;
+K0 : abaabb --> bababa ;;
+##
+R928 : aba --> babba ;;
+**
+R928 : cbc --> ac ;;
+R : ba --> c ;;
+K0 : aac --> ccc ;;
+K1 : bccc --> cac ;;
+K2 : accc --> ccac ;;
+K3 : bccac --> cccc ;;
+K4 : accac --> ccccc ;;
+##
+R929 : aba --> babbb ;;
+**
+R929 : babbb --> aba ;;
+K0 : abaabbb --> babbaba ;;
+##
+R930 : aba --> bb ;;
+**
+R930 : aba --> bb ;;
+K0 : bbba --> abbb ;;
+##
+R931 : aba --> bba ;;
+**
+R931 : bba --> aba ;;
+##
+R932 : aba --> bbaa ;;
+**
+R932 : bbaa --> aba ;;
+##
+R933 : aba --> bbaaa ;;
+**
+R933 : bbaaa --> aba ;;
+##
+R934 : aba --> bbaab ;;
+**
+R934 : bbaab --> aba ;;
+K0 : bbaaaba --> ababaab ;;
+##
+R935 : aba --> bbab ;;
+**
+R935 : bbab --> aba ;;
+K0 : bbaaba --> ababab ;;
+##
+R936 : aba --> bbaba ;;
+**
+R936 : bbaba --> aba ;;
+##
+R937 : aba --> bbabb ;;
+**
+R937 : bbabb --> aba ;;
+K0 : bbaaba --> abaabb ;;
+K1 : bbababa --> abababb ;;
+##
+R938 : aba --> bbb ;;
+**
+R938 : aba --> bbb ;;
+K0 : abbbb --> bbbba ;;
+##
+R939 : aba --> bbba ;;
+**
+R939 : bbba --> aba ;;
+##
+R940 : aba --> bbbaa ;;
+**
+R940 : bbbaa --> aba ;;
+##
+R941 : aba --> bbbab ;;
+**
+R941 : bbbab --> aba ;;
+K0 : bbbaaba --> ababbab ;;
+##
+R942 : aba --> bbbb ;;
+**
+R942 : aba --> bbbb ;;
+K0 : abbbbb --> bbbbba ;;
+##
+R943 : aba --> bbbba ;;
+**
+R943 : bbbba --> aba ;;
+##
+R944 : aba --> bbbbb ;;
+**
+R944 : aba --> bbbbb ;;
+K0 : abbbbbb --> bbbbbba ;;
+##
+R945 : abaa --> abaaa ;;
+**
+R945 : abaaa --> abaa ;;
+##
+R0 : a --> aa ;;
+**
+R0 : aa --> a ;;
+##
+R1 : a --> aaa ;;
+**
+R1 : aaa --> a ;;
+##
+R2 : a --> aaaa ;;
+**
+R2 : aaaa --> a ;;
+##
+R3 : a --> aaaaa ;;
+**
+R3 : aaaaa --> a ;;
+##
+R4 : a --> aaaab ;;
+**
+R4 : aaaab --> a ;;
+##
+R5 : a --> aaab ;;
+**
+R5 : aaab --> a ;;
+##
+R6 : a --> aaaba ;;
+**
+R6 : aaaba --> a ;;
+##
+R7 : a --> aaabb ;;
+**
+R7 : aaabb --> a ;;
+##
+R8 : a --> aab ;;
+**
+R8 : aab --> a ;;
+##
+R9 : a --> aaba ;;
+**
+R9 : aaba --> a ;;
+##
+R10 : a --> aabaa ;;
+**
+R10 : aaaba --> a ;;
+K0 : abaa --> aaba ;;
+##
+R11 : a --> aabab ;;
+**
+R11 : aabab --> a ;;
+##
+R12 : a --> aabb ;;
+**
+R12 : aabb --> a ;;
+##
+R13 : a --> aabba ;;
+**
+R13 : aabba --> a ;;
+##
+R14 : a --> aabbb ;;
+**
+R14 : aabbb --> a ;;
+##
+R15 : a --> ab ;;
+**
+R15 : ab --> a ;;
+##
+R16 : a --> aba ;;
+**
+R16 : aba --> a ;;
+##
+R17 : a --> abaa ;;
+**
+R17 : abaa --> a ;;
+##
+R18 : a --> abaaa ;;
+**
+R18 : abaaa --> a ;;
+##
+R19 : a --> abaab ;;
+**
+R19 : abaab --> a ;;
+K0 : aaab --> abaa ;;
+##
+R20 : a --> abab ;;
+**
+R20 : aabb --> a ;;
+K0 : aba --> aab ;;
+##
+R21 : a --> ababa ;;
+**
+R21 : ababa --> a ;;
+##
+R22 : a --> ababb ;;
+**
+R22 : ababb --> a ;;
+##
+R23 : a --> abb ;;
+**
+R23 : abb --> a ;;
+##
+R24 : a --> abba ;;
+**
+R24 : abba --> a ;;
+##
+R25 : a --> abbaa ;;
+**
+R25 : abbaa --> a ;;
+##
+R26 : a --> abbab ;;
+**
+R26 : aabbb --> a ;;
+K0 : abba --> aabb ;;
+K1 : aaabbb --> aa ;;
+K4 : aba --> aab ;;
+##
+R27 : a --> abbb ;;
+**
+R27 : abbb --> a ;;
+##
+R28 : a --> abbba ;;
+**
+R28 : abbba --> a ;;
+##
+R29 : a --> abbbb ;;
+**
+R29 : abbbb --> a ;;
+##
+R30 : a --> b ;;
+**
+R30 : b --> a ;;
+##
+R31 : a --> ba ;;
+**
+R31 : ba --> a ;;
+##
+R32 : a --> baa ;;
+**
+R32 : baa --> a ;;
+##
+R33 : a --> baaa ;;
+**
+R33 : baaa --> a ;;
+##
+R34 : a --> baaaa ;;
+**
+R34 : baaaa --> a ;;
+##
+R35 : a --> baaab ;;
+**
+R35 : baaab --> a ;;
+K0 : baaaa --> aaaab ;;
+##
+R36 : a --> baab ;;
+**
+R36 : baab --> a ;;
+K0 : baaa --> aaab ;;
+##
+R37 : a --> baaba ;;
+**
+R37 : baaba --> a ;;
+K0 : baaa --> aaba ;;
+##
+R38 : a --> baabb ;;
+**
+R38 : baabb --> a ;;
+K0 : aaabb --> baaba ;;
+##
+R39 : a --> bab ;;
+**
+R39 : bab --> a ;;
+K0 : baa --> aab ;;
+##
+R40 : a --> baba ;;
+**
+R40 : baba --> a ;;
+K0 : baa --> aba ;;
+##
+R41 : a --> babaa ;;
+**
+R41 : babaa --> a ;;
+##
+R42 : a --> babab ;;
+**
+R42 : babab --> a ;;
+K0 : baa --> aab ;;
+##
+R43 : a --> babb ;;
+**
+R43 : babb --> a ;;
+K0 : aabb --> baba ;;
+##
+R44 : a --> babba ;;
+**
+R44 : babba --> a ;;
+K0 : baba --> abba ;;
+K2 : baa --> aba ;;
+##
+R45 : a --> babbb ;;
+**
+R45 : babbb --> a ;;
+K0 : aabbb --> babba ;;
+##
+R46 : a --> bb ;;
+**
+R46 : bb --> a ;;
+K0 : ba --> ab ;;
+##
+R47 : a --> bba ;;
+**
+R47 : bba --> a ;;
+##
+R48 : a --> bbaa ;;
+**
+R48 : bbaa --> a ;;
+##
+R49 : a --> bbaaa ;;
+**
+R49 : bbaaa --> a ;;
+##
+R50 : a --> bbaab ;;
+**
+R50 : bbaab --> a ;;
+K0 : bbaaa --> abaab ;;
+##
+R51 : a --> bbab ;;
+**
+R51 : bbab --> a ;;
+K0 : bbaa --> abab ;;
+##
+R52 : a --> bbaba ;;
+**
+R52 : bbaba --> a ;;
+##
+R53 : a --> bbabb ;;
+**
+R53 : bbabb --> a ;;
+K0 : bbaa --> aabb ;;
+K1 : bbaba --> ababb ;;
+##
+R54 : a --> bbb ;;
+**
+R54 : bbb --> a ;;
+K0 : ba --> ab ;;
+##
+R55 : a --> bbba ;;
+**
+R55 : bbba --> a ;;
+##
+R56 : a --> bbbaa ;;
+**
+R56 : bbbaa --> a ;;
+##
+R57 : a --> bbbab ;;
+**
+R57 : bbbab --> a ;;
+K0 : bbbaa --> abbab ;;
+##
+R58 : a --> bbbb ;;
+**
+R58 : bbbb --> a ;;
+K0 : ba --> ab ;;
+##
+R59 : a --> bbbba ;;
+**
+R59 : bbbba --> a ;;
+##
+R60 : a --> bbbbb ;;
+**
+R60 : bbbbb --> a ;;
+K0 : ba --> ab ;;
+##
+R61 : aa --> aaa ;;
+**
+R61 : aaa --> aa ;;
+##
+R62 : aa --> aaaa ;;
+**
+R62 : aaaa --> aa ;;
+##
+R63 : aa --> aaaaa ;;
+**
+R63 : aaaaa --> aa ;;
+##
+R64 : aa --> aaaab ;;
+**
+R64 : aaaab --> aa ;;
+##
+R65 : aa --> aaab ;;
+**
+R65 : aaab --> aa ;;
+##
+R66 : aa --> aaaba ;;
+**
+R66 : aaaba --> aa ;;
+##
+R67 : aa --> aaabb ;;
+**
+R67 : aaabb --> aa ;;
+##
+R68 : aa --> aab ;;
+**
+R68 : aab --> aa ;;
+##
+R69 : aa --> aaba ;;
+**
+R69 : aaba --> aa ;;
+##
+R70 : aa --> aabaa ;;
+**
+R70 : aabaa --> aa ;;
+##
+R71 : aa --> aabab ;;
+**
+R71 : aabab --> aa ;;
+##
+R72 : aa --> aabb ;;
+**
+R72 : aabb --> aa ;;
+##
+R73 : aa --> aabba ;;
+**
+R73 : aabba --> aa ;;
+##
+R74 : aa --> aabbb ;;
+**
+R74 : aabbb --> aa ;;
+##
+R75 : aa --> ab ;;
+**
+R75 : ab --> aa ;;
+##
+R76 : aa --> aba ;;
+**
+R76 : aba --> aa ;;
+##
+R77 : aa --> abaa ;;
+**
+R77 : abaa --> aa ;;
+##
+R78 : aa --> abaaa ;;
+**
+R78 : abaaa --> aa ;;
+##
+R79 : aa --> abaab ;;
+**
+R79 : abaab --> aa ;;
+K0 : aaaab --> abaaa ;;
+##
+R80 : aa --> abab ;;
+**
+R80 : abab --> aa ;;
+K0 : aaab --> abaa ;;
+##
+R81 : aa --> ababa ;;
+**
+R81 : ababa --> aa ;;
+K1 : abaa --> aaba ;;
+##
+R82 : aa --> ababb ;;
+**
+R82 : ababb --> aa ;;
+##
+R83 : aa --> abb ;;
+**
+R83 : abb --> aa ;;
+##
+R84 : aa --> abba ;;
+**
+R84 : abba --> aa ;;
+##
+R85 : aa --> abbaa ;;
+**
+R85 : abbaa --> aa ;;
+##
+R86 : aa --> abbab ;;
+**
+R86 : abbab --> aa ;;
+K0 : aabab --> abbaa ;;
+##
+R87 : aa --> abbb ;;
+**
+R87 : abbb --> aa ;;
+##
+R88 : aa --> abbba ;;
+**
+R88 : abbba --> aa ;;
+##
+R89 : aa --> abbbb ;;
+**
+R89 : abbbb --> aa ;;
+##
+R90 : aa --> b ;;
+**
+R90 : aa --> b ;;
+K0 : ba --> ab ;;
+##
+R91 : aa --> ba ;;
+**
+R91 : ba --> aa ;;
+##
+R92 : aa --> baa ;;
+**
+R92 : baa --> aa ;;
+##
+R93 : aa --> baaa ;;
+**
+R93 : baaa --> aa ;;
+##
+R94 : aa --> baaaa ;;
+**
+R94 : baaaa --> aa ;;
+##
+R95 : aa --> baaab ;;
+**
+R95 : baaab --> aa ;;
+K0 : baaaaa --> aaaaab ;;
+##
+R96 : aa --> baab ;;
+**
+R96 : baab --> aa ;;
+K0 : baaaa --> aaaab ;;
+##
+R97 : aa --> baaba ;;
+**
+R97 : baaba --> aa ;;
+K0 : baaaa --> aaaba ;;
+##
+R98 : aa --> baabb ;;
+**
+R98 : baabb --> aa ;;
+K0 : aaaabb --> baabaa ;;
+##
+R99 : aa --> bab ;;
+**
+R99 : bab --> aa ;;
+K0 : baaa --> aaab ;;
+##
+R100 : aa --> baba ;;
+**
+R100 : baba --> aa ;;
+K0 : baaa --> aaba ;;
+##
+R101 : aa --> babaa ;;
+**
+R101 : babaa --> aa ;;
+##
+R102 : aa --> babab ;;
+**
+R102 : babab --> aa ;;
+K0 : baaa --> aaab ;;
+##
+R103 : aa --> babb ;;
+**
+R103 : babb --> aa ;;
+K0 : babaa --> aaabb ;;
+##
+R104 : aa --> babba ;;
+**
+R104 : babba --> aa ;;
+K0 : babaa --> aabba ;;
+##
+R105 : aa --> babbb ;;
+**
+R105 : babbb --> aa ;;
+K0 : babbaa --> aaabbb ;;
+##
+R106 : aa --> bb ;;
+**
+R106 : bb --> aa ;;
+K0 : baa --> aab ;;
+##
+R107 : aa --> bba ;;
+**
+R107 : bba --> aa ;;
+##
+R108 : aa --> bbaa ;;
+**
+R108 : bbaa --> aa ;;
+##
+R109 : aa --> bbaaa ;;
+**
+R109 : bbaaa --> aa ;;
+##
+R110 : aa --> bbaab ;;
+**
+R110 : bbaab --> aa ;;
+K0 : bbaaaa --> aabaab ;;
+##
+R111 : aa --> bbab ;;
+**
+R111 : bbab --> aa ;;
+K0 : bbaaa --> aabab ;;
+##
+R112 : aa --> bbaba ;;
+**
+R112 : bbaba --> aa ;;
+##
+R113 : aa --> bbabb ;;
+**
+R113 : bbabb --> aa ;;
+K0 : bbaaa --> aaabb ;;
+K1 : bbabaa --> aababb ;;
+##
+R114 : aa --> bbb ;;
+**
+R114 : bbb --> aa ;;
+K0 : baa --> aab ;;
+##
+R115 : aa --> bbba ;;
+**
+R115 : bbba --> aa ;;
+##
+R116 : aa --> bbbaa ;;
+**
+R116 : bbbaa --> aa ;;
+##
+R117 : aa --> bbbab ;;
+**
+R117 : bbbab --> aa ;;
+K0 : bbbaaa --> aabbab ;;
+##
+R118 : aa --> bbbb ;;
+**
+R118 : bbbb --> aa ;;
+K0 : baa --> aab ;;
+##
+R119 : aa --> bbbba ;;
+**
+R119 : bbbba --> aa ;;
+##
+R120 : aa --> bbbbb ;;
+**
+R120 : bbbbb --> aa ;;
+K0 : baa --> aab ;;
+##
+R121 : aaa --> aaaa ;;
+**
+R121 : aaaa --> aaa ;;
+##
+R122 : aaa --> aaaaa ;;
+**
+R122 : aaaaa --> aaa ;;
+##
+R123 : aaa --> aaaab ;;
+**
+R123 : aaaab --> aaa ;;
+##
+R124 : aaa --> aaab ;;
+**
+R124 : aaab --> aaa ;;
+##
+R125 : aaa --> aaaba ;;
+**
+R125 : aaaba --> aaa ;;
+##
+R126 : aaa --> aaabb ;;
+**
+R126 : aaabb --> aaa ;;
+##
+R127 : aaa --> aab ;;
+**
+R127 : aab --> aaa ;;
+##
+R128 : aaa --> aaba ;;
+**
+R128 : aaba --> aaa ;;
+##
+R129 : aaa --> aabaa ;;
+**
+R129 : aabaa --> aaa ;;
+##
+R130 : aaa --> aabab ;;
+**
+R130 : aabab --> aaa ;;
+##
+R131 : aaa --> aabb ;;
+**
+R131 : aabb --> aaa ;;
+##
+R132 : aaa --> aabba ;;
+**
+R132 : aabba --> aaa ;;
+##
+R133 : aaa --> aabbb ;;
+**
+R133 : aabbb --> aaa ;;
+##
+R134 : aaa --> ab ;;
+**
+R134 : ab --> aaa ;;
+##
+R135 : aaa --> aba ;;
+**
+R135 : aba --> aaa ;;
+##
+R136 : aaa --> abaa ;;
+**
+R136 : abaa --> aaa ;;
+##
+R137 : aaa --> abaaa ;;
+**
+R137 : abaaa --> aaa ;;
+##
+R138 : aaa --> abaab ;;
+**
+R138 : abaab --> aaa ;;
+K0 : aaaaab --> abaaaa ;;
+##
+R139 : aaa --> abab ;;
+**
+R139 : abab --> aaa ;;
+K0 : aaaab --> abaaa ;;
+##
+R140 : aaa --> ababa ;;
+**
+R140 : ababa --> aaa ;;
+K1 : abaaa --> aaaba ;;
+##
+R141 : aaa --> ababb ;;
+**
+R141 : ababb --> aaa ;;
+##
+R142 : aaa --> abb ;;
+**
+R142 : abb --> aaa ;;
+##
+R143 : aaa --> abba ;;
+**
+R143 : abba --> aaa ;;
+##
+R144 : aaa --> abbaa ;;
+**
+R144 : abbaa --> aaa ;;
+##
+R145 : aaa --> abbab ;;
+**
+R145 : abbab --> aaa ;;
+K0 : aaabab --> abbaaa ;;
+##
+R146 : aaa --> abbb ;;
+**
+R146 : abbb --> aaa ;;
+##
+R147 : aaa --> abbba ;;
+**
+R147 : abbba --> aaa ;;
+##
+R148 : aaa --> abbbb ;;
+**
+R148 : abbbb --> aaa ;;
+##
+R149 : aaa --> b ;;
+**
+R149 : aaa --> b ;;
+K2 : ba --> ab ;;
+##
+R150 : aaa --> ba ;;
+**
+R150 : ba --> aaa ;;
+##
+R151 : aaa --> baa ;;
+**
+R151 : baa --> aaa ;;
+##
+R152 : aaa --> baaa ;;
+**
+R152 : baaa --> aaa ;;
+##
+R153 : aaa --> baaaa ;;
+**
+R153 : baaaa --> aaa ;;
+##
+R154 : aaa --> baaab ;;
+**
+R154 : baaab --> aaa ;;
+K0 : baaaaaa --> aaaaaab ;;
+##
+R155 : aaa --> baab ;;
+**
+R155 : baab --> aaa ;;
+K0 : baaaaa --> aaaaab ;;
+##
+R156 : aaa --> baaba ;;
+**
+R156 : baaba --> aaa ;;
+K0 : baaaaa --> aaaaba ;;
+##
+R157 : aaa --> baabb ;;
+**
+R157 : baabb --> aaa ;;
+K0 : baabaaa --> aaaaabb ;;
+##
+R158 : aaa --> bab ;;
+**
+R158 : bab --> aaa ;;
+K0 : baaaa --> aaaab ;;
+##
+R159 : aaa --> baba ;;
+**
+R159 : baba --> aaa ;;
+K0 : baaaa --> aaaba ;;
+##
+R160 : aaa --> babaa ;;
+**
+R160 : babaa --> aaa ;;
+##
+R161 : aaa --> babab ;;
+**
+R161 : babab --> aaa ;;
+K0 : baaaa --> aaaab ;;
+##
+R162 : aaa --> babb ;;
+**
+R162 : babb --> aaa ;;
+K0 : babaaa --> aaaabb ;;
+##
+R163 : aaa --> babba ;;
+**
+R163 : babba --> aaa ;;
+K0 : babaaa --> aaabba ;;
+##
+R164 : aaa --> babbb ;;
+**
+R164 : babbb --> aaa ;;
+K0 : babbaaa --> aaaabbb ;;
+##
+R165 : aaa --> bb ;;
+**
+R165 : aaa --> bb ;;
+K2 : bba --> abb ;;
+##
+R166 : aaa --> bba ;;
+**
+R166 : bba --> aaa ;;
+##
+R167 : aaa --> bbaa ;;
+**
+R167 : bbaa --> aaa ;;
+##
+R168 : aaa --> bbaaa ;;
+**
+R168 : bbaaa --> aaa ;;
+##
+R169 : aaa --> bbaab ;;
+**
+R169 : bbaab --> aaa ;;
+K0 : bbaaaaa --> aaabaab ;;
+##
+R170 : aaa --> bbab ;;
+**
+R170 : bbab --> aaa ;;
+K0 : bbaaaa --> aaabab ;;
+##
+R171 : aaa --> bbaba ;;
+**
+R171 : bbaba --> aaa ;;
+##
+R172 : aaa --> bbabb ;;
+**
+R172 : bbabb --> aaa ;;
+K0 : bbaaaa --> aaaabb ;;
+K1 : bbabaaa --> aaababb ;;
+##
+R173 : aaa --> bbb ;;
+**
+R173 : bbb --> aaa ;;
+K0 : baaa --> aaab ;;
+##
+R174 : aaa --> bbba ;;
+**
+R174 : bbba --> aaa ;;
+##
+R175 : aaa --> bbbaa ;;
+**
+R175 : bbbaa --> aaa ;;
+##
+R176 : aaa --> bbbab ;;
+**
+R176 : bbbab --> aaa ;;
+K0 : bbbaaaa --> aaabbab ;;
+##
+R177 : aaa --> bbbb ;;
+**
+R177 : bbbb --> aaa ;;
+K0 : baaa --> aaab ;;
+##
+R178 : aaa --> bbbba ;;
+**
+R178 : bbbba --> aaa ;;
+##
+R179 : aaa --> bbbbb ;;
+**
+R179 : bbbbb --> aaa ;;
+K0 : baaa --> aaab ;;
+##
+R180 : aaaa --> aaaaa ;;
+**
+R180 : aaaaa --> aaaa ;;
+##
+R181 : aaaa --> aaaab ;;
+**
+R181 : aaaab --> aaaa ;;
+##
+R182 : aaaa --> aaab ;;
+**
+R182 : aaab --> aaaa ;;
+##
+R183 : aaaa --> aaaba ;;
+**
+R183 : aaaba --> aaaa ;;
+##
+R184 : aaaa --> aaabb ;;
+**
+R184 : aaabb --> aaaa ;;
+##
+R185 : aaaa --> aab ;;
+**
+R185 : aab --> aaaa ;;
+##
+R186 : aaaa --> aaba ;;
+**
+R186 : aaba --> aaaa ;;
+##
+R187 : aaaa --> aabaa ;;
+**
+R187 : aabaa --> aaaa ;;
+##
+R188 : aaaa --> aabab ;;
+**
+R188 : aabab --> aaaa ;;
+##
+R189 : aaaa --> aabb ;;
+**
+R189 : aabb --> aaaa ;;
+##
+R190 : aaaa --> aabba ;;
+**
+R190 : aabba --> aaaa ;;
+##
+R191 : aaaa --> aabbb ;;
+**
+R191 : aabbb --> aaaa ;;
+##
+R192 : aaaa --> ab ;;
+**
+R192 : ab --> aaaa ;;
+##
+R193 : aaaa --> aba ;;
+**
+R193 : aaaa --> aba ;;
+K2 : abaa --> aaba ;;
+##
+R194 : aaaa --> abaa ;;
+**
+R194 : abaa --> aaaa ;;
+##
+R195 : aaaa --> abaaa ;;
+**
+R195 : abaaa --> aaaa ;;
+##
+R196 : aaaa --> abaab ;;
+**
+R196 : abaab --> aaaa ;;
+K0 : aaaaaab --> abaaaaa ;;
+##
+R197 : aaaa --> abab ;;
+**
+R197 : abab --> c ;;
+R : aaaa --> c ;;
+K0 : cbab --> aaac ;;
+K1 : acb --> abc ;;
+K7 : ca --> ac ;;
+K8 : ccb --> cbc ;;
+##
+R198 : aaaa --> ababa ;;
+**
+R198 : ababa --> aaaa ;;
+K1 : abaaaa --> aaaaba ;;
+##
+R199 : aaaa --> ababb ;;
+**
+R199 : ababb --> aaaa ;;
+##
+R200 : aaaa --> abb ;;
+**
+R200 : abb --> aaaa ;;
+##
+R201 : aaaa --> abba ;;
+**
+R201 : abba --> aaaa ;;
+##
+R202 : aaaa --> abbaa ;;
+**
+R202 : abbaa --> aaaa ;;
+##
+R203 : aaaa --> abbab ;;
+**
+R203 : abbab --> aaaa ;;
+K0 : aaaabab --> abbaaaa ;;
+##
+R204 : aaaa --> abbb ;;
+**
+R204 : abbb --> aaaa ;;
+##
+R205 : aaaa --> abbba ;;
+**
+R205 : abbba --> aaaa ;;
+##
+R206 : aaaa --> abbbb ;;
+**
+R206 : abbbb --> aaaa ;;
+##
+R207 : aaaa --> b ;;
+**
+R207 : aaaa --> b ;;
+K5 : ba --> ab ;;
+##
+R208 : aaaa --> ba ;;
+**
+R208 : ba --> aaaa ;;
+##
+R209 : aaaa --> baa ;;
+**
+R209 : baa --> aaaa ;;
+##
+R210 : aaaa --> baaa ;;
+**
+R210 : baaa --> aaaa ;;
+##
+R211 : aaaa --> baaaa ;;
+**
+R211 : baaaa --> aaaa ;;
+##
+R212 : aaaa --> baaab ;;
+**
+R212 : baaab --> aaaa ;;
+K0 : baaaaaaa --> aaaaaaab ;;
+##
+R213 : aaaa --> baab ;;
+**
+R213 : baab --> aaaa ;;
+K0 : baaaaaa --> aaaaaab ;;
+##
+R214 : aaaa --> baaba ;;
+**
+R214 : baaba --> aaaa ;;
+K0 : baaaaaa --> aaaaaba ;;
+##
+R215 : aaaa --> baabb ;;
+**
+R215 : baabb --> aaaa ;;
+K0 : baabaaaa --> aaaaaabb ;;
+##
+R216 : aaaa --> bab ;;
+**
+R216 : bab --> aaaa ;;
+K0 : baaaaa --> aaaaab ;;
+##
+R217 : aaaa --> baba ;;
+**
+R217 : baba --> aaaa ;;
+K0 : baaaaa --> aaaaba ;;
+##
+R218 : aaaa --> babaa ;;
+**
+R218 : babaa --> aaaa ;;
+##
+R219 : aaaa --> babab ;;
+**
+R219 : babab --> aaaa ;;
+K0 : baaaaa --> aaaaab ;;
+##
+R220 : aaaa --> babb ;;
+**
+R220 : babb --> aaaa ;;
+K0 : babaaaa --> aaaaabb ;;
+##
+R221 : aaaa --> babba ;;
+**
+R221 : babba --> aaaa ;;
+K0 : babaaaa --> aaaabba ;;
+##
+R222 : aaaa --> babbb ;;
+**
+R222 : babbb --> aaaa ;;
+K0 : babbaaaa --> aaaaabbb ;;
+##
+R223 : aaaa --> bb ;;
+**
+R223 : aaaa --> bb ;;
+K5 : bba --> abb ;;
+##
+R224 : aaaa --> bba ;;
+**
+R224 : bba --> aaaa ;;
+##
+R225 : aaaa --> bbaa ;;
+**
+R225 : bbaa --> aaaa ;;
+##
+R226 : aaaa --> bbaaa ;;
+**
+R226 : bbaaa --> aaaa ;;
+##
+R227 : aaaa --> bbaab ;;
+**
+R227 : bbaab --> aaaa ;;
+K0 : bbaaaaaa --> aaaabaab ;;
+##
+R228 : aaaa --> bbab ;;
+**
+R228 : bbab --> aaaa ;;
+K0 : bbaaaaa --> aaaabab ;;
+##
+R229 : aaaa --> bbaba ;;
+**
+R229 : bbaba --> aaaa ;;
+##
+R230 : aaaa --> bbabb ;;
+**
+R230 : bbabb --> aaaa ;;
+K0 : bbaaaaa --> aaaaabb ;;
+K1 : bbabaaaa --> aaaababb ;;
+##
+R231 : aaaa --> bbb ;;
+**
+R231 : aaaa --> bbb ;;
+K5 : bbba --> abbb ;;
+##
+R232 : aaaa --> bbba ;;
+**
+R232 : bbba --> aaaa ;;
+##
+R233 : aaaa --> bbbaa ;;
+**
+R233 : bbbaa --> aaaa ;;
+##
+R234 : aaaa --> bbbab ;;
+**
+R234 : bbbab --> aaaa ;;
+K0 : bbbaaaaa --> aaaabbab ;;
+##
+R235 : aaaa --> bbbb ;;
+**
+R235 : bbbb --> aaaa ;;
+K0 : baaaa --> aaaab ;;
+##
+R236 : aaaa --> bbbba ;;
+**
+R236 : bbbba --> aaaa ;;
+##
+R237 : aaaa --> bbbbb ;;
+**
+R237 : bbbbb --> aaaa ;;
+K0 : baaaa --> aaaab ;;
+##
+R238 : aaaaa --> aaaab ;;
+**
+R238 : aaaab --> aaaaa ;;
+##
+R239 : aaaaa --> aaab ;;
+**
+R239 : aaab --> aaaaa ;;
+##
+R240 : aaaaa --> aaaba ;;
+**
+R240 : aaaba --> aaaaa ;;
+##
+R241 : aaaaa --> aaabb ;;
+**
+R241 : aaabb --> aaaaa ;;
+##
+R242 : aaaaa --> aab ;;
+**
+R242 : aab --> aaaaa ;;
+##
+R243 : aaaaa --> aaba ;;
+**
+R243 : aaba --> aaaaa ;;
+##
+R244 : aaaaa --> aabaa ;;
+**
+R244 : aabaa --> aaaaa ;;
+##
+R245 : aaaaa --> aabab ;;
+**
+R245 : aabab --> aaaaa ;;
+##
+R246 : aaaaa --> aabb ;;
+**
+R246 : aabb --> aaaaa ;;
+##
+R247 : aaaaa --> aabba ;;
+**
+R247 : aabba --> aaaaa ;;
+##
+R248 : aaaaa --> aabbb ;;
+**
+R248 : aabbb --> aaaaa ;;
+##
+R249 : aaaaa --> ab ;;
+**
+R249 : ab --> aaaaa ;;
+##
+R250 : aaaaa --> aba ;;
+**
+R250 : aaaaa --> aba ;;
+K5 : abaa --> aaba ;;
+##
+R251 : aaaaa --> abaa ;;
+**
+R251 : abaa --> aaaaa ;;
+##
+R252 : aaaaa --> abaaa ;;
+**
+R252 : abaaa --> aaaaa ;;
+##
+R253 : aaaaa --> abaab ;;
+**
+R253 : abaab --> aac ;;
+R : aaa --> c ;;
+K0 : cbaab --> acc ;;
+K1 : accb --> abcc ;;
+K4 : ca --> ac ;;
+K5 : cccb --> cbcc ;;
+##
+R254 : aaaaa --> abab ;;
+**
+R254 : abab --> aaaaa ;;
+K0 : aaaaaab --> abaaaaa ;;
+##
+R255 : aaaaa --> ababa ;;
+**
+R255 : ababa --> aaaaa ;;
+K1 : abaaaaa --> aaaaaba ;;
+##
+R256 : aaaaa --> ababb ;;
+**
+R256 : ababb --> aaaaa ;;
+##
+R257 : aaaaa --> abb ;;
+**
+R257 : abb --> aaaaa ;;
+##
+R258 : aaaaa --> abba ;;
+**
+R258 : aaaaa --> abba ;;
+K5 : abbaa --> aabba ;;
+##
+R259 : aaaaa --> abbaa ;;
+**
+R259 : abbaa --> aaaaa ;;
+##
+R260 : aaaaa --> abbab ;;
+**
+R260 : abbab --> ac ;;
+R : aaaa --> c ;;
+K0 : cbbab --> cc ;;
+K1 : acbab --> abbac ;;
+K7 : ca --> ac ;;
+K8 : ccbab --> cbbac ;;
+##
+R261 : aaaaa --> abbb ;;
+**
+R261 : abbb --> aaaaa ;;
+##
+R262 : aaaaa --> abbba ;;
+**
+R262 : abbba --> aaaaa ;;
+##
+R263 : aaaaa --> abbbb ;;
+**
+R263 : abbbb --> aaaaa ;;
+##
+R264 : aaaaa --> b ;;
+**
+R264 : aaaaa --> b ;;
+K9 : ba --> ab ;;
+##
+R265 : aaaaa --> ba ;;
+**
+R265 : ba --> aaaaa ;;
+##
+R266 : aaaaa --> baa ;;
+**
+R266 : baa --> aaaaa ;;
+##
+R267 : aaaaa --> baaa ;;
+**
+R267 : baaa --> aaaaa ;;
+##
+R268 : aaaaa --> baaaa ;;
+**
+R268 : baaaa --> aaaaa ;;
+##
+R269 : aaaaa --> baaab ;;
+**
+R269 : baaab --> aaaaa ;;
+K0 : baaaaaaaa --> aaaaaaaab ;;
+##
+R270 : aaaaa --> baab ;;
+**
+R270 : baab --> aaaaa ;;
+K0 : baaaaaaa --> aaaaaaab ;;
+##
+R271 : aaaaa --> baaba ;;
+**
+R271 : baaba --> aaaaa ;;
+K0 : baaaaaaa --> aaaaaaba ;;
+##
+R272 : aaaaa --> baabb ;;
+**
+R272 : baabb --> aaaaa ;;
+K0 : baabaaaaa --> aaaaaaabb ;;
+##
+R273 : aaaaa --> bab ;;
+**
+R273 : bab --> aaaaa ;;
+K0 : baaaaaa --> aaaaaab ;;
+##
+R274 : aaaaa --> baba ;;
+**
+R274 : baba --> aaaaa ;;
+K0 : baaaaaa --> aaaaaba ;;
+##
+R275 : aaaaa --> babaa ;;
+**
+R275 : babaa --> aaaaa ;;
+##
+R276 : aaaaa --> babab ;;
+**
+R276 : babab --> aaaaa ;;
+K0 : baaaaaa --> aaaaaab ;;
+##
+R277 : aaaaa --> babb ;;
+**
+R277 : aaaaa --> babb ;;
+K9 : ababb --> babba ;;
+##
+R278 : aaaaa --> babba ;;
+**
+R278 : babba --> aaaaa ;;
+K0 : babaaaaa --> aaaaabba ;;
+##
+R279 : aaaaa --> babbb ;;
+**
+R279 : babbb --> aaaaa ;;
+K0 : babbaaaaa --> aaaaaabbb ;;
+##
+R280 : aaaaa --> bb ;;
+**
+R280 : aaaaa --> bb ;;
+K9 : bba --> abb ;;
+##
+R281 : aaaaa --> bba ;;
+**
+R281 : bba --> aaaaa ;;
+##
+R282 : aaaaa --> bbaa ;;
+**
+R282 : bbaa --> aaaaa ;;
+##
+R283 : aaaaa --> bbaaa ;;
+**
+R283 : bbaaa --> aaaaa ;;
+##
+R284 : aaaaa --> bbaab ;;
+**
+R284 : bbaab --> aaaaa ;;
+K0 : bbaaaaaaa --> aaaaabaab ;;
+##
+R285 : aaaaa --> bbab ;;
+**
+R285 : aaaaa --> bbab ;;
+K9 : bbaba --> abbab ;;
+##
+R286 : aaaaa --> bbaba ;;
+**
+R286 : bbaba --> aaaaa ;;
+##
+R287 : aaaaa --> bbabb ;;
+**
+R287 : bbabb --> aaaaa ;;
+K0 : bbaaaaaa --> aaaaaabb ;;
+K1 : bbabaaaaa --> aaaaababb ;;
+##
+R288 : aaaaa --> bbb ;;
+**
+R288 : aaaaa --> bbb ;;
+K9 : bbba --> abbb ;;
+##
+R289 : aaaaa --> bbba ;;
+**
+R289 : bbba --> aaaaa ;;
+##
+R290 : aaaaa --> bbbaa ;;
+**
+R290 : bbbaa --> aaaaa ;;
+##
+R291 : aaaaa --> bbbab ;;
+**
+R291 : bbbab --> aaaaa ;;
+K0 : bbbaaaaaa --> aaaaabbab ;;
+##
+R292 : aaaaa --> bbbb ;;
+**
+R292 : aaaaa --> bbbb ;;
+K9 : bbbba --> abbbb ;;
+##
+R293 : aaaaa --> bbbba ;;
+**
+R293 : bbbba --> aaaaa ;;
+##
+R294 : aaaaa --> bbbbb ;;
+**
+R294 : bbbbb --> aaaaa ;;
+K0 : baaaaa --> aaaaab ;;
+##
+R295 : aaaab --> aaab ;;
+**
+R295 : aaaab --> aaab ;;
+##
+R296 : aaaab --> aaaba ;;
+**
+R296 : aaaab --> aaaba ;;
+##
+R297 : aaaab --> aaabb ;;
+**
+R297 : aaabb --> aaaab ;;
+##
+R298 : aaaab --> aab ;;
+**
+R298 : aaaab --> aab ;;
+##
+R299 : aaaab --> aaba ;;
+**
+R299 : aaaab --> aaba ;;
+##
+R300 : aaaab --> aabaa ;;
+**
+R300 : aaaab --> aabaa ;;
+##
+R301 : aaaab --> aabab ;;
+**
+R301 : aabab --> aaaab ;;
+##
+R302 : aaaab --> aabb ;;
+**
+R302 : aaaab --> aabb ;;
+##
+R303 : aaaab --> aabba ;;
+**
+R303 : aaaab --> aabba ;;
+##
+R304 : aaaab --> aabbb ;;
+**
+R304 : aabbb --> aaaab ;;
+##
+R305 : aaaab --> ab ;;
+**
+R305 : aaaab --> ab ;;
+##
+R306 : aaaab --> aba ;;
+**
+R306 : aaaab --> aba ;;
+##
+R307 : aaaab --> abaa ;;
+**
+R307 : aaaab --> abaa ;;
+##
+R308 : aaaab --> abaaa ;;
+**
+R308 : aaaab --> abaaa ;;
+##
+R309 : aaaab --> abaab ;;
+**
+R309 : aaaab --> abaab ;;
+##
+R310 : aaaab --> abab ;;
+**
+R310 : aaaab --> abab ;;
+##
+R311 : aaaab --> ababa ;;
+**
+R311 : aaaab --> ababa ;;
+##
+R312 : aaaab --> ababb ;;
+**
+R312 : ababb --> aaaab ;;
+##
+R313 : aaaab --> abb ;;
+**
+R313 : aaaab --> abb ;;
+##
+R314 : aaaab --> abba ;;
+**
+R314 : aaaab --> abba ;;
+##
+R315 : aaaab --> abbaa ;;
+**
+R315 : aaaab --> abbaa ;;
+##
+R316 : aaaab --> abbab ;;
+**
+R316 : aaaab --> abbab ;;
+##
+R317 : aaaab --> abbb ;;
+**
+R317 : aaaab --> abbb ;;
+##
+R318 : aaaab --> abbba ;;
+**
+R318 : aaaab --> abbba ;;
+##
+R319 : aaaab --> abbbb ;;
+**
+R319 : abbbb --> aaaab ;;
+##
+R320 : aaaab --> b ;;
+**
+R320 : aaaab --> b ;;
+##
+R321 : aaaab --> ba ;;
+**
+R321 : aaaab --> ba ;;
+##
+R322 : aaaab --> baa ;;
+**
+R322 : aaaab --> baa ;;
+##
+R323 : aaaab --> baaa ;;
+**
+R323 : aaaab --> baaa ;;
+##
+R324 : aaaab --> baaaa ;;
+**
+R324 : baaaa --> aaaab ;;
+##
+R325 : aaaab --> baaab ;;
+**
+R325 : aaaab --> baaab ;;
+##
+R326 : aaaab --> baab ;;
+**
+R326 : aaaab --> baab ;;
+##
+R327 : aaaab --> baaba ;;
+**
+R327 : aaaab --> baaba ;;
+##
+R328 : aaaab --> baabb ;;
+**
+R328 : aaaab --> baabb ;;
+##
+R329 : aaaab --> bab ;;
+**
+R329 : aaaab --> bab ;;
+##
+R330 : aaaab --> baba ;;
+**
+R330 : aaaab --> baba ;;
+##
+R331 : aaaab --> babaa ;;
+**
+R331 : babaa --> aaaab ;;
+##
+R332 : aaaab --> babab ;;
+**
+R332 : aaaab --> babab ;;
+##
+R333 : aaaab --> babb ;;
+**
+R333 : aaaab --> babb ;;
+##
+R334 : aaaab --> babba ;;
+**
+R334 : aaaab --> babba ;;
+##
+R335 : aaaab --> babbb ;;
+**
+R335 : aaaab --> babbb ;;
+##
+R336 : aaaab --> bb ;;
+**
+R336 : aaaab --> bb ;;
+##
+R337 : aaaab --> bba ;;
+**
+R337 : aaaab --> bba ;;
+##
+R338 : aaaab --> bbaa ;;
+**
+R338 : aaaab --> bbaa ;;
+##
+R339 : aaaab --> bbaaa ;;
+**
+R339 : bbaaa --> aaaab ;;
+##
+R340 : aaaab --> bbaab ;;
+**
+R340 : aaaab --> bbaab ;;
+##
+R341 : aaaab --> bbab ;;
+**
+R341 : aaaab --> bbab ;;
+##
+R342 : aaaab --> bbaba ;;
+**
+R342 : bbaba --> aaaab ;;
+##
+R343 : aaaab --> bbabb ;;
+**
+R343 : aaaab --> bbabb ;;
+##
+R344 : aaaab --> bbb ;;
+**
+R344 : aaaab --> bbb ;;
+##
+R345 : aaaab --> bbba ;;
+**
+R345 : aaaab --> bbba ;;
+##
+R346 : aaaab --> bbbaa ;;
+**
+R346 : bbbaa --> aaaab ;;
+##
+R347 : aaaab --> bbbab ;;
+**
+R347 : aaaab --> bbbab ;;
+##
+R348 : aaaab --> bbbb ;;
+**
+R348 : aaaab --> bbbb ;;
+##
+R349 : aaaab --> bbbba ;;
+**
+R349 : bbbba --> aaaab ;;
+##
+R350 : aaaab --> bbbbb ;;
+**
+R350 : aaaab --> bbbbb ;;
+##
+R351 : aaab --> aaaba ;;
+**
+R : aaab --> c ;;
+K0 : ca --> c ;;
+K2 : cb --> cc ;;
+##
+R352 : aaab --> aaabb ;;
+**
+R352 : aaabb --> aaab ;;
+##
+R353 : aaab --> aab ;;
+**
+R353 : aaab --> aab ;;
+##
+R354 : aaab --> aaba ;;
+**
+R354 : aaab --> aaba ;;
+##
+R355 : aaab --> aabaa ;;
+**
+R355 : aaab --> aabaa ;;
+##
+R356 : aaab --> aabab ;;
+**
+R356 : aabab --> aaab ;;
+##
+R357 : aaab --> aabb ;;
+**
+R357 : aabb --> aaab ;;
+##
+R358 : aaab --> aabba ;;
+**
+R358 : aaab --> aabba ;;
+##
+R359 : aaab --> aabbb ;;
+**
+R359 : aabbb --> aaab ;;
+##
+R360 : aaab --> ab ;;
+**
+R360 : aaab --> ab ;;
+##
+R361 : aaab --> aba ;;
+**
+R361 : aaab --> aba ;;
+##
+R362 : aaab --> abaa ;;
+**
+R362 : aaab --> abaa ;;
+##
+R363 : aaab --> abaaa ;;
+**
+R363 : aaab --> abaaa ;;
+##
+R364 : aaab --> abaab ;;
+**
+R364 : aaab --> abaab ;;
+##
+R365 : aaab --> abab ;;
+**
+R365 : aaab --> abab ;;
+##
+R366 : aaab --> ababa ;;
+**
+R366 : aaab --> ababa ;;
+##
+R367 : aaab --> ababb ;;
+**
+R367 : ababb --> aaab ;;
+##
+R368 : aaab --> abb ;;
+**
+R368 : aaab --> abb ;;
+##
+R369 : aaab --> abba ;;
+**
+R369 : aaab --> abba ;;
+##
+R370 : aaab --> abbaa ;;
+**
+R370 : aaab --> abbaa ;;
+##
+R371 : aaab --> abbab ;;
+**
+R371 : aaab --> abbab ;;
+##
+R372 : aaab --> abbb ;;
+**
+R372 : abbb --> aaab ;;
+##
+R373 : aaab --> abbba ;;
+**
+R373 : aaab --> abbba ;;
+##
+R374 : aaab --> abbbb ;;
+**
+R374 : abbbb --> aaab ;;
+##
+R375 : aaab --> b ;;
+**
+R375 : aaab --> b ;;
+##
+R376 : aaab --> ba ;;
+**
+R376 : aaab --> ba ;;
+##
+R377 : aaab --> baa ;;
+**
+R377 : aaab --> baa ;;
+##
+R378 : aaab --> baaa ;;
+**
+R378 : baaa --> aaab ;;
+##
+R379 : aaab --> baaaa ;;
+**
+R379 : baaaa --> aaab ;;
+##
+R380 : aaab --> baaab ;;
+**
+R380 : bc --> c ;;
+R : aaab --> c ;;
+K1 : aaac --> cc ;;
+##
+R381 : aaab --> baab ;;
+**
+R381 : aaab --> baab ;;
+##
+R382 : aaab --> baaba ;;
+**
+R382 : aaab --> baaba ;;
+##
+R383 : aaab --> baabb ;;
+**
+R383 : aaab --> baabb ;;
+##
+R384 : aaab --> bab ;;
+**
+R384 : aaab --> bab ;;
+##
+R385 : aaab --> baba ;;
+**
+R385 : aaab --> baba ;;
+##
+R386 : aaab --> babaa ;;
+**
+R386 : babaa --> aaab ;;
+##
+R387 : aaab --> babab ;;
+**
+R387 : aaab --> babab ;;
+##
+R388 : aaab --> babb ;;
+**
+R388 : aaab --> babb ;;
+##
+R389 : aaab --> babba ;;
+**
+R389 : aaab --> babba ;;
+##
+R390 : aaab --> babbb ;;
+**
+R390 : aaab --> babbb ;;
+##
+R391 : aaab --> bb ;;
+**
+R391 : aaab --> bb ;;
+##
+R392 : aaab --> bba ;;
+**
+R392 : aaab --> bba ;;
+##
+R393 : aaab --> bbaa ;;
+**
+R393 : bbaa --> aaab ;;
+##
+R394 : aaab --> bbaaa ;;
+**
+R394 : bbaaa --> aaab ;;
+##
+R395 : aaab --> bbaab ;;
+**
+R395 : aaab --> bbaab ;;
+##
+R396 : aaab --> bbab ;;
+**
+R396 : aaab --> bbab ;;
+##
+R397 : aaab --> bbaba ;;
+**
+R397 : bbaba --> aaab ;;
+##
+R398 : aaab --> bbabb ;;
+**
+R398 : aaab --> bbabb ;;
+##
+R399 : aaab --> bbb ;;
+**
+R399 : aaab --> bbb ;;
+##
+R400 : aaab --> bbba ;;
+**
+R400 : bbba --> aaab ;;
+##
+R401 : aaab --> bbbaa ;;
+**
+R401 : bbbaa --> aaab ;;
+##
+R402 : aaab --> bbbab ;;
+**
+R402 : aaab --> bbbab ;;
+##
+R403 : aaab --> bbbb ;;
+**
+R403 : aaab --> bbbb ;;
+##
+R404 : aaab --> bbbba ;;
+**
+R404 : bbbba --> aaab ;;
+##
+R405 : aaab --> bbbbb ;;
+**
+R405 : aaab --> bbbbb ;;
+##
+R406 : aaaba --> aaabb ;;
+**
+R406 : aaabb --> aaaba ;;
+##
+R407 : aaaba --> aab ;;
+**
+R407 : ac --> aab ;;
+R : aaba --> c ;;
+K1 : cab --> cc ;;
+K2 : cb --> cca ;;
+K3 : aabc --> cca ;;
+K4 : aabb --> ccaa ;;
+##
+R408 : aaaba --> aaba ;;
+**
+R408 : aaaba --> aaba ;;
+##
+R409 : aaaba --> aabaa ;;
+**
+R409 : aaaba --> aabaa ;;
+##
+R410 : aaaba --> aabab ;;
+**
+R410 : aabab --> aaaba ;;
+##
+R411 : aaaba --> aabb ;;
+**
+R411 : aabb --> aaaba ;;
+##
+R412 : aaaba --> aabba ;;
+**
+R412 : aabba --> aaaba ;;
+##
+R413 : aaaba --> aabbb ;;
+**
+R413 : aabbb --> aaaba ;;
+##
+R414 : aaaba --> ab ;;
+**
+R414 : ac --> ab ;;
+R : aaba --> c ;;
+K1 : cb --> cc ;;
+K2 : abc --> abb ;;
+K4 : aabb --> caba ;;
+K5 : abbb --> abbc ;;
+##
+R415 : aaaba --> aba ;;
+**
+R415 : aaaba --> aba ;;
+##
+R416 : aaaba --> abaa ;;
+**
+R416 : aaaba --> abaa ;;
+##
+R417 : aaaba --> abaaa ;;
+**
+R417 : abaaa --> aaaba ;;
+##
+R419 : aaaba --> abab ;;
+**
+R419 : abab --> aaaba ;;
+K0 : aaabaab --> abaaaba ;;
+##
+R420 : aaaba --> ababa ;;
+**
+R420 : aaaba --> ababa ;;
+##
+R421 : aaaba --> ababb ;;
+**
+R421 : ababb --> aaaba ;;
+##
+R422 : aaaba --> abb ;;
+**
+R422 : abb --> aaaba ;;
+##
+R423 : aaaba --> abba ;;
+**
+R423 : aaaba --> abba ;;
+##
+R424 : aaaba --> abbaa ;;
+**
+R424 : abbaa --> aaaba ;;
+##
+R425 : aaaba --> abbab ;;
+**
+R425 : abbab --> c ;;
+R : aaaba --> c ;;
+K0 : cbbab --> aaabc ;;
+K1 : cbab --> abbc ;;
+K2 : caaba --> aaabc ;;
+##
+R426 : aaaba --> abbb ;;
+**
+R426 : abbb --> aaaba ;;
+##
+R427 : aaaba --> abbba ;;
+**
+R427 : abbba --> aaaba ;;
+##
+R428 : aaaba --> abbbb ;;
+**
+R428 : abbbb --> aaaba ;;
+##
+R429 : aaaba --> b ;;
+**
+R429 : aaaba --> b ;;
+K0 : baaba --> aaabb ;;
+K1 : aaaaaabb --> baba ;;
+K2 : baaaaabb --> aaabbaba ;;
+##
+R430 : aaaba --> ba ;;
+**
+R430 : aaac --> c ;;
+R : ba --> c ;;
+K1 : bc --> caac ;;
+##
+R431 : aaaba --> baa ;;
+**
+R431 : baa --> aaaba ;;
+##
+R432 : aaaba --> baaa ;;
+**
+R432 : baaa --> aaaba ;;
+##
+R433 : aaaba --> baaaa ;;
+**
+R433 : baaaa --> aaaba ;;
+##
+R434 : aaaba --> baaab ;;
+**
+R434 : baaab --> ac ;;
+R : aaba --> c ;;
+K0 : caab --> aaac ;;
+K1 : bac --> aca ;;
+K2 : baaaac --> acaaab ;;
+K3 : aaaca --> cc ;;
+K4 : caba --> aabc ;;
+K5 : aaaaaac --> ccab ;;
+K6 : caaca --> aabcc ;;
+K9 : aaaaabc --> ccba ;;
+K13 : caaaabc --> aabccba ;;
+K15 : caaaaac --> aabccab ;;
+##
+R435 : aaaba --> baab ;;
+**
+R435 : aaaba --> baab ;;
+K0 : baabaaba --> aaabbaab ;;
+K1 : aaaaaabbaab --> baababaaba ;;
+K2 : baaaaabbaab --> aaabbaababa ;;
+##
+R436 : aaaba --> baaba ;;
+**
+R436 : baaba --> c ;;
+R : aaaba --> c ;;
+K0 : baac --> aaac ;;
+K1 : caba --> aaac ;;
+K2 : caaba --> aaabc ;;
+K3 : aaaaaac --> cac ;;
+K4 : baabc --> aaabc ;;
+K5 : aaaaaabc --> cabc ;;
+K6 : caaaaac --> aaabcac ;;
+K7 : baaaaabc --> cabc ;;
+K8 : baaaaac --> cac ;;
+K9 : caaaac --> aaacac ;;
+K12 : caaaabc --> aaacabc ;;
+K15 : caaaaabc --> aaabcabc ;;
+##
+R437 : aaaba --> baabb ;;
+**
+R437 : aaaba --> baabb ;;
+K0 : aaabbaabb --> baabbaaba ;;
+##
+R438 : aaaba --> bab ;;
+**
+R438 : aaaba --> bab ;;
+K0 : aaabbab --> babaaba ;;
+##
+R439 : aaaba --> baba ;;
+**
+R439 : aac --> bc ;;
+R : aba --> c ;;
+K2 : abbc --> cac ;;
+K4 : abc --> cba ;;
+##
+R440 : aaaba --> babaa ;;
+**
+R440 : babaa --> aaaba ;;
+##
+R441 : aaaba --> babab ;;
+**
+R441 : aaaba --> babab ;;
+K0 : aaabbabab --> bababaaba ;;
+##
+R442 : aaaba --> babb ;;
+**
+R442 : aaaba --> babb ;;
+K0 : aaabbabb --> babbaaba ;;
+##
+R443 : aaaba --> babba ;;
+**
+R443 : babba --> c ;;
+R : aaaba --> c ;;
+K0 : babc --> aaac ;;
+K1 : cbba --> aaac ;;
+K2 : caaba --> aaabc ;;
+K3 : aaaaaac --> cbc ;;
+K4 : babbc --> aaabc ;;
+K5 : aaaaaabc --> cbbc ;;
+K6 : caaaaac --> aaabcbc ;;
+K7 : babaaabc --> cbbc ;;
+K8 : babaaac --> cbc ;;
+K9 : cbaaac --> aaacbc ;;
+K12 : cbaaabc --> aaacbbc ;;
+K15 : caaaaabc --> aaabcbbc ;;
+##
+R444 : aaaba --> babbb ;;
+**
+R444 : aaaba --> babbb ;;
+K0 : aaabbabbb --> babbbaaba ;;
+##
+R445 : aaaba --> bb ;;
+**
+R445 : aaaba --> bb ;;
+K0 : bbaaba --> aaabbb ;;
+##
+R446 : aaaba --> bba ;;
+**
+R446 : bba --> aaaba ;;
+##
+R447 : aaaba --> bbaa ;;
+**
+R447 : bbaa --> aaaba ;;
+##
+R448 : aaaba --> bbaaa ;;
+**
+R448 : bbaaa --> aaaba ;;
+##
+R449 : aaaba --> bbaab ;;
+**
+R449 : bbaab --> aaaba ;;
+K0 : bbaaaaaba --> aaababaab ;;
+##
+R450 : aaaba --> bbab ;;
+**
+R450 : aaaba --> bbab ;;
+K0 : bbabaaba --> aaabbbab ;;
+##
+R451 : aaaba --> bbaba ;;
+**
+R451 : bbaba --> aaaba ;;
+##
+R452 : aaaba --> bbabb ;;
+**
+R452 : bbabb --> aaaba ;;
+K0 : bbaaaaba --> aaabaabb ;;
+K1 : bbabaaaba --> aaabababb ;;
+##
+R453 : aaaba --> bbb ;;
+**
+R453 : aaaba --> bbb ;;
+K0 : bbbaaba --> aaabbbb ;;
+##
+R454 : aaaba --> bbba ;;
+**
+R454 : bbba --> aaaba ;;
+##
+R455 : aaaba --> bbbaa ;;
+**
+R455 : bbbaa --> aaaba ;;
+##
+R456 : aaaba --> bbbab ;;
+**
+R456 : bbbab --> aaaba ;;
+K0 : bbbaaaaba --> aaababbab ;;
+##
+R457 : aaaba --> bbbb ;;
+**
+R457 : aaaba --> bbbb ;;
+K0 : bbbbaaba --> aaabbbbb ;;
+##
+R458 : aaaba --> bbbba ;;
+**
+R458 : bbbba --> aaaba ;;
+##
+R459 : aaaba --> bbbbb ;;
+**
+R459 : aaaba --> bbbbb ;;
+K0 : aaabbbbbb --> bbbbbaaba ;;
+##
+R460 : aaabb --> aab ;;
+**
+R460 : aaabb --> aab ;;
+##
+R461 : aaabb --> aaba ;;
+**
+R461 : aaabb --> aaba ;;
+##
+R462 : aaabb --> aabaa ;;
+**
+R462 : aaabb --> aabaa ;;
+##
+R463 : aaabb --> aabab ;;
+**
+R463 : aabab --> aaabb ;;
+##
+R464 : aaabb --> aabb ;;
+**
+R464 : aaabb --> aabb ;;
+##
+R465 : aaabb --> aabba ;;
+**
+R465 : aaabb --> aabba ;;
+##
+R466 : aaabb --> aabbb ;;
+**
+R466 : aabbb --> aaabb ;;
+##
+R467 : aaabb --> ab ;;
+**
+R467 : aaabb --> ab ;;
+##
+R468 : aaabb --> aba ;;
+**
+R468 : aaabb --> aba ;;
+##
+R469 : aaabb --> abaa ;;
+**
+R469 : aaabb --> abaa ;;
+##
+R470 : aaabb --> abaaa ;;
+**
+R470 : aaabb --> abaaa ;;
+##
+R471 : aaabb --> abaab ;;
+**
+R471 : abaab --> aaabb ;;
+K0 : abaaaabb --> aaabbaab ;;
+##
+R472 : aaabb --> abab ;;
+**
+R472 : aaabb --> abab ;;
+##
+R473 : aaabb --> ababa ;;
+**
+R473 : aaabb --> ababa ;;
+##
+R474 : aaabb --> ababb ;;
+**
+R474 : ababb --> aaabb ;;
+##
+R475 : aaabb --> abb ;;
+**
+R475 : aaabb --> abb ;;
+##
+R476 : aaabb --> abba ;;
+**
+R476 : aaabb --> abba ;;
+##
+R477 : aaabb --> abbaa ;;
+**
+R477 : aaabb --> abbaa ;;
+##
+R478 : aaabb --> abbab ;;
+**
+R478 : aaabb --> abbab ;;
+##
+R479 : aaabb --> abbb ;;
+**
+R479 : aaabb --> abbb ;;
+##
+R480 : aaabb --> abbba ;;
+**
+R480 : aaabb --> abbba ;;
+##
+R481 : aaabb --> abbbb ;;
+**
+R481 : abbbb --> aaabb ;;
+##
+R482 : aaabb --> b ;;
+**
+R482 : aaabb --> b ;;
+##
+R483 : aaabb --> ba ;;
+**
+R483 : aaabb --> ba ;;
+##
+R484 : aaabb --> baa ;;
+**
+R484 : aaabb --> baa ;;
+##
+R485 : aaabb --> baaa ;;
+**
+R485 : aaabb --> baaa ;;
+##
+R486 : aaabb --> baaaa ;;
+**
+R486 : baaaa --> aaabb ;;
+##
+R487 : aaabb --> baaab ;;
+**
+R487 : aaabb --> baaab ;;
+##
+R488 : aaabb --> baab ;;
+**
+R488 : aaabb --> baab ;;
+##
+R489 : aaabb --> baaba ;;
+**
+R489 : aaabb --> baaba ;;
+##
+R490 : aaabb --> baabb ;;
+**
+R490 : aaabb --> baabb ;;
+##
+R491 : aaabb --> bab ;;
+**
+R491 : aaabb --> bab ;;
+##
+R492 : aaabb --> baba ;;
+**
+R492 : aaabb --> baba ;;
+##
+R493 : aaabb --> babaa ;;
+**
+R493 : babaa --> aaabb ;;
+##
+R494 : aaabb --> babab ;;
+**
+R494 : aaabb --> babab ;;
+##
+R495 : aaabb --> babb ;;
+**
+R495 : aaabb --> babb ;;
+##
+R496 : aaabb --> babba ;;
+**
+R496 : aaabb --> babba ;;
+##
+R497 : aaabb --> babbb ;;
+**
+R497 : aaabb --> babbb ;;
+##
+R498 : aaabb --> bb ;;
+**
+R498 : aaabb --> bb ;;
+##
+R499 : aaabb --> bba ;;
+**
+R499 : aaabb --> bba ;;
+##
+R500 : aaabb --> bbaa ;;
+**
+R500 : aaabb --> bbaa ;;
+##
+R501 : aaabb --> bbaaa ;;
+**
+R501 : bbaaa --> aaabb ;;
+##
+R502 : aaabb --> bbaab ;;
+**
+R502 : aaabb --> bbaab ;;
+##
+R503 : aaabb --> bbab ;;
+**
+R503 : aaabb --> bbab ;;
+##
+R504 : aaabb --> bbaba ;;
+**
+R504 : bbaba --> aaabb ;;
+##
+R505 : aaabb --> bbabb ;;
+**
+R505 : aaabb --> bbabb ;;
+##
+R506 : aaabb --> bbb ;;
+**
+R506 : aaabb --> bbb ;;
+##
+R507 : aaabb --> bbba ;;
+**
+R507 : aaabb --> bbba ;;
+##
+R508 : aaabb --> bbbaa ;;
+**
+R508 : bbbaa --> aaabb ;;
+##
+R509 : aaabb --> bbbab ;;
+**
+R509 : aaabb --> bbbab ;;
+##
+R510 : aaabb --> bbbb ;;
+**
+R510 : aaabb --> bbbb ;;
+##
+R511 : aaabb --> bbbba ;;
+**
+R511 : bbbba --> aaabb ;;
+##
+R512 : aaabb --> bbbbb ;;
+**
+R512 : aaabb --> bbbbb ;;
+##
+R513 : aab --> aaba ;;
+**
+R : aab --> c ;;
+K0 : ca --> c ;;
+K2 : cb --> cc ;;
+##
+R514 : aab --> aabaa ;;
+**
+R : aab --> c ;;
+K0 : caa --> c ;;
+K2 : cab --> cac ;;
+K4 : cb --> cc ;;
+##
+R515 : aab --> aabab ;;
+**
+R515 : aabab --> aab ;;
+##
+R516 : aab --> aabb ;;
+**
+R516 : aabb --> aab ;;
+##
+R517 : aab --> aabba ;;
+**
+R : aab --> c ;;
+K0 : cba --> c ;;
+K2 : cab --> cbc ;;
+##
+R518 : aab --> aabbb ;;
+**
+R518 : aabbb --> aab ;;
+##
+R519 : aab --> ab ;;
+**
+R519 : aab --> ab ;;
+##
+R520 : aab --> aba ;;
+**
+R520 : aab --> aba ;;
+##
+R521 : aab --> abaa ;;
+**
+R521 : aab --> abaa ;;
+##
+R522 : aab --> abaaa ;;
+**
+R522 : aab --> abaaa ;;
+##
+R523 : aab --> abaab ;;
+**
+R523 : abc --> c ;;
+R : aab --> c ;;
+K1 : ac --> cc ;;
+##
+R524 : aab --> abab ;;
+**
+R524 : aab --> abab ;;
+##
+R525 : aab --> ababa ;;
+**
+R525 : aab --> ababa ;;
+##
+R526 : aab --> ababb ;;
+**
+R526 : ababb --> aab ;;
+##
+R527 : aab --> abb ;;
+**
+R527 : abb --> aab ;;
+##
+R528 : aab --> abba ;;
+**
+R528 : aab --> abba ;;
+##
+R529 : aab --> abbaa ;;
+**
+R529 : aab --> abbaa ;;
+##
+R530 : aab --> abbab ;;
+**
+R530 : aab --> abbab ;;
+##
+R531 : aab --> abbb ;;
+**
+R531 : abbb --> aab ;;
+##
+R532 : aab --> abbba ;;
+**
+R532 : aab --> abbba ;;
+##
+R533 : aab --> abbbb ;;
+**
+R533 : abbbb --> aab ;;
+##
+R534 : aab --> b ;;
+**
+R534 : aab --> b ;;
+##
+R535 : aab --> ba ;;
+**
+R535 : aab --> ba ;;
+##
+R536 : aab --> baa ;;
+**
+R536 : baa --> aab ;;
+##
+R537 : aab --> baaa ;;
+**
+R537 : baaa --> aab ;;
+##
+R538 : aab --> baaaa ;;
+**
+R538 : baaaa --> aab ;;
+##
+R539 : aab --> baaab ;;
+**
+R539 : bac --> c ;;
+R : aab --> c ;;
+K1 : aac --> cac ;;
+##
+R540 : aab --> baab ;;
+**
+R540 : bc --> c ;;
+R : aab --> c ;;
+K1 : aac --> cc ;;
+##
+R541 : aab --> baaba ;;
+**
+K0 : aab --> c ;;
+K2 : aac --> cca ;;
+K4 : bca --> c ;;
+K5 : bcc --> cab ;;
+##
+R542 : aab --> baabb ;;
+**
+R542 : bcb --> c ;;
+R : aab --> c ;;
+K0 : bcc --> aac ;;
+K1 : ccb --> aac ;;
+K2 : aaaac --> ccc ;;
+K3 : baac --> aacb ;;
+K4 : bcaac --> ccc ;;
+K5 : ccaac --> aaccc ;;
+##
+R543 : aab --> bab ;;
+**
+R543 : aab --> bab ;;
+##
+R544 : aab --> baba ;;
+**
+R544 : aab --> baba ;;
+##
+R545 : aab --> babaa ;;
+**
+R545 : babaa --> aab ;;
+##
+R546 : aab --> babab ;;
+**
+R546 : aab --> babab ;;
+##
+R547 : aab --> babb ;;
+**
+R547 : aab --> babb ;;
+##
+R548 : aab --> babba ;;
+**
+R548 : aab --> babba ;;
+##
+R549 : aab --> babbb ;;
+**
+R549 : aab --> babbb ;;
+##
+R550 : aab --> bb ;;
+**
+R550 : aab --> bb ;;
+##
+R551 : aab --> bba ;;
+**
+R551 : bba --> aab ;;
+##
+R552 : aab --> bbaa ;;
+**
+R552 : bbaa --> aab ;;
+##
+R553 : aab --> bbaaa ;;
+**
+R553 : bbaaa --> aab ;;
+##
+R554 : aab --> bbaab ;;
+**
+R554 : bbc --> c ;;
+R : aab --> c ;;
+K1 : aac --> cbc ;;
+##
+R555 : aab --> bbab ;;
+**
+R555 : aab --> bbab ;;
+##
+R556 : aab --> bbaba ;;
+**
+R556 : bbaba --> aab ;;
+##
+R557 : aab --> bbabb ;;
+**
+R557 : aab --> bbabb ;;
+##
+R558 : aab --> bbb ;;
+**
+R558 : aab --> bbb ;;
+##
+R559 : aab --> bbba ;;
+**
+R559 : bbba --> aab ;;
+##
+R560 : aab --> bbbaa ;;
+**
+R560 : bbbaa --> aab ;;
+##
+R561 : aab --> bbbab ;;
+**
+R561 : aab --> bbbab ;;
+##
+R562 : aab --> bbbb ;;
+**
+R562 : aab --> bbbb ;;
+##
+R563 : aab --> bbbba ;;
+**
+R563 : bbbba --> aab ;;
+##
+R564 : aab --> bbbbb ;;
+**
+R564 : aab --> bbbbb ;;
+##
+R565 : aaba --> aabaa ;;
+**
+R : aaba --> c ;;
+K0 : ca --> c ;;
+K2 : aabc --> cc ;;
+K3 : cba --> cc ;;
+K4 : ccc --> cbc ;;
+K5 : ccbc --> cbcc ;;
+##
+R566 : aaba --> aabab ;;
+**
+R566 : aabab --> aaba ;;
+##
+R567 : aaba --> aabb ;;
+**
+R567 : aabb --> aaba ;;
+##
+R568 : aaba --> aabba ;;
+**
+R568 : aabba --> aaba ;;
+##
+R569 : aaba --> aabbb ;;
+**
+R569 : aabbb --> aaba ;;
+##
+R570 : aaba --> ab ;;
+**
+R570 : ac --> ab ;;
+R : aba --> c ;;
+K0 : aabb --> abba ;;
+K1 : cb --> cc ;;
+K2 : cca --> abb ;;
+K4 : abbca --> ccc ;;
+K5 : abc --> abb ;;
+K6 : abbb --> abbc ;;
+##
+R571 : aaba --> aba ;;
+**
+R571 : aaba --> aba ;;
+##
+R572 : aaba --> abaa ;;
+**
+R572 : abaa --> aaba ;;
+##
+R573 : aaba --> abaaa ;;
+**
+R573 : abaaa --> aaba ;;
+##
+R574 : aaba --> abaab ;;
+**
+R : ab --> f ;;
+R : fa --> j ;;
+K1 : jf --> aj ;;
+K2 : aja --> jj ;;
+K5 : jb --> ff ;;
+K6 : jja --> fjj ;;
+##
+R575 : aaba --> abab ;;
+**
+R : aba --> c ;;
+K0 : cb --> ac ;;
+K1 : aca --> abc ;;
+K2 : cca --> acc ;;
+##
+R576 : aaba --> ababa ;;
+**
+R576 : aaba --> ababa ;;
+##
+R577 : aaba --> ababb ;;
+**
+R577 : ababb --> aaba ;;
+##
+R578 : aaba --> abb ;;
+**
+R578 : abb --> aaba ;;
+##
+R579 : aaba --> abba ;;
+**
+R579 : abba --> aaba ;;
+##
+R580 : aaba --> abbaa ;;
+**
+R580 : abbaa --> aaba ;;
+##
+R581 : aaba --> abbab ;;
+**
+R581 : abbab --> aaba ;;
+K0 : aababab --> abbaaba ;;
+##
+R582 : aaba --> abbb ;;
+**
+R582 : abbb --> aaba ;;
+##
+R583 : aaba --> abbba ;;
+**
+R583 : abbba --> aaba ;;
+##
+R584 : aaba --> abbbb ;;
+**
+R584 : abbbb --> aaba ;;
+##
+R585 : aaba --> b ;;
+**
+R585 : aaba --> b ;;
+K0 : baba --> aabb ;;
+K1 : aaaabb --> bba ;;
+K2 : baaabb --> aabbba ;;
+##
+R586 : aaba --> ba ;;
+**
+R586 : aac --> c ;;
+R : ba --> c ;;
+K1 : bc --> cac ;;
+##
+R587 : aaba --> baa ;;
+**
+R587 : baa --> aaba ;;
+##
+R588 : aaba --> baaa ;;
+**
+R588 : baaa --> aaba ;;
+##
+R589 : aaba --> baaaa ;;
+**
+R589 : baaaa --> aaba ;;
+##
+R590 : aaba --> baaab ;;
+**
+R590 : bac --> ca ;;
+R : aab --> c ;;
+K0 : aaca --> cac ;;
+K1 : cacab --> aacc ;;
+K2 : aaaacc --> caccab ;;
+K3 : aaccac --> cacaca ;;
+K4 : aaccaaacc --> cacaccacb ;;
+K5 : baaacc --> ccacb ;;
+##
+R591 : aaba --> baab ;;
+**
+R591 : aac --> cab ;;
+R : ba --> c ;;
+K1 : bcab --> cac ;;
+K2 : bcac --> caca ;;
+##
+R592 : aaba --> baaba ;;
+**
+R592 : bc --> c ;;
+R : aaba --> c ;;
+K1 : baac --> aac ;;
+K2 : caba --> aac ;;
+K3 : aaaac --> cac ;;
+K4 : caaac --> aacac ;;
+##
+R593 : aaba --> baabb ;;
+**
+R593 : baabb --> aaba ;;
+K0 : aabaaabb --> baabaaba ;;
+##
+R594 : aaba --> bab ;;
+**
+R594 : aaba --> bab ;;
+K0 : bababa --> aabbab ;;
+K1 : aaaabbab --> babbaba ;;
+K2 : baaabbab --> aabbabba ;;
+##
+R595 : aaba --> baba ;;
+**
+R595 : baba --> c ;;
+R : aaba --> c ;;
+K0 : bac --> aac ;;
+K1 : cba --> aac ;;
+K2 : caba --> aabc ;;
+K3 : aaaac --> cc ;;
+K4 : babc --> aabc ;;
+K5 : aaaabc --> cbc ;;
+K6 : caaac --> aabcc ;;
+K7 : baaabc --> cbc ;;
+K8 : baaac --> cc ;;
+K9 : caac --> aacc ;;
+K12 : caabc --> aacbc ;;
+K15 : caaabc --> aabcbc ;;
+##
+R596 : aaba --> babaa ;;
+**
+R596 : babaa --> aaba ;;
+##
+R597 : aaba --> babab ;;
+**
+R597 : aaba --> babab ;;
+K0 : aabbabab --> babababa ;;
+##
+R598 : aaba --> babb ;;
+**
+R598 : aaba --> babb ;;
+K0 : aabbabb --> babbaba ;;
+##
+R599 : aaba --> babba ;;
+**
+R599 : cbc --> aac ;;
+R : ba --> c ;;
+K0 : aaaac --> ccac ;;
+K1 : bccac --> caaac ;;
+K2 : aaccac --> ccaaac ;;
+K3 : bccaaac --> caccac ;;
+K4 : aaccaaac --> ccaccac ;;
+##
+R600 : aaba --> babbb ;;
+**
+R600 : babbb --> aaba ;;
+K0 : aabaabbb --> babbaaba ;;
+##
+R601 : aaba --> bb ;;
+**
+R601 : aaba --> bb ;;
+K0 : bbaba --> aabbb ;;
+##
+R602 : aaba --> bba ;;
+**
+R602 : bba --> aaba ;;
+##
+R603 : aaba --> bbaa ;;
+**
+R603 : bbaa --> aaba ;;
+##
+R604 : aaba --> bbaaa ;;
+**
+R604 : bbaaa --> aaba ;;
+##
+R605 : aaba --> bbaab ;;
+**
+R605 : bbaab --> aaba ;;
+K0 : bbaaaaba --> aababaab ;;
+##
+R606 : aaba --> bbab ;;
+**
+R606 : bbab --> aaba ;;
+K0 : bbaaaba --> aababab ;;
+##
+R607 : aaba --> bbaba ;;
+**
+R607 : bbaba --> aaba ;;
+##
+R608 : aaba --> bbabb ;;
+**
+R608 : bbabb --> aaba ;;
+K0 : bbaaaba --> aabaabb ;;
+K1 : bbabaaba --> aabababb ;;
+##
+R609 : aaba --> bbb ;;
+**
+R609 : aaba --> bbb ;;
+K0 : bbbaba --> aabbbb ;;
+##
+R610 : aaba --> bbba ;;
+**
+R610 : bbba --> aaba ;;
+##
+R611 : aaba --> bbbaa ;;
+**
+R611 : bbbaa --> aaba ;;
+##
+R612 : aaba --> bbbab ;;
+**
+R612 : bbbab --> aaba ;;
+K0 : bbbaaaba --> aababbab ;;
+##
+R613 : aaba --> bbbb ;;
+**
+R613 : aaba --> bbbb ;;
+K0 : aabbbbb --> bbbbaba ;;
+##
+R614 : aaba --> bbbba ;;
+**
+R614 : bbbba --> aaba ;;
+##
+R615 : aaba --> bbbbb ;;
+**
+R615 : bbbbb --> aaba ;;
+K0 : aabab --> baaba ;;
+##
+R616 : aabaa --> aabab ;;
+**
+R616 : aabab --> aabaa ;;
+##
+R617 : aabaa --> aabb ;;
+**
+R617 : aabb --> aabaa ;;
+##
+R618 : aabaa --> aabba ;;
+**
+R618 : aabba --> aabaa ;;
+##
+R619 : aabaa --> aabbb ;;
+**
+R619 : aabbb --> aabaa ;;
+##
+R620 : aabaa --> ab ;;
+**
+R620 : ccbcc --> cb ;;
+R : a --> c ;;
+K0 : cbcbcccc --> ccbcb ;;
+K1 : cbb --> cbcbcc ;;
+##
+R621 : aabaa --> aba ;;
+**
+R621 : aabaa --> aba ;;
+K0 : ababaa --> aababa ;;
+##
+R622 : aabaa --> abaa ;;
+**
+R622 : ac --> c ;;
+R : abaa --> c ;;
+K2 : cbaa --> cc ;;
+K3 : abc --> cc ;;
+K4 : ccc --> cbc ;;
+K5 : ccbc --> cbcc ;;
+##
+R623 : aabaa --> abaaa ;;
+**
+R623 : abaaa --> aabaa ;;
+##
+R624 : aabaa --> abaab ;;
+**
+R624 : abaab --> c ;;
+R : aabaa --> c ;;
+K0 : cb --> ac ;;
+K2 : caa --> abc ;;
+K3 : cabaa --> aabac ;;
+##
+R625 : aabaa --> abab ;;
+**
+R : ab --> e ;;
+R : ea --> h ;;
+K1 : aha --> ee ;;
+K2 : hha --> eee ;;
+K3 : eeha --> ahee ;;
+K4 : eeb --> ahe ;;
+K5 : hb --> ee ;;
+##
+R626 : aabaa --> ababa ;;
+**
+R626 : aabaa --> ababa ;;
+K0 : aabababa --> abababaa ;;
+##
+R627 : aabaa --> ababb ;;
+**
+R627 : ababb --> aabaa ;;
+##
+R628 : aabaa --> abb ;;
+**
+R628 : abb --> aabaa ;;
+##
+R629 : aabaa --> abba ;;
+**
+R629 : aabaa --> abba ;;
+K0 : abbabaa --> aababba ;;
+##
+R630 : aabaa --> abbaa ;;
+**
+R630 : abbaa --> aabaa ;;
+##
+R631 : aabaa --> abbab ;;
+**
+R631 : abbab --> c ;;
+R : aabaa --> c ;;
+K0 : cbbab --> aabac ;;
+K1 : cbab --> abbc ;;
+K2 : cabaa --> aabac ;;
+K3 : cbaa --> aabc ;;
+##
+R632 : aabaa --> abbb ;;
+**
+R632 : abbb --> aabaa ;;
+##
+R633 : aabaa --> abbba ;;
+**
+R633 : abbba --> aabaa ;;
+##
+R634 : aabaa --> abbbb ;;
+**
+R634 : abbbb --> aabaa ;;
+##
+R635 : aabaa --> b ;;
+**
+R635 : aabaa --> b ;;
+K0 : babaa --> aabab ;;
+K1 : bbaa --> aabb ;;
+##
+R636 : aabaa --> ba ;;
+**
+R636 : aac --> ba ;;
+R : baa --> c ;;
+K2 : baba --> cac ;;
+K3 : bba --> cc ;;
+K4 : bac --> caca ;;
+K5 : bc --> cca ;;
+##
+R637 : aabaa --> baa ;;
+**
+R637 : aac --> c ;;
+R : baa --> c ;;
+K2 : bac --> cac ;;
+K3 : bc --> cc ;;
+##
+R638 : aabaa --> baaa ;;
+**
+R638 : baaa --> aabaa ;;
+##
+R639 : aabaa --> baaaa ;;
+**
+R639 : baaaa --> aabaa ;;
+##
+R640 : aabaa --> baaab ;;
+**
+R640 : baaab --> c ;;
+R : aabaa --> c ;;
+K0 : cab --> aac ;;
+K1 : caa --> bac ;;
+K2 : cbaa --> aabc ;;
+##
+R641 : aabaa --> baab ;;
+**
+R641 : aac --> cb ;;
+R : baa --> c ;;
+K2 : bacb --> cac ;;
+K3 : bcb --> cc ;;
+K4 : bacc --> cacaa ;;
+K5 : bcc --> ccaa ;;
+##
+R642 : aabaa --> baaba ;;
+**
+R642 : aac --> cba ;;
+R : baa --> c ;;
+K3 : bacba --> cac ;;
+K4 : bcba --> cc ;;
+K5 : bacc --> caca ;;
+K6 : bcc --> cca ;;
+##
+R643 : aabaa --> baabb ;;
+**
+R643 : baabb --> c ;;
+R : aabaa --> c ;;
+K0 : cbb --> aac ;;
+K1 : caabb --> baabc ;;
+K2 : cabaa --> aabac ;;
+K3 : cbaa --> aabc ;;
+##
+R644 : aabaa --> bab ;;
+**
+R644 : aabaa --> bab ;;
+K0 : bababaa --> aababab ;;
+K1 : babbaa --> aabbab ;;
+##
+R645 : aabaa --> baba ;;
+**
+R645 : aaca --> cc ;;
+R : ba --> c ;;
+K0 : aaccc --> cbcc ;;
+K1 : aabcc --> ccca ;;
+K2 : caca --> bcc ;;
+K3 : bcbcc --> caccc ;;
+K4 : bccca --> cabcc ;;
+K5 : aaccbcc --> ccaccc ;;
+K6 : bccaccc --> caccbcc ;;
+K7 : bccabcc --> cacccca ;;
+K8 : bccaccbcc --> cacccaccc ;;
+##
+R646 : aabaa --> babaa ;;
+**
+R646 : babaa --> aabaa ;;
+##
+R647 : aabaa --> babab ;;
+**
+R647 : aabaa --> babab ;;
+K0 : aabababab --> babababaa ;;
+K1 : aabbabab --> bababbaa ;;
+##
+R648 : aabaa --> babb ;;
+**
+R648 : aabaa --> babb ;;
+K0 : babbabaa --> aabababb ;;
+K1 : babbbaa --> aabbabb ;;
+##
+R649 : aabaa --> babba ;;
+**
+R649 : babba --> aabaa ;;
+K0 : babaabaa --> aabaabba ;;
+##
+R650 : aabaa --> babbb ;;
+**
+R650 : babbb --> aabaa ;;
+K0 : babbaabaa --> aabaaabbb ;;
+##
+R651 : aabaa --> bb ;;
+**
+R651 : aabaa --> bb ;;
+K0 : bbabaa --> aababb ;;
+K1 : bbbaa --> aabbb ;;
+##
+R652 : aabaa --> bba ;;
+**
+R652 : bba --> aabaa ;;
+##
+R653 : aabaa --> bbaa ;;
+**
+R653 : bbaa --> aabaa ;;
+##
+R654 : aabaa --> bbaaa ;;
+**
+R654 : bbaaa --> aabaa ;;
+##
+R655 : aabaa --> bbaab ;;
+**
+R655 : bbaab --> aabaa ;;
+K0 : bbaaaabaa --> aabaabaab ;;
+##
+R656 : aabaa --> bbab ;;
+**
+R656 : aabaa --> bbab ;;
+K0 : bbababaa --> aababbab ;;
+K1 : bbabbaa --> aabbbab ;;
+##
+R657 : aabaa --> bbaba ;;
+**
+R657 : bbaba --> aabaa ;;
+##
+R658 : aabaa --> bbabb ;;
+**
+R658 : bbabb --> aabaa ;;
+K0 : bbaaabaa --> aabaaabb ;;
+K1 : bbabaabaa --> aabaababb ;;
+##
+R659 : aabaa --> bbb ;;
+**
+R659 : aabaa --> bbb ;;
+K0 : bbbabaa --> aababbb ;;
+K1 : bbbbaa --> aabbbb ;;
+##
+R660 : aabaa --> bbba ;;
+**
+R660 : bbba --> aabaa ;;
+##
+R661 : aabaa --> bbbaa ;;
+**
+R661 : bbbaa --> aabaa ;;
+##
+R662 : aabaa --> bbbab ;;
+**
+R662 : bbbab --> aabaa ;;
+K0 : bbbaaabaa --> aabaabbab ;;
+##
+R663 : aabaa --> bbbb ;;
+**
+R663 : aabaa --> bbbb ;;
+K0 : bbbbabaa --> aababbbb ;;
+K1 : bbbbbaa --> aabbbbb ;;
+##
+R664 : aabaa --> bbbba ;;
+**
+R664 : bbbba --> aabaa ;;
+##
+R665 : aabaa --> bbbbb ;;
+**
+R665 : aabaa --> bbbbb ;;
+K0 : aababbbbb --> bbbbbabaa ;;
+K1 : aabbbbbb --> bbbbbbaa ;;
+##
+R666 : aabab --> aabb ;;
+**
+R666 : aabab --> aabb ;;
+##
+R667 : aabab --> aabba ;;
+**
+R667 : aabab --> aabba ;;
+##
+R668 : aabab --> aabbb ;;
+**
+R668 : aabbb --> aabab ;;
+##
+R669 : aabab --> ab ;;
+**
+R669 : aabab --> ab ;;
+##
+R670 : aabab --> aba ;;
+**
+R670 : aabab --> aba ;;
+##
+R671 : aabab --> abaa ;;
+**
+R671 : aabab --> abaa ;;
+##
+R672 : aabab --> abaaa ;;
+**
+R672 : aabab --> abaaa ;;
+##
+R673 : aabab --> abaab ;;
+**
+R673 : aabab --> abaab ;;
+##
+R674 : aabab --> abab ;;
+**
+R674 : aabab --> abab ;;
+##
+R675 : aabab --> ababa ;;
+**
+R675 : aabab --> ababa ;;
+##
+R676 : aabab --> ababb ;;
+**
+R676 : ababb --> aabab ;;
+##
+R677 : aabab --> abb ;;
+**
+R677 : aabab --> abb ;;
+##
+R678 : aabab --> abba ;;
+**
+R678 : aabab --> abba ;;
+##
+R679 : aabab --> abbaa ;;
+**
+R679 : aabab --> abbaa ;;
+##
+R680 : aabab --> abbab ;;
+**
+R680 : aabab --> abbab ;;
+##
+R681 : aabab --> abbb ;;
+**
+R681 : aabab --> abbb ;;
+##
+R682 : aabab --> abbba ;;
+**
+R682 : aabab --> abbba ;;
+##
+R683 : aabab --> abbbb ;;
+**
+R683 : abbbb --> aabab ;;
+##
+R684 : aabab --> b ;;
+**
+R684 : aabab --> b ;;
+##
+R685 : aabab --> ba ;;
+**
+R685 : aabab --> ba ;;
+##
+R686 : aabab --> baa ;;
+**
+R686 : aabab --> baa ;;
+##
+R687 : aabab --> baaa ;;
+**
+R687 : aabab --> baaa ;;
+##
+R688 : aabab --> baaaa ;;
+**
+R688 : baaaa --> aabab ;;
+##
+R689 : aabab --> baaab ;;
+**
+R689 : aabab --> baaab ;;
+##
+R690 : aabab --> baab ;;
+**
+R690 : aabab --> baab ;;
+##
+R691 : aabab --> baaba ;;
+**
+R691 : aabab --> baaba ;;
+##
+R692 : aabab --> baabb ;;
+**
+R692 : aabab --> baabb ;;
+##
+R693 : aabab --> bab ;;
+**
+R693 : aabab --> bab ;;
+##
+R694 : aabab --> baba ;;
+**
+R694 : aabab --> baba ;;
+##
+R695 : aabab --> babaa ;;
+**
+R695 : babaa --> aabab ;;
+##
+R696 : aabab --> babab ;;
+**
+R696 : aabab --> babab ;;
+##
+R697 : aabab --> babb ;;
+**
+R697 : aabab --> babb ;;
+##
+R698 : aabab --> babba ;;
+**
+R698 : aabab --> babba ;;
+##
+R699 : aabab --> babbb ;;
+**
+R699 : aabab --> babbb ;;
+##
+R700 : aabab --> bb ;;
+**
+R700 : aabab --> bb ;;
+##
+R701 : aabab --> bba ;;
+**
+R701 : aabab --> bba ;;
+##
+R702 : aabab --> bbaa ;;
+**
+R702 : aabab --> bbaa ;;
+##
+R703 : aabab --> bbaaa ;;
+**
+R703 : bbaaa --> aabab ;;
+##
+R704 : aabab --> bbaab ;;
+**
+R704 : aabab --> bbaab ;;
+##
+R705 : aabab --> bbab ;;
+**
+R705 : aabab --> bbab ;;
+##
+R706 : aabab --> bbaba ;;
+**
+R706 : bbaba --> aabab ;;
+##
+R707 : aabab --> bbabb ;;
+**
+R707 : aabab --> bbabb ;;
+##
+R708 : aabab --> bbb ;;
+**
+R708 : aabab --> bbb ;;
+##
+R709 : aabab --> bbba ;;
+**
+R709 : aabab --> bbba ;;
+##
+R710 : aabab --> bbbaa ;;
+**
+R710 : bbbaa --> aabab ;;
+##
+R711 : aabab --> bbbab ;;
+**
+R711 : aabab --> bbbab ;;
+##
+R712 : aabab --> bbbb ;;
+**
+R712 : aabab --> bbbb ;;
+##
+R713 : aabab --> bbbba ;;
+**
+R713 : bbbba --> aabab ;;
+##
+R714 : aabab --> bbbbb ;;
+**
+R714 : aabab --> bbbbb ;;
+##
+R715 : aabb --> aabba ;;
+**
+R : aabb --> c ;;
+K0 : ca --> c ;;
+K2 : cbb --> cc ;;
+##
+R716 : aabb --> aabbb ;;
+**
+R716 : aabbb --> aabb ;;
+##
+R717 : aabb --> ab ;;
+**
+R717 : aabb --> ab ;;
+##
+R718 : aabb --> aba ;;
+**
+R718 : aabb --> aba ;;
+##
+R719 : aabb --> abaa ;;
+**
+R719 : aabb --> abaa ;;
+##
+R720 : aabb --> abaaa ;;
+**
+R720 : aabb --> abaaa ;;
+##
+R721 : aabb --> abaab ;;
+**
+R721 : abaab --> aabb ;;
+K0 : abaaabb --> aabbaab ;;
+##
+R722 : aabb --> abab ;;
+**
+R722 : abab --> aabb ;;
+K0 : abaabb --> aabbab ;;
+##
+R723 : aabb --> ababa ;;
+**
+R723 : aabb --> ababa ;;
+##
+R724 : aabb --> ababb ;;
+**
+R724 : ababb --> aabb ;;
+##
+R725 : aabb --> abb ;;
+**
+R725 : aabb --> abb ;;
+##
+R726 : aabb --> abba ;;
+**
+R726 : aabb --> abba ;;
+##
+R727 : aabb --> abbaa ;;
+**
+R727 : aabb --> abbaa ;;
+##
+R728 : aabb --> abbab ;;
+**
+R728 : abbab --> aabb ;;
+K0 : aabbbab --> abbaabb ;;
+##
+R729 : aabb --> abbb ;;
+**
+R729 : abbb --> aabb ;;
+##
+R730 : aabb --> abbba ;;
+**
+R730 : aabb --> abbba ;;
+##
+R731 : aabb --> abbbb ;;
+**
+R731 : abbbb --> aabb ;;
+##
+R732 : aabb --> b ;;
+**
+R732 : aabb --> b ;;
+##
+R733 : aabb --> ba ;;
+**
+R733 : aabb --> ba ;;
+##
+R734 : aabb --> baa ;;
+**
+R734 : aabb --> baa ;;
+##
+R735 : aabb --> baaa ;;
+**
+R735 : baaa --> aabb ;;
+##
+R736 : aabb --> baaaa ;;
+**
+R736 : baaaa --> aabb ;;
+##
+R737 : aabb --> baaab ;;
+**
+R737 : aabb --> baaab ;;
+##
+R738 : aabb --> baab ;;
+**
+R738 : aabb --> baab ;;
+##
+R739 : aabb --> baaba ;;
+**
+R739 : aabb --> baaba ;;
+##
+R740 : aabb --> baabb ;;
+**
+R740 : bc --> c ;;
+R : aabb --> c ;;
+K1 : aac --> cc ;;
+##
+R741 : aabb --> bab ;;
+**
+R741 : aabb --> bab ;;
+##
+R742 : aabb --> baba ;;
+**
+R742 : aabb --> baba ;;
+##
+R743 : aabb --> babaa ;;
+**
+R743 : babaa --> aabb ;;
+##
+R744 : aabb --> babab ;;
+**
+R744 : aabb --> babab ;;
+##
+R745 : aabb --> babb ;;
+**
+R745 : aabb --> babb ;;
+##
+R746 : aabb --> babba ;;
+**
+R746 : aabb --> babba ;;
+##
+R747 : aabb --> babbb ;;
+**
+R747 : aabb --> babbb ;;
+##
+R748 : aabb --> bb ;;
+**
+R748 : aabb --> bb ;;
+##
+R749 : aabb --> bba ;;
+**
+R749 : aabb --> bba ;;
+##
+R750 : aabb --> bbaa ;;
+**
+R750 : bbaa --> aabb ;;
+##
+R751 : aabb --> bbaaa ;;
+**
+R751 : bbaaa --> aabb ;;
+##
+R752 : aabb --> bbaab ;;
+**
+R752 : aabb --> bbaab ;;
+##
+R753 : aabb --> bbab ;;
+**
+R753 : aabb --> bbab ;;
+##
+R754 : aabb --> bbaba ;;
+**
+R754 : bbaba --> aabb ;;
+##
+R755 : aabb --> bbabb ;;
+**
+R755 : aabb --> bbabb ;;
+##
+R756 : aabb --> bbb ;;
+**
+R756 : aabb --> bbb ;;
+##
+R757 : aabb --> bbba ;;
+**
+R757 : bbba --> aabb ;;
+##
+R758 : aabb --> bbbaa ;;
+**
+R758 : bbbaa --> aabb ;;
+##
+R759 : aabb --> bbbab ;;
+**
+R759 : aabb --> bbbab ;;
+##
+R760 : aabb --> bbbb ;;
+**
+R760 : aabb --> bbbb ;;
+##
+R761 : aabb --> bbbba ;;
+**
+R761 : bbbba --> aabb ;;
+##
+R762 : aabb --> bbbbb ;;
+**
+R762 : aabb --> bbbbb ;;
+##
+R763 : aabba --> aabbb ;;
+**
+R763 : aabbb --> aabba ;;
+##
+R764 : aabba --> ab ;;
+**
+R764 : ac --> ab ;;
+R : abca --> c ;;
+K1 : abb --> abc ;;
+K2 : cb --> cc ;;
+K4 : abcc --> ccca ;;
+##
+R765 : aabba --> aba ;;
+**
+R765 : aabba --> aba ;;
+##
+R766 : aabba --> abaa ;;
+**
+R766 : aabba --> abaa ;;
+##
+R767 : aabba --> abaaa ;;
+**
+R767 : abaaa --> aabba ;;
+##
+R768 : aabba --> abaab ;;
+**
+R : abba --> d ;;
+R : baab --> i ;;
+K0 : ai --> ad ;;
+K1 : adaab --> abaad ;;
+K2 : adba --> abad ;;
+K3 : di --> dd ;;
+K4 : iaab --> baad ;;
+K6 : ddaab --> dbaad ;;
+K7 : ddba --> dbad ;;
+K8 : dbba --> abbd ;;
+K9 : dab --> abi ;;
+K10 : iba --> bad ;;
+##
+R770 : aabba --> ababa ;;
+**
+R770 : ababa --> aabba ;;
+K1 : abaabba --> aabbaba ;;
+##
+R771 : aabba --> ababb ;;
+**
+R771 : ababb --> aabba ;;
+##
+R772 : aabba --> abb ;;
+**
+R772 : ac --> abb ;;
+R : abba --> c ;;
+K1 : cbb --> cc ;;
+K2 : abbbb --> cca ;;
+K4 : abbc --> cca ;;
+##
+R773 : aabba --> abba ;;
+**
+R773 : aabba --> abba ;;
+##
+R774 : aabba --> abbaa ;;
+**
+R774 : abbaa --> aabba ;;
+##
+R775 : aabba --> abbab ;;
+**
+R775 : acb --> aac ;;
+R : bba --> c ;;
+K0 : aaaca --> acc ;;
+K2 : ccb --> cac ;;
+K3 : caaca --> ccc ;;
+K4 : accaca --> aaaccc ;;
+K7 : cccaca --> caaccc ;;
+##
+R776 : aabba --> abbb ;;
+**
+R776 : abbb --> aabba ;;
+##
+R777 : aabba --> abbba ;;
+**
+R777 : abbba --> aabba ;;
+##
+R778 : aabba --> abbbb ;;
+**
+R778 : abbbb --> aabba ;;
+##
+R779 : aabba --> b ;;
+**
+R779 : aabba --> b ;;
+K0 : babba --> aabbb ;;
+K1 : aabaabbb --> bbba ;;
+K2 : babaabbb --> aabbbbba ;;
+##
+R780 : aabba --> ba ;;
+**
+R780 : aac --> ba ;;
+R : bba --> c ;;
+K1 : bc --> cac ;;
+##
+R781 : aabba --> baa ;;
+**
+R781 : baa --> aabba ;;
+##
+R782 : aabba --> baaa ;;
+**
+R782 : baaa --> aabba ;;
+##
+R783 : aabba --> baaaa ;;
+**
+R783 : baaaa --> aabba ;;
+##
+R784 : aabba --> baaab ;;
+**
+R784 : baaab --> c ;;
+R : aabba --> c ;;
+K0 : caab --> aabc ;;
+K1 : caaab --> baaac ;;
+K2 : cba --> bac ;;
+K3 : cabba --> aabbc ;;
+##
+R785 : aabba --> baab ;;
+**
+R785 : aac --> baab ;;
+R : bba --> c ;;
+K1 : bcab --> cac ;;
+K2 : bcac --> cacba ;;
+##
+R787 : aabba --> baabb ;;
+**
+R787 : aac --> baabb ;;
+R : bba --> c ;;
+K1 : bcabb --> cac ;;
+K2 : bcabc --> cacba ;;
+K3 : bcac --> caca ;;
+##
+R788 : aabba --> bab ;;
+**
+R788 : aabba --> bab ;;
+K0 : aabbbab --> bababba ;;
+##
+R789 : aabba --> baba ;;
+**
+R789 : aabba --> c ;;
+R : baba --> c ;;
+K0 : aabbc --> cabba ;;
+K1 : aabc --> cba ;;
+K2 : babc --> cabba ;;
+K3 : bac --> cba ;;
+##
+R790 : aabba --> babaa ;;
+**
+R790 : babaa --> aabba ;;
+##
+R791 : aabba --> babab ;;
+**
+R791 : aabba --> babab ;;
+K0 : aabbbabab --> babababba ;;
+##
+R792 : aabba --> babb ;;
+**
+R792 : aabba --> babb ;;
+K0 : babbabba --> aabbbabb ;;
+K1 : aabaabbbabb --> babbbbabba ;;
+K2 : babaabbbabb --> aabbbabbbba ;;
+##
+R793 : aabba --> babba ;;
+**
+R793 : babba --> c ;;
+R : aabba --> c ;;
+K0 : babc --> aabc ;;
+K1 : cbba --> aabc ;;
+K2 : cabba --> aabbc ;;
+K3 : aabaabc --> cbc ;;
+K4 : babbc --> aabbc ;;
+K5 : aabaabbc --> cbbc ;;
+K6 : cabaabc --> aabbcbc ;;
+K7 : babaabbc --> cbbc ;;
+K8 : babaabc --> cbc ;;
+K9 : cbaabc --> aabcbc ;;
+K12 : cbaabbc --> aabcbbc ;;
+K15 : cabaabbc --> aabbcbbc ;;
+##
+R794 : aabba --> babbb ;;
+**
+R794 : aabba --> babbb ;;
+K0 : aabbbabbb --> babbbabba ;;
+##
+R795 : aabba --> bb ;;
+**
+R795 : aabba --> bb ;;
+K0 : aabbbb --> bbabba ;;
+##
+R796 : aabba --> bba ;;
+**
+R796 : aac --> c ;;
+R : bba --> c ;;
+K1 : bbc --> cac ;;
+##
+R797 : aabba --> bbaa ;;
+**
+R797 : bbaa --> aabba ;;
+##
+R798 : aabba --> bbaaa ;;
+**
+R798 : bbaaa --> aabba ;;
+##
+R799 : aabba --> bbaab ;;
+**
+R799 : bbaab --> c ;;
+R : aabba --> c ;;
+K0 : cab --> aac ;;
+K1 : cba --> bbc ;;
+##
+R800 : aabba --> bbab ;;
+**
+R800 : aabba --> bbab ;;
+K0 : aabbbbab --> bbababba ;;
+##
+R801 : aabba --> bbaba ;;
+**
+R801 : bbaba --> aabba ;;
+##
+R802 : aabba --> bbabb ;;
+**
+R802 : aabba --> bbabb ;;
+K0 : aabbbbabb --> bbabbabba ;;
+##
+R803 : aabba --> bbb ;;
+**
+R803 : aabba --> bbb ;;
+K0 : bbbabba --> aabbbbb ;;
+##
+R804 : aabba --> bbba ;;
+**
+R804 : bbba --> aabba ;;
+##
+R805 : aabba --> bbbaa ;;
+**
+R805 : bbbaa --> aabba ;;
+##
+R806 : aabba --> bbbab ;;
+**
+R806 : bbbab --> aabba ;;
+K0 : bbbaaabba --> aabbabbab ;;
+##
+R807 : aabba --> bbbb ;;
+**
+R807 : aabba --> bbbb ;;
+K0 : bbbbabba --> aabbbbbb ;;
+##
+R808 : aabba --> bbbba ;;
+**
+R808 : bbbba --> aabba ;;
+##
+R809 : aabba --> bbbbb ;;
+**
+R809 : aabba --> bbbbb ;;
+K0 : aabbbbbbb --> bbbbbabba ;;
+##
+R810 : aabbb --> ab ;;
+**
+R810 : aabbb --> ab ;;
+##
+R811 : aabbb --> aba ;;
+**
+R811 : aabbb --> aba ;;
+##
+R812 : aabbb --> abaa ;;
+**
+R812 : aabbb --> abaa ;;
+##
+R813 : aabbb --> abaaa ;;
+**
+R813 : aabbb --> abaaa ;;
+##
+R814 : aabbb --> abaab ;;
+**
+R814 : abaab --> aabbb ;;
+K0 : abaaabbb --> aabbbaab ;;
+##
+R815 : aabbb --> abab ;;
+**
+R815 : aabbb --> abab ;;
+##
+R816 : aabbb --> ababa ;;
+**
+R816 : aabbb --> ababa ;;
+##
+R817 : aabbb --> ababb ;;
+**
+R817 : ababb --> aabbb ;;
+##
+R818 : aabbb --> abb ;;
+**
+R818 : aabbb --> abb ;;
+##
+R819 : aabbb --> abba ;;
+**
+R819 : aabbb --> abba ;;
+##
+R820 : aabbb --> abbaa ;;
+**
+R820 : aabbb --> abbaa ;;
+##
+R821 : aabbb --> abbab ;;
+**
+R821 : abbab --> aabbb ;;
+K0 : abbaabbb --> aabbbbab ;;
+##
+R822 : aabbb --> abbb ;;
+**
+R822 : aabbb --> abbb ;;
+##
+R823 : aabbb --> abbba ;;
+**
+R823 : aabbb --> abbba ;;
+##
+R824 : aabbb --> abbbb ;;
+**
+R824 : abbbb --> aabbb ;;
+##
+R825 : aabbb --> b ;;
+**
+R825 : aabbb --> b ;;
+##
+R826 : aabbb --> ba ;;
+**
+R826 : aabbb --> ba ;;
+##
+R827 : aabbb --> baa ;;
+**
+R827 : aabbb --> baa ;;
+##
+R828 : aabbb --> baaa ;;
+**
+R828 : aabbb --> baaa ;;
+##
+R829 : aabbb --> baaaa ;;
+**
+R829 : baaaa --> aabbb ;;
+##
+R830 : aabbb --> baaab ;;
+**
+R830 : aabbb --> baaab ;;
+##
+R831 : aabbb --> baab ;;
+**
+R831 : aabbb --> baab ;;
+##
+R832 : aabbb --> baaba ;;
+**
+R832 : aabbb --> baaba ;;
+##
+R833 : aabbb --> baabb ;;
+**
+R833 : aabbb --> baabb ;;
+##
+R834 : aabbb --> bab ;;
+**
+R834 : aabbb --> bab ;;
+##
+R835 : aabbb --> baba ;;
+**
+R835 : aabbb --> baba ;;
+##
+R836 : aabbb --> babaa ;;
+**
+R836 : babaa --> aabbb ;;
+##
+R837 : aabbb --> babab ;;
+**
+R837 : aabbb --> babab ;;
+##
+R838 : aabbb --> babb ;;
+**
+R838 : aabbb --> babb ;;
+##
+R839 : aabbb --> babba ;;
+**
+R839 : aabbb --> babba ;;
+##
+R840 : aabbb --> babbb ;;
+**
+R840 : aabbb --> babbb ;;
+##
+R841 : aabbb --> bb ;;
+**
+R841 : aabbb --> bb ;;
+##
+R842 : aabbb --> bba ;;
+**
+R842 : aabbb --> bba ;;
+##
+R843 : aabbb --> bbaa ;;
+**
+R843 : aabbb --> bbaa ;;
+##
+R844 : aabbb --> bbaaa ;;
+**
+R844 : bbaaa --> aabbb ;;
+##
+R845 : aabbb --> bbaab ;;
+**
+R845 : aabbb --> bbaab ;;
+##
+R846 : aabbb --> bbab ;;
+**
+R846 : aabbb --> bbab ;;
+##
+R847 : aabbb --> bbaba ;;
+**
+R847 : bbaba --> aabbb ;;
+##
+R848 : aabbb --> bbabb ;;
+**
+R848 : aabbb --> bbabb ;;
+##
+R849 : aabbb --> bbb ;;
+**
+R849 : aabbb --> bbb ;;
+##
+R850 : aabbb --> bbba ;;
+**
+R850 : aabbb --> bbba ;;
+##
+R851 : aabbb --> bbbaa ;;
+**
+R851 : bbbaa --> aabbb ;;
+##
+R852 : aabbb --> bbbab ;;
+**
+R852 : aabbb --> bbbab ;;
+##
+R853 : aabbb --> bbbb ;;
+**
+R853 : aabbb --> bbbb ;;
+##
+R854 : aabbb --> bbbba ;;
+**
+R854 : bbbba --> aabbb ;;
+##
+R855 : aabbb --> bbbbb ;;
+**
+R855 : aabbb --> bbbbb ;;
+##
+R856 : ab --> aba ;;
+**
+R : ab --> c ;;
+K0 : ca --> c ;;
+K2 : cb --> cc ;;
+##
+R857 : ab --> abaa ;;
+**
+R : baa --> c ;;
+K0 : ab --> ac ;;
+K2 : cb --> cc ;;
+K3 : acaa --> ac ;;
+K4 : ccaa --> cc ;;
+##
+R858 : ab --> abaaa ;;
+**
+R : baaa --> c ;;
+K0 : ab --> ac ;;
+K2 : cb --> cc ;;
+K3 : acaaa --> ac ;;
+K4 : ccaaa --> cc ;;
+##
+R859 : ab --> abaab ;;
+**
+R859 : abaab --> ab ;;
+##
+R860 : ab --> abab ;;
+**
+R860 : abab --> ab ;;
+##
+R861 : ab --> ababa ;;
+**
+R : cbaa --> c ;;
+K0 : ab --> ac ;;
+K1 : acac --> acba ;;
+K3 : bac --> cba ;;
+K5 : cc --> cb ;;
+K8 : cbb --> cbc ;;
+K9 : cbcac --> cbcba ;;
+K10 : cbcaa --> cb ;;
+##
+R862 : ab --> ababb ;;
+**
+R862 : ababb --> ab ;;
+##
+R863 : ab --> abb ;;
+**
+R863 : abb --> ab ;;
+##
+R864 : ab --> abba ;;
+**
+R : bba --> c ;;
+K0 : ab --> ac ;;
+K2 : cb --> cc ;;
+K3 : acca --> ac ;;
+K4 : ccca --> cc ;;
+##
+R865 : ab --> abbaa ;;
+**
+R : bbaa --> c ;;
+K0 : ab --> ac ;;
+K2 : cb --> cc ;;
+K3 : accaa --> ac ;;
+K4 : cccaa --> cc ;;
+##
+R866 : ab --> abbab ;;
+**
+R866 : abbab --> ab ;;
+##
+R867 : ab --> abbb ;;
+**
+R867 : abbb --> ab ;;
+##
+R868 : ab --> abbba ;;
+**
+R : bbba --> c ;;
+K0 : ab --> ac ;;
+K2 : cb --> cc ;;
+K3 : accca --> ac ;;
+K4 : cccca --> cc ;;
+##
+R869 : ab --> abbbb ;;
+**
+R869 : abbbb --> ab ;;
+##
+R870 : ab --> b ;;
+**
+R870 : ab --> b ;;
+##
+R871 : ab --> ba ;;
+**
+R871 : ba --> ab ;;
+##
+R872 : ab --> baa ;;
+**
+R872 : baa --> ab ;;
+##
+R873 : ab --> baaa ;;
+**
+R873 : baaa --> ab ;;
+##
+R874 : ab --> baaaa ;;
+**
+R874 : baaaa --> ab ;;
+##
+R875 : ab --> baaab ;;
+**
+R875 : bc --> ab ;;
+R : aaab --> c ;;
+K0 : ac --> cc ;;
+##
+R876 : ab --> baab ;;
+**
+R876 : bc --> ab ;;
+R : aab --> c ;;
+K0 : ac --> cc ;;
+##
+R877 : ab --> baaba ;;
+**
+R : a --> d ;;
+R : ddb --> g ;;
+K0 : dg --> ggd ;;
+K1 : bgd --> db ;;
+K2 : dbdb --> bgg ;;
+K3 : bgggd --> dbg ;;
+K4 : bgbgg --> dbbdb ;;
+K5 : bggdb --> dbbgg ;;
+K6 : bgggbgg --> dbgbdb ;;
+K8 : dbgg --> gdb ;;
+K9 : bgggg --> gb ;;
+##
+R878 : ab --> baabb ;;
+**
+R878 : beb --> ab ;;
+R : aab --> e ;;
+K0 : eeb --> ae ;;
+K1 : beab --> e ;;
+K2 : eeab --> aae ;;
+K3 : aaae --> eee ;;
+K4 : eeae --> aeee ;;
+K5 : bee --> ae ;;
+K6 : beae --> aae ;;
+K7 : eeaae --> aaeee ;;
+K8 : baae --> aeab ;;
+K9 : beaae --> eee ;;
+K11 : bae --> aeb ;;
+##
+R879 : ab --> bab ;;
+**
+R879 : bc --> c ;;
+R : ab --> c ;;
+K1 : ac --> cc ;;
+##
+R880 : ab --> baba ;;
+**
+R : a --> d ;;
+R : db --> g ;;
+K0 : dg --> ggd ;;
+K1 : bgd --> g ;;
+K2 : bgg --> gb ;;
+##
+R881 : ab --> babaa ;;
+**
+R881 : babaa --> ab ;;
+##
+R882 : ab --> babab ;;
+**
+R882 : bf --> db ;;
+R : a --> d ;;
+R : dbdb --> f ;;
+K0 : ddb --> fdb ;;
+K4 : df --> ff ;;
+##
+R883 : ab --> babb ;;
+**
+R883 : bcb --> c ;;
+R : ab --> c ;;
+K0 : bcc --> ac ;;
+K1 : ccb --> ac ;;
+K2 : aac --> ccc ;;
+K3 : acb --> bac ;;
+K4 : bcac --> ccc ;;
+K5 : accc --> ccac ;;
+K6 : accac --> ccccc ;;
+##
+R885 : ab --> babbb ;;
+**
+R885 : egg --> f ;;
+R : gf --> e ;;
+R : ag --> f ;;
+R : b --> g ;;
+K0 : af --> ee ;;
+K1 : ffgg --> ee ;;
+K2 : ege --> ff ;;
+K3 : efgg --> gee ;;
+K4 : aee --> ffe ;;
+K5 : ffge --> eef ;;
+K8 : efge --> geef ;;
+K9 : aef --> fff ;;
+##
+R886 : ab --> bb ;;
+**
+R886 : ab --> bb ;;
+##
+R887 : ab --> bba ;;
+**
+R887 : bba --> ab ;;
+##
+R888 : ab --> bbaa ;;
+**
+R888 : bbaa --> ab ;;
+##
+R889 : ab --> bbaaa ;;
+**
+R889 : bbaaa --> ab ;;
+##
+R890 : ab --> bbaab ;;
+**
+R890 : df --> e ;;
+R : ad --> e ;;
+R : b --> d ;;
+R : c --> e ;;
+R : dg --> f ;;
+R : ae --> g ;;
+K0 : ag --> gf ;;
+K3 : ef --> g ;;
+K4 : ddaaf --> eg ;;
+K5 : edaaf --> gg ;;
+K6 : gdaaf --> gfg ;;
+K8 : fdaaf --> ffg ;;
+##
+R891 : ab --> bbab ;;
+**
+R891 : df --> e ;;
+R : ad --> e ;;
+R : b --> d ;;
+R : c --> e ;;
+R : de --> f ;;
+K2 : ae --> ef ;;
+K3 : ddaf --> ee ;;
+K4 : edaf --> efe ;;
+K6 : fdaf --> ffe ;;
+##
+R892 : ab --> bbaba ;;
+**
+R892 : bbaba --> ab ;;
+##
+R894 : ab --> bbb ;;
+**
+R894 : ab --> bbb ;;
+##
+R895 : ab --> bbba ;;
+**
+R895 : bbba --> ab ;;
+##
+R896 : ab --> bbbaa ;;
+**
+R896 : bbbaa --> ab ;;
+##
+R897 : ab --> bbbab ;;
+**
+R897 : df --> e ;;
+R : ad --> e ;;
+R : b --> d ;;
+R : c --> e ;;
+R : dg --> f ;;
+R : de --> g ;;
+K2 : ae --> ef ;;
+K3 : dddag --> ee ;;
+K4 : dddaf --> eg ;;
+K5 : eddag --> efe ;;
+K6 : eddaf --> efg ;;
+K8 : gddag --> gfe ;;
+K10 : gddaf --> gfg ;;
+K13 : fddag --> ffe ;;
+K16 : fddaf --> ffg ;;
+##
+R898 : ab --> bbbb ;;
+**
+R898 : ab --> bbbb ;;
+##
+R899 : ab --> bbbba ;;
+**
+R899 : bbbba --> ab ;;
+##
+R900 : ab --> bbbbb ;;
+**
+R900 : ab --> bbbbb ;;
+##
+R901 : aba --> abaa ;;
+**
+R901 : abaa --> aba ;;
+##
+R902 : aba --> abaaa ;;
+**
+R902 : abaaa --> aba ;;
+##
+R903 : aba --> abaab ;;
+**
+R : aba --> c ;;
+K0 : ccb --> c ;;
+K2 : ca --> cc ;;
+K3 : cba --> abc ;;
+##
+R904 : aba --> abab ;;
+**
+R : aba --> c ;;
+K0 : cb --> c ;;
+K1 : cab --> ca ;;
+K2 : abc --> ca ;;
+K3 : caa --> cc ;;
+K4 : cca --> cac ;;
+K5 : caca --> ccc ;;
+##
+R905 : aba --> ababa ;;
+**
+R905 : ababa --> aba ;;
+##
+R906 : aba --> ababb ;;
+**
+R906 : ababb --> aba ;;
+##
+R907 : aba --> abb ;;
+**
+R907 : abb --> aba ;;
+##
+R908 : aba --> abba ;;
+**
+R908 : abba --> aba ;;
+##
+R909 : aba --> abbaa ;;
+**
+R909 : abbaa --> aba ;;
+##
+R910 : aba --> abbab ;;
+**
+R : ab --> c ;;
+K0 : cbc --> ca ;;
+K1 : caa --> ccc ;;
+K2 : cccb --> cac ;;
+K3 : ccca --> cacc ;;
+K4 : caccb --> cccc ;;
+K5 : cacca --> ccccc ;;
+##
+R911 : aba --> abbb ;;
+**
+R911 : abbb --> aba ;;
+##
+R912 : aba --> abbba ;;
+**
+R912 : abbba --> aba ;;
+##
+R913 : aba --> abbbb ;;
+**
+R913 : abbbb --> aba ;;
+##
+R914 : aba --> b ;;
+**
+R914 : aba --> b ;;
+K0 : bba --> abb ;;
+##
+R915 : aba --> ba ;;
+**
+R915 : ac --> c ;;
+R : ba --> c ;;
+K1 : bc --> cc ;;
+##
+R916 : aba --> baa ;;
+**
+R916 : baa --> aba ;;
+##
+R917 : aba --> baaa ;;
+**
+R917 : baaa --> aba ;;
+##
+R918 : aba --> baaaa ;;
+**
+R918 : baaaa --> aba ;;
+##
+R920 : aba --> baab ;;
+**
+R920 : deb --> c ;;
+R : ed --> c ;;
+R : be --> d ;;
+R : a --> e ;;
+K0 : dcb --> ec ;;
+K1 : ce --> dc ;;
+K2 : dcd --> cc ;;
+K3 : cccb --> ddcc ;;
+K5 : ccd --> ecc ;;
+##
+R921 : aba --> baaba ;;
+**
+R921 : bcc --> c ;;
+R : aba --> c ;;
+K1 : ac --> cc ;;
+K3 : abc --> cba ;;
+##
+R922 : aba --> baabb ;;
+**
+R922 : baabb --> aba ;;
+K0 : abaaabb --> baababa ;;
+##
+R923 : aba --> bab ;;
+**
+R923 : bab --> c ;;
+R : aba --> c ;;
+K0 : cb --> ac ;;
+K1 : ca --> bc ;;
+##
+R924 : aba --> baba ;;
+**
+R924 : bc --> c ;;
+R : aba --> c ;;
+K1 : bac --> ac ;;
+K2 : cba --> ac ;;
+K3 : aac --> cc ;;
+K4 : cac --> acc ;;
+##
+R925 : aba --> babaa ;;
+**
+R925 : babaa --> aba ;;
+##
+R926 : aba --> babab ;;
+**
+R : bab --> e ;;
+R : aba --> h ;;
+K1 : he --> ah ;;
+K2 : bae --> h ;;
+K4 : ha --> eh ;;
+K8 : hb --> ae ;;
+K9 : ea --> bh ;;
 ##
 R927 : aba --> babb ;;
 **
@@ -4784,6 +9322,40 @@ R1033 : abaab --> abb ;;
 **
 R1033 : abb --> abaab ;;
 ##
+R1034 : abaab --> abba ;;
+**
+R1034 : fe --> fj ;;
+R : af --> e ;;
+R : ab --> f ;;
+R : ba --> j ;;
+K0 : ej --> ee ;;
+K3 : fjj --> fje ;;
+K5 : aaj --> ea ;;
+K6 : jf --> be ;;
+K7 : fjef --> fbfj ;;
+K8 : fa --> aj ;;
+K9 : jb --> bf ;;
+K10 : fjeb --> fbff ;;
+K11 : jaj --> bea ;;
+K12 : eef --> ebe ;;
+K13 : eeaj --> ebea ;;
+K14 : eeb --> ebf ;;
+K15 : fjeaj --> fbfja ;;
+##
+R1035 : abaab --> abbaa ;;
+**
+R1035 : abj --> abe ;;
+R : aab --> e ;;
+R : baa --> j ;;
+K0 : ej --> ee ;;
+K2 : abeab --> abbae ;;
+K3 : abeb --> abbe ;;
+K5 : eeab --> ebae ;;
+K6 : eeb --> ebe ;;
+K7 : eaa --> aaj ;;
+K8 : jab --> bae ;;
+K9 : jb --> be ;;
+##
 R1036 : abaab --> abbab ;;
 **
 R1036 : abbab --> abaab ;;
@@ -4838,6 +9410,18 @@ R1043 : baaa --> abaab ;;
 R1044 : abaab --> baaaa ;;
 **
 R1044 : baaaa --> abaab ;;
+##
+R1045 : abaab --> baaab ;;
+**
+R : ba --> f ;;
+R : ak --> j ;;
+R : ab --> k ;;
+K0 : kaj --> jj ;;
+K2 : kj --> fj ;;
+K4 : bfj --> ffk ;;
+K5 : af --> ka ;;
+K6 : bj --> fk ;;
+K7 : bk --> fb ;;
 ##
 R1046 : abaab --> baab ;;
 **
@@ -5028,6 +9612,15 @@ R1073 : abab --> abb ;;
 **
 R1073 : abb --> abab ;;
 ##
+R1074 : abab --> abba ;;
+**
+R : ab --> e ;;
+R : ba --> i ;;
+K0 : ei --> ee ;;
+K2 : eeb --> ebe ;;
+K4 : ea --> ai ;;
+K5 : ib --> be ;;
+##
 R1075 : abab --> abbaa ;;
 **
 R : bbaa --> c ;;
@@ -5092,6 +9685,26 @@ K0 : abac --> caaab ;;
 K1 : abc --> cab ;;
 K2 : baac --> cab ;;
 K3 : baaac --> caaab ;;
+##
+R1086 : abab --> baab ;;
+**
+R1086 : ee --> ie ;;
+R : ab --> e ;;
+R : ba --> i ;;
+K3 : bie --> iib ;;
+K4 : aeie --> ieae ;;
+K5 : ai --> ea ;;
+K6 : iie --> eie ;;
+K7 : be --> ib ;;
+##
+R1087 : abab --> baaba ;;
+**
+R1087 : bh --> ee ;;
+R : ab --> e ;;
+R : aea --> h ;;
+K1 : ahb --> hea ;;
+K2 : aee --> hb ;;
+K4 : eh --> hb ;;
 ##
 R1089 : abab --> bab ;;
 **
@@ -5680,6 +10293,20 @@ R : abb --> c ;;
 K0 : cca --> abc ;;
 K1 : cbb --> bcc ;;
 ##
+R1209 : abb --> babbb ;;
+**
+R1209 : bcb --> c ;;
+R : hbb --> c ;;
+R : a --> h ;;
+K0 : hbc --> ccb ;;
+K1 : bcc --> ccb ;;
+K2 : hhc --> ccc ;;
+K3 : ccbb --> hc ;;
+K4 : ccbc --> hccb ;;
+K5 : bchc --> cccb ;;
+K6 : bhc --> hcb ;;
+K7 : cchc --> hccc ;;
+##
 R1210 : abb --> bb ;;
 **
 R1210 : abb --> bb ;;
@@ -5837,6 +10464,18 @@ R : bba --> c ;;
 K1 : bcb --> cc ;;
 K2 : bcc --> ccba ;;
 ##
+R1240 : abba --> baba ;;
+**
+R1240 : ad --> ha ;;
+R : bba --> d ;;
+R : bab --> h ;;
+K2 : dba --> hba ;;
+K6 : bh --> db ;;
+K8 : dh --> hh ;;
+K9 : bah --> hab ;;
+K10 : ahba --> haba ;;
+K11 : ahh --> hah ;;
+##
 R1241 : abba --> babaa ;;
 **
 R1241 : babaa --> abba ;;
@@ -5966,6 +10605,17 @@ R1265 : abbaa --> b ;;
 **
 R1265 : abbaa --> b ;;
 K0 : bbbaa --> abbab ;;
+##
+R1266 : abbaa --> ba ;;
+**
+R1266 : da --> ba ;;
+R : abba --> d ;;
+K0 : dba --> bba ;;
+K1 : adbba --> dbbaa ;;
+K2 : bd --> dd ;;
+K4 : addd --> dbba ;;
+K5 : addbba --> dbbaba ;;
+K6 : bbba --> dbba ;;
 ##
 R1267 : abbaa --> baa ;;
 **

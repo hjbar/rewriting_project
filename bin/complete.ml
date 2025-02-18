@@ -4,11 +4,27 @@ open Print
 open Utils
 open Globals
 
+(* EXCEPTION *)
+
+exception Next of (string option * string * string) list
+
+let is_banned =
+  (* let l =
+    [ (5, [ Some "R418"; Some "R769"; Some "R786"; Some "R1088"; Some "R1307"; Some "R1319" ])
+    ] in *)
+  let l = [] in
+  fun len rs ->
+    let name, _, _ = List.hd rs in
+    match List.assoc_opt len l with
+    | None -> false
+    | Some bans -> List.exists (( = ) name) bans
+
 (* COMPLETION FUNCTION *)
 
 let complete_rs ~alpha_len ~word_len =
   (* init *)
   let do_subsets = List.mem word_len subset_gens in
+  let excess = excess_limit in
   let rs_list = get_all_rs ~alpha_len ~word_len in
   let completed, completion = (ref 0, ref 0) in
 
@@ -23,14 +39,19 @@ let complete_rs ~alpha_len ~word_len =
         match Hashtbl.find_opt htbl rs with
         | None -> begin
           try
+            if is_banned word_len rs then raise @@ Next rs;
+
             incr completion;
-            let rs' = Rs.knuth_bendix ~limit_norm ~limit_pairs ~do_subsets rs in
+            let rs' = Rs.knuth_bendix ~limit_norm ~limit_pairs ~do_subsets ~excess rs in
 
             incr completed;
             print_completion debug_success rs rs';
             write_completion out_c rs rs'
           with
           | Rs.Abort s -> print_failure debug_failed s rs
+          | Next rs ->
+            Format.printf "The next system is skiped : ";
+            Rs.println rs
           | exn -> raise exn
         end
         | Some rs' ->

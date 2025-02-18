@@ -1,0 +1,232 @@
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+Tests :
+------------------------------
+test_get_words : OK
+test_search_and_replace : OK
+test_search_and_replace_all : OK
+test_comp_per_char : OK
+test_unify : OK
+------------------------------
+------------------------------
+test_get_rules : OK
+test_isomorphism_filter : OK
+------------------------------
+------------------------------
+test_orient_rule : OK
+test_orient_rs : OK
+test_normalize : OK
+test_normalize_all : OK
+test_critical_pairs : OK
+------------------------------
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+Complete :
+
+
+==============================
+Complete for alpha_len = 2 and word_len = 1
+
+1 completed systems out of 1, 100%
+==============================
+
+
+
+
+==============================
+Complete for alpha_len = 2 and word_len = 2
+
+12 completed systems out of 12, 100%
+==============================
+
+
+
+
+==============================
+Complete for alpha_len = 2 and word_len = 3
+
+70 completed systems out of 70, 100%
+==============================
+
+
+
+
+==============================
+Complete for alpha_len = 2 and word_len = 4
+
+330 completed systems out of 330, 100%
+==============================
+
+
+
+
+==============================
+Complete for alpha_len = 2 and word_len = 5
+
+The next system is skiped : R418: aaaba --> abaab
+The next system is skiped : R769: aabba --> abab
+The next system is skiped : R786: aabba --> baaba
+R884: ab --> babba
+|gens| = 2350
+round 0
+round 1
+Failed
+R893: ab --> bbabb
+|gens| = 747
+round 0
+round 1
+Failed
+R919: aba --> baaab
+|gens| = 511
+round 0
+round 1
+Failed
+R1031: abaab --> ababa
+|gens| = 8177
+round 0
+round 1
+Failed
+R1034: abaab --> abba
+|gens| = 8411
+round 0
+R1035: abaab --> abbaa
+|gens| = 158766
+round 0
+R1045: abaab --> baaab
+|gens| = 9948
+round 0
+round 1
+R1074: abab --> abba
+|gens| = 2101
+round 0
+R1086: abab --> baab
+|gens| = 2476
+round 0
+round 1
+R1087: abab --> baaba
+|gens| = 17494
+round 0
+round 1
+The next system is skiped : R1088: abab --> baabb
+R1125: ababa --> baab
+|gens| = 1023
+round 0
+round 1
+Failed
+R1126: ababa --> baaba
+|gens| = 9703
+round 0
+round 1
+Failed
+R1209: abb --> babbb
+|gens| = 15013
+round 0
+round 1
+R1240: abba --> baba
+|gens| = 2419
+round 0
+round 1
+R1242: abba --> babab
+|gens| = 1023
+round 0
+round 1
+Failed
+R1266: abbaa --> ba
+|gens| = 4515
+round 0
+round 1
+R1297: abbab --> abbba
+|gens| = 8177
+round 0
+round 1
+Failed
+The next system is skiped : R1307: abbab --> baabb
+R1309: abbab --> baba
+|gens| = 13564
+round 0
+round 1
+Failed
+R1311: abbab --> babab
+|gens| = 9948
+round 0
+round 1
+Failed
+The next system is skiped : R1319: abbab --> bbaab
+R1378: abbba --> babba
+|gens| = 9703
+round 0
+round 1
+Failed
+1409 completed systems out of 1420, 99%
+==============================
+
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+Imply :
+
+
+******************************
+Imply for alpha_len = 2 and word_len = 1
+
+******************************
+
+
+
+
+******************************
+Imply for alpha_len = 2 and word_len = 2
+
+******************************
+
+
+
+
+******************************
+Imply for alpha_len = 2 and word_len = 3
+
+******************************
+
+
+
+
+******************************
+Imply for alpha_len = 2 and word_len = 4
+
+******************************
+
+
+
+
+******************************
+Imply for alpha_len = 2 and word_len = 5
+
+The rule R418: aaaba --> abaab in not completed yet
+We go next with the rs : (R529: aab --> abbaa) and the word : (aaaab)
+The rule R769: aabba --> abab in not completed yet
+We go next with the rs : (R781: baa --> aabba) and the word : (baaaa)
+The rule R786: aabba --> baaba in not completed yet
+The rule R884: ab --> babba in not completed yet
+The rule R893: ab --> bbabb in not completed yet
+The rule R919: aba --> baaab in not completed yet
+The rule R1031: abaab --> ababa in not completed yet
+The rule R1088: abab --> baabb in not completed yet
+The rule R1125: ababa --> baab in not completed yet
+The rule R1126: ababa --> baaba in not completed yet
+We go next with the rs : (R1214: abb --> bbaab) and the word : (aabbb)
+The rule R1242: abba --> babab in not completed yet
+The rule R1297: abbab --> abbba in not completed yet
+The rule R1307: abbab --> baabb in not completed yet
+The rule R1309: abbab --> baba in not completed yet
+The rule R1311: abbab --> babab in not completed yet
+The rule R1319: abbab --> bbaab in not completed yet
+The rule R1378: abbba --> babba in not completed yet
+******************************
+
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&

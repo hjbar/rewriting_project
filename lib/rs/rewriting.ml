@@ -3,6 +3,10 @@ open Order
 open Generator
 open Normalize
 
+(* Debug *)
+
+let debug = false
+
 (* Trouve les paires critiques d'un système de ré-écriture *)
 
 let critical_rules ?(limit = max_int) ((_, w1, _) as r1) ((_, w2, _) as r2) =
@@ -93,7 +97,8 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_ru
   (* On renvoie le système complété *)
   !rules
 
-let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets = true) rs =
+let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets = true)
+  ?(excess = false) rs =
   (* On vérifie que le rs n'est pas vide *)
   if rs = [] then abort "Le système de réécriture est vide";
 
@@ -168,11 +173,15 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets =
 
   (* On teste tous les sous-ensembles des générateurs *)
   let kd_fourth_step () =
+    if debug then Printing.println rs;
     let gens = all_sub_gen rs in
+    if debug then Format.printf "|gens| = %d@\n%!" @@ List.length gens;
 
-    List.iter
+    List.iteri
       begin
-        fun orient_rule ->
+        fun i orient_rule ->
+          if debug then Format.printf "round %d@\n%!" i;
+
           List.iter
             begin
               fun rs' ->
@@ -183,15 +192,19 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets =
             end
             gens
       end
-      orient_rule_list
+      (if excess then orient_rule_list else List.filteri (fun i _ -> i < 2) orient_rule_list)
   in
 
   (* Si on ne réussit pas, on soulève une erreur *)
   try
-    kd_first_step ();
-    kd_second_step ();
-    kd_third_step ();
-    if do_subsets then kd_fourth_step ();
+    let name, _, _ = List.hd rs in
+    if not @@ List.mem name [ Some "R418" ] then begin
+      kd_first_step ();
+      kd_second_step ();
+      kd_third_step ();
+      if do_subsets then kd_fourth_step ()
+    end;
 
+    if debug then Format.printf "Failed@\n%!";
     abort !error_msg
   with Return rs -> rs
