@@ -26,6 +26,8 @@ let do_complete = true
 
 let do_imply = true
 
+let do_stats = true
+
 (* Sep pour affichage *)
 
 let sep = String.make 30 '='
@@ -38,7 +40,7 @@ let sep3 = String.make 30 '&'
 
 let alpha_lengths = [ 2 ]
 
-let word_lengths = [ 1; 2; 3; 4 ]
+let word_lengths = [ 1; 2; 3; 4; 5 ]
 
 let subgraph_lengths = [ 1; 2 ]
 

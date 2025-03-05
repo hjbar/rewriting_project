@@ -20,6 +20,7 @@ let () =
     run do_example "Examples" Example.ex_knuth_bendix;
     run do_success "Success" Success.success;
     run do_complete "Complete" Complete.complete;
-    run do_imply "Imply" Imply.imply
+    run do_imply "Imply" Imply.imply;
+    run do_stats "Stats" Stats.stats
   end
   else Main_alt.main_alt ()
