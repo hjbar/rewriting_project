@@ -53,9 +53,10 @@ let orient_rs_gen k = List.map (orient_rule_gen k)
 
 let orient_rule_list : (Rule.rule -> Rule.rule) list =
   [ orient_rule_gen Default
-  ; orient_rule_gen Length
   ; orient_rule_gen Dico
   ; orient_rule_gen InvDefault
-  ; orient_rule_gen InvLength
   ; orient_rule_gen InvDico
   ]
+
+let weak_orient_rule_list : (Rule.rule -> Rule.rule) list =
+  [ orient_rule_gen Length; orient_rule_gen InvLength ]

@@ -97,8 +97,7 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_ru
   (* On renvoie le système complété *)
   !rules
 
-let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets = true)
-  ?(excess = false) rs =
+let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
   (* On vérifie que le rs n'est pas vide *)
   if rs = [] then abort "Le système de réécriture est vide";
 
@@ -111,7 +110,7 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets =
   let error_msg = ref "" in
 
   (* On teste différentes orientations *)
-  let kd_first_step () =
+  let kd_first_step orient_rule_list =
     List.iter
       begin
         fun orient_rule ->
@@ -122,7 +121,7 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets =
   in
 
   (* On teste des générateurs *)
-  let kd_second_step () =
+  let kd_second_step orient_rule_list =
     let gen_right = get_gen_right rs in
 
     let tries gen_left =
@@ -152,7 +151,7 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets =
   in
 
   (* On teste tous les sous-ensembles des générateurs *)
-  let kd_third_step () =
+  let kd_third_step orient_rule_list =
     let gens = all_gen rs in
 
     List.iter
@@ -172,7 +171,7 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets =
   in
 
   (* On teste tous les sous-ensembles des générateurs *)
-  let kd_fourth_step () =
+  let kd_fourth_step orient_rule_list =
     if debug then Printing.println rs;
     let gens = all_sub_gen rs in
     if debug then Format.printf "|gens| = %d@\n%!" @@ List.length gens;
@@ -192,19 +191,22 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) ?(do_subsets =
             end
             gens
       end
-      (if excess then orient_rule_list else List.filteri (fun i _ -> i < 2) orient_rule_list)
+      orient_rule_list
   in
 
   (* Si on ne réussit pas, on soulève une erreur *)
   try
-    let name, _, _ = List.hd rs in
-    if not @@ List.mem name [ Some "R418" ] then begin
-      kd_first_step ();
-      kd_second_step ();
-      kd_third_step ();
-      if do_subsets then kd_fourth_step ()
-    end;
+    (* On essaye avec un ordre bien fondé partiel (assure la convergence) *)
+    kd_first_step orient_rule_list;
+    kd_second_step orient_rule_list;
+    kd_third_step orient_rule_list;
+    kd_fourth_step orient_rule_list;
 
-    if debug then Format.printf "Failed@\n%!";
+    (* On essaye avec un ordre moins fort (n'assure pas la convergence) *)
+    kd_first_step weak_orient_rule_list;
+    kd_second_step weak_orient_rule_list;
+    kd_third_step weak_orient_rule_list;
+    kd_fourth_step weak_orient_rule_list;
+
     abort !error_msg
   with Return rs -> rs
