@@ -20,7 +20,7 @@ let write_graph_body out_c rules systems =
       fun subset ->
         incr cpt;
 
-        let name = Format.sprintf "NODE_%c" @@ Char.chr (Char.code 'a' + !cpt) in
+        let name = Format.sprintf "NODE_%d" !cpt in
         Hashtbl.replace ht subset name;
 
         let str = rules_to_string subset in

@@ -4,9 +4,9 @@ digraph {
 	rankdir=TB;
 	node [shape = ellipse];
 
-	NODE_a [label="R0: a --> b\n"];
-	NODE_b [label="∅"];
+	NODE_0 [label="R0: a --> b\n"];
+	NODE_1 [label="∅"];
 
-	NODE_a -> NODE_b;
+	NODE_0 -> NODE_1;
 
 }

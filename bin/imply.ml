@@ -34,8 +34,8 @@ let compute_implies rules systems =
                 fun j ((_, w1, w2) as target) ->
                   try
                     if i <> j then begin
-                      let w1' = Rs.normalize ~limit:10000 rs w1 in
-                      let w2' = Rs.normalize ~limit:10000 rs w2 in
+                      let w1' = Rs.normalize ~limit:100 rs w1 in
+                      let w2' = Rs.normalize ~limit:100 rs w2 in
 
                       if w1' = w2' then begin
                         (* La target est impliquée par source *)
