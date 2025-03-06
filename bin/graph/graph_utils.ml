@@ -22,44 +22,27 @@ let iter_subsets f l =
   in
   loop l []
 
-let get_subsets_args implies =
-  let homogeneous =
-    let ht = Hashtbl.create 16 in
+let rules_to_string = function
+  | [] -> "∅"
+  | rules ->
+    List.fold_left
+      (fun acc rule -> acc ^ Format.sprintf {|%s\n|} (Rule.to_string rule))
+      "" rules
 
-    Hashtbl.iter
-      begin
-        fun ((_, w1, w2) as source) targets ->
-          if String.(length w1 = length w2) then
-            Hashtbl.replace ht source
-            @@ List.filter (fun target -> is_homogeneous source target) targets
-      end
-      implies;
+let is_implies left_rules right_rules systems =
+  List.for_all
+    begin
+      fun (_, w1, w2) ->
+        List.exists
+          begin
+            fun left_rule ->
+              let rs = Utils.lookup systems left_rule in
 
-    Hashtbl.iter
-      begin
-        fun _ targets ->
-          List.iter
-            (fun target -> if not @@ Hashtbl.mem ht target then Hashtbl.replace ht target [])
-            targets
-      end
-      ht;
+              let w1' = Rs.normalize rs w1 in
+              let w2' = Rs.normalize rs w2 in
 
-    ht
-  in
-
-  let assoc =
-    let ht = Hashtbl.create 16 in
-    let cpt = ref ~-1 in
-
-    Hashtbl.iter
-      begin
-        fun key _ ->
-          incr cpt;
-          Hashtbl.replace ht !cpt key
-      end
-      homogeneous;
-
-    ht
-  in
-
-  (assoc, homogeneous)
+              w1' = w2'
+          end
+          left_rules
+    end
+    right_rules

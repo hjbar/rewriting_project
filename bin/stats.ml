@@ -22,6 +22,17 @@ let compute_number_leafs rules implies =
 
   println_flush @@ Format.sprintf "Number of leafs : %d" nb
 
+(* CALCULE LE NOMBRE DE NON-FEUILLES *)
+
+let compute_number_notleafs rules implies =
+  let nb =
+    List.fold_left
+      (fun acc rule -> acc + match Hashtbl.find_opt implies rule with None -> 0 | Some _ -> 1)
+      0 rules
+  in
+
+  println_flush @@ Format.sprintf "Number of not-leafs : %d" nb
+
 (* CALCULE TOUTES LES STATS *)
 
 let compute_all_stats ~alpha_len ~word_len =
@@ -38,7 +49,10 @@ let compute_all_stats ~alpha_len ~word_len =
   compute_number_egdes implies;
 
   (* On calcul le nombre de feuilles *)
-  compute_number_leafs rules implies
+  compute_number_leafs rules implies;
+
+  (* On calcul le nombre de non-feuilles *)
+  compute_number_notleafs rules implies
 
 (* MAIN *)
 

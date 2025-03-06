@@ -118,11 +118,8 @@ let compute_all ~alpha_len ~word_len =
   (* On crée le sous-graphe par renversement *)
   Graph_rev.make_rev dir implies;
 
-  (* On crée le sous-graphe à plusieurs relations *)
-  Graph_relations.make_relations dir implies;
-
   (* On crée le graphe des sous-graphs *)
-  if List.mem word_len subgraph_lengths then Graph_subgraph.make_subgraphs dir implies
+  if List.mem word_len subgraph_lengths then Graph_subgraph.make_subgraphs dir rules ht
 
 (* MAIN *)
 

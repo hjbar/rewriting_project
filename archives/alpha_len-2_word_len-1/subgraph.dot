@@ -1,13 +1,12 @@
+
 digraph {
 
 	rankdir=TB;
 	node [shape = ellipse];
 
-	subgraph cluster_0 {
+	NODE_a [label="R0: a --> b\n"];
+	NODE_b [label="∅"];
 
-		label = "subgraph_0";
-		""
-
-	}
+	NODE_a -> NODE_b;
 
 }
