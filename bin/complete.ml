@@ -9,7 +9,9 @@ open Globals
 let complete_rs ~alpha_len ~word_len =
   (* init *)
   let rs_list = get_all_rs ~alpha_len ~word_len in
-  let completed, completion = (ref 0, ref 0) in
+
+  let completed = Atomic.make 0 in
+  let completion = Atomic.make 0 in
 
   let dir, filename, path = get_filename ~alpha_len ~word_len in
 
@@ -32,10 +34,10 @@ let complete_rs ~alpha_len ~word_len =
           match opt with
           | None -> begin
             try
-              incr completion;
+              Atomic.set completion (Atomic.get completion + 1);
               let rs' = Rs.knuth_bendix ~limit_norm ~limit_pairs rs in
 
-              incr completed;
+              Atomic.set completed (Atomic.get completed + 1);
               print_completion debug_success rs rs';
 
               Mutex.lock out_c_mutex;
@@ -44,8 +46,8 @@ let complete_rs ~alpha_len ~word_len =
             with Rs.Abort s -> print_failure debug_failed s rs
           end
           | Some rs' ->
-            incr completion;
-            incr completed;
+            Atomic.set completion (Atomic.get completion + 1);
+            Atomic.set completed (Atomic.get completed + 1);
 
             print_completion debug_success rs rs';
 
@@ -61,7 +63,7 @@ let complete_rs ~alpha_len ~word_len =
   (* return *)
   close_out out_c;
 
-  let completed, completion = (!completed, !completion) in
+  let completed, completion = (Atomic.get completed, Atomic.get completion) in
   let rate = get_rate ~completed ~completion in
   print_res ~rate ~completed ~completion
 
