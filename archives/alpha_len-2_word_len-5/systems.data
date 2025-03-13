@@ -4381,10 +4381,4 @@ K0 : cbb --> ac ;;
 R927 : babb --> c ;;
 R : aba --> c ;;
 ##
-R768 : aabba --> abaab ;;
-**
-K10 : iba --> bad ;;
-K9 : dab --> abi ;;
-K8 : dbba --> abbd ;;
-K7 : ddba --> dbad ;;
-K6 : ddaab -->
+
