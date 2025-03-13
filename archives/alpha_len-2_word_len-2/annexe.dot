@@ -1,8 +1,0 @@
-digraph finite_state_machine {
-	rankdir=TB;
-	node [shape = ellipse];
-	"a = aa"
-	"a = ab"
-	"a = ba"
-	"ab = b"
-}

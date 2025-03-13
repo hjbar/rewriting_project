@@ -2,4 +2,5 @@
 
 (executable
  (name main)
+ (ocamlopt_flags -O3 -inline 1000 -nodynlink -unboxed-types -unsafe)
  (libraries print parse word rule rs))
