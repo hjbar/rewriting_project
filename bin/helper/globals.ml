@@ -46,6 +46,8 @@ let subgraph_lengths = [ 1; 2 ]
 
 (* Limites de calculs *)
 
+let fast = false
+
 let excess_limit = false
 
 let max_norm = 32

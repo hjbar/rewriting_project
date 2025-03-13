@@ -25,6 +25,50 @@ let get_gen_right rs =
 
   Char.code !max_char + 1 |> Char.chr |> Char.escaped
 
+(* Donne la liste des générateurs déjà utilisés *)
+
+let get_used_gen rs =
+  let ht = Hashtbl.create 16 in
+
+  let iter_word =
+    let inf = Char.code 'a' in
+    let sup = Char.code 'z' in
+
+    fun w ->
+      String.iter
+        begin
+          fun c ->
+            let code = Char.code c in
+
+            if inf <= code && code <= sup && (not @@ Hashtbl.mem ht c) then
+              Hashtbl.replace ht c ()
+        end
+        w
+  in
+
+  List.iter
+    begin
+      fun (_, w1, w2) ->
+        iter_word w1;
+        iter_word w2
+    end
+    rs;
+
+  ht |> Hashtbl.to_seq_keys |> List.of_seq |> List.map Char.escaped
+
+(* Donne la liste des sous-chaines contigues *)
+
+let sub_strings s =
+  let n = String.length s in
+
+  let rec aux i j acc =
+    if i >= n then List.rev acc
+    else if j > n then aux (i + 1) (i + 1) acc
+    else aux i (j + 1) (String.sub s i (j - i) :: acc)
+  in
+
+  aux 0 1 [] |> List.sort_uniq compare |> List.filter (( <> ) "")
+
 (* Utils functions to get generators *)
 
 let compare_list l1 l2 = match List.compare_lengths l1 l2 with 0 -> compare l1 l2 | c -> c

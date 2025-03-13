@@ -41,7 +41,7 @@ let complete_rs ~alpha_len ~word_len =
               incr completion;
               Mutex.unlock completion_mutex;
 
-              let rs' = Rs.knuth_bendix ~limit_norm ~limit_pairs rs in
+              let rs' = Rs.knuth_bendix ~fast ~limit_norm ~limit_pairs rs in
 
               Mutex.lock completed_mutex;
               incr completed;

@@ -1,0 +1,123 @@
+(*=== INCOMPLET ===*)
+
+Weak completion of :
+R880: ab --> baba
+to :
+K2: bgg --> gb
+K1: bgd --> g
+K0: dg --> ggd
+R: a --> d
+R: db --> g
+
+---
+
+Weak completion of :
+R877: ab --> baaba
+to :
+K9: bgggg --> gb
+K8: dbgg --> gdb
+K6: bgggbgg --> dbgbdb
+K5: bggdb --> dbbgg
+K4: bgbgg --> dbbdb
+K3: bgggd --> dbg
+K2: dbdb --> bgg
+K1: bgd --> db
+K0: dg --> ggd
+R: a --> d
+R: ddb --> g
+
+---
+
+Weak completion of :
+R1217: abb --> bbabb
+to :
+K3: abc --> cbc
+K1: ac --> cc
+R1217: bbc --> c
+R: abb --> c
+
+---
+
+Weak completion of :
+R885: ab --> babbb
+to :
+K4: aaab --> caab
+K2: ac --> cc
+K1: aabb --> babc
+K0: cab --> aab
+R885: cb --> ab
+R: babb --> c
+
+---
+
+Weak completion of :
+R910: aba --> abbab
+to :
+K5: cacca --> ccccc
+K4: caccb --> cccc
+K3: ccca --> cacc
+K2: cccb --> cac
+K1: caa --> ccc
+K0: cbc --> ca
+R: ab --> c
+
+---
+
+Weak completion of :
+R890: ab --> bbaab
+to :
+K5: bbcbbbc --> c
+K2: aab --> bbc
+K1: bbcbc --> cbbbc
+K0: ac --> cbbbc
+R890: bbbbc --> ab
+R: abbc --> c
+
+---
+
+Weak completion of :
+R1031: abaab --> ababa
+to :
+K16: ccb --> cbc
+K14: cbl --> fc
+K12: cbf --> fcb
+K11: cbcl --> fcc
+K10: clcb --> fcc
+K9: flcb --> ffc
+K8: ccl --> clc
+K6: fcl --> flc
+K5: cf --> fc
+K4: fff --> cb
+K3: clf --> flc
+K1: flf --> c
+K0: ffl --> c
+R: lb --> f
+R: a --> l
+
+---
+
+Weak completion of :
+R1209: abb --> babbb
+to :
+K10: accac --> ccccc
+K8: bcac --> ccc
+K7: abac --> cac
+K6: accc --> ccac
+K5: bcc --> ac
+K4: aac --> ccc
+K2: aabb --> bac
+K1: abc --> cc
+K0: cabb --> ac
+R1209: cb --> abb
+R: babb --> c
+
+---
+
+Weak completion of :
+R541: aab --> baaba
+to :
+K4: bcc --> cab
+K2: aac --> cca
+K0: aab --> c
+R541: bca --> c
+R: bca --> c

@@ -53,7 +53,7 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_ru
   let queue = rs |> List.to_seq |> Queue.of_seq in
 
   let add r =
-    rules := !rules @ [ r ];
+    rules := r :: !rules;
 
     rules :=
       List.map
@@ -150,8 +150,105 @@ let knuth_bendix ?(fast = true) ?(limit_norm = max_int) ?(limit_pairs = max_int)
       rs
   in
 
-  (* On teste tous les sous-ensembles des générateurs *)
+  (* On teste d'étendre les générateurs *)
   let kd_third_step orient_rule_list =
+    let gen_right = get_gen_right rs in
+    let used_gen = get_used_gen rs in
+
+    let tries word =
+      List.iter
+        begin
+          fun orient_rule ->
+            List.iter
+              begin
+                fun s ->
+                  try
+                    let w = s ^ word in
+                    let rs = rs @ [ Rule.make w gen_right ] in
+                    return @@ kd_bis orient_rule rs
+                  with Abort err_s ->
+                    begin
+                      error_msg := Format.sprintf "%s%s\n" !error_msg err_s;
+                      try
+                        let w = word ^ s in
+                        let rs = rs @ [ Rule.make w gen_right ] in
+                        return @@ kd_bis orient_rule rs
+                      with Abort err_s ->
+                        begin
+                          error_msg := Format.sprintf "%s%s\n" !error_msg err_s;
+                          try
+                            let w = s ^ word ^ s in
+                            let rs = rs @ [ Rule.make w gen_right ] in
+                            return @@ kd_bis orient_rule rs
+                          with Abort err_s ->
+                            error_msg := Format.sprintf "%s%s\n" !error_msg err_s
+                        end
+                    end
+              end
+              used_gen
+        end
+        orient_rule_list
+    in
+
+    List.iter
+      begin
+        fun (_, w1, w2) ->
+          tries w1;
+          tries w2
+      end
+      rs
+  in
+
+  (* On teste d'étendre les générateurs avec toutes les configurations *)
+  let kd_fourth_step orient_rule_list =
+    let gen_right = get_gen_right rs in
+
+    let tries word gens =
+      List.iter
+        begin
+          fun orient_rule ->
+            List.iter
+              begin
+                fun s ->
+                  try
+                    let w = s ^ word in
+                    let rs = rs @ [ Rule.make w gen_right ] in
+                    return @@ kd_bis orient_rule rs
+                  with Abort err_s ->
+                    begin
+                      error_msg := Format.sprintf "%s%s\n" !error_msg err_s;
+                      try
+                        let w = word ^ s in
+                        let rs = rs @ [ Rule.make w gen_right ] in
+                        return @@ kd_bis orient_rule rs
+                      with Abort err_s ->
+                        begin
+                          error_msg := Format.sprintf "%s%s\n" !error_msg err_s;
+                          try
+                            let w = s ^ word ^ s in
+                            let rs = rs @ [ Rule.make w gen_right ] in
+                            return @@ kd_bis orient_rule rs
+                          with Abort err_s ->
+                            error_msg := Format.sprintf "%s%s\n" !error_msg err_s
+                        end
+                    end
+              end
+              gens
+        end
+        orient_rule_list
+    in
+
+    List.iter
+      begin
+        fun (_, w1, w2) ->
+          tries w1 (sub_strings w1);
+          tries w2 (sub_strings w2)
+      end
+      rs
+  in
+
+  (* On teste tous les sous-ensembles des générateurs *)
+  let kd_fifth_step orient_rule_list =
     let gens = all_gen rs in
 
     List.iter
@@ -171,10 +268,8 @@ let knuth_bendix ?(fast = true) ?(limit_norm = max_int) ?(limit_pairs = max_int)
   in
 
   (* On teste tous les sous-ensembles des générateurs *)
-  let kd_fourth_step orient_rule_list =
-    if debug then Printing.println rs;
+  let kd_sixth_step orient_rule_list =
     let gens = all_sub_gen rs in
-    if debug then Format.printf "|gens| = %d@\n%!" @@ List.length gens;
 
     List.iteri
       begin
@@ -195,33 +290,52 @@ let knuth_bendix ?(fast = true) ?(limit_norm = max_int) ?(limit_pairs = max_int)
   in
 
   (* Si on ne réussit pas, on soulève une erreur *)
+  let is_weak = ref false in
   try
     if fast then begin
-      (* On essaye avec un ordre moins fort (n'assure pas la convergence) *)
-      kd_first_step weak_orient_rule_list;
-      kd_second_step weak_orient_rule_list;
-      kd_third_step weak_orient_rule_list;
-      kd_fourth_step weak_orient_rule_list;
-
-      (* On essaye avec un ordre bien fondé partiel (assure la convergence) *)
+      is_weak := false;
       kd_first_step orient_rule_list;
       kd_second_step orient_rule_list;
       kd_third_step orient_rule_list;
-      kd_fourth_step orient_rule_list
+
+      is_weak := true;
+      kd_first_step weak_orient_rule_list;
+      kd_second_step weak_orient_rule_list;
+      kd_third_step weak_orient_rule_list;
+
+      is_weak := false;
+      kd_fourth_step orient_rule_list;
+      kd_fifth_step orient_rule_list;
+      kd_sixth_step orient_rule_list;
+
+      is_weak := true;
+      kd_fourth_step weak_orient_rule_list;
+      kd_first_step weak_orient_rule_list;
+      kd_sixth_step weak_orient_rule_list
     end
     else begin
-      (* On essaye avec un ordre bien fondé partiel (assure la convergence) *)
+      is_weak := false;
       kd_first_step orient_rule_list;
       kd_second_step orient_rule_list;
       kd_third_step orient_rule_list;
       kd_fourth_step orient_rule_list;
+      kd_fifth_step orient_rule_list;
+      kd_sixth_step orient_rule_list;
 
-      (* On essaye avec un ordre moins fort (n'assure pas la convergence) *)
+      is_weak := true;
       kd_first_step weak_orient_rule_list;
       kd_second_step weak_orient_rule_list;
       kd_third_step weak_orient_rule_list;
-      kd_fourth_step weak_orient_rule_list
+      kd_fourth_step weak_orient_rule_list;
+      kd_fifth_step weak_orient_rule_list;
+      kd_sixth_step weak_orient_rule_list
     end;
 
     abort !error_msg
-  with Return rs -> rs
+  with Return res ->
+    if !is_weak then
+      Print.println_warning
+      @@ Format.sprintf "Weak completion of :\n%s\nto :\n%s\n" (Printing.to_string rs)
+           (Printing.to_string res);
+
+    res
