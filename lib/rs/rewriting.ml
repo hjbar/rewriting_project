@@ -97,7 +97,7 @@ let knuth_bendix_bis ?(limit_pairs = max_int) normalize critical_rules orient_ru
   (* On renvoie le système complété *)
   !rules
 
-let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
+let knuth_bendix ?(fast = true) ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
   (* On vérifie que le rs n'est pas vide *)
   if rs = [] then abort "Le système de réécriture est vide";
 
@@ -196,17 +196,32 @@ let knuth_bendix ?(limit_norm = max_int) ?(limit_pairs = max_int) rs =
 
   (* Si on ne réussit pas, on soulève une erreur *)
   try
-    (* On essaye avec un ordre bien fondé partiel (assure la convergence) *)
-    kd_first_step orient_rule_list;
-    kd_second_step orient_rule_list;
-    kd_third_step orient_rule_list;
-    kd_fourth_step orient_rule_list;
+    if fast then begin
+      (* On essaye avec un ordre moins fort (n'assure pas la convergence) *)
+      kd_first_step weak_orient_rule_list;
+      kd_second_step weak_orient_rule_list;
+      kd_third_step weak_orient_rule_list;
+      kd_fourth_step weak_orient_rule_list;
 
-    (* On essaye avec un ordre moins fort (n'assure pas la convergence) *)
-    kd_first_step weak_orient_rule_list;
-    kd_second_step weak_orient_rule_list;
-    kd_third_step weak_orient_rule_list;
-    kd_fourth_step weak_orient_rule_list;
+      (* On essaye avec un ordre bien fondé partiel (assure la convergence) *)
+      kd_first_step orient_rule_list;
+      kd_second_step orient_rule_list;
+      kd_third_step orient_rule_list;
+      kd_fourth_step orient_rule_list
+    end
+    else begin
+      (* On essaye avec un ordre bien fondé partiel (assure la convergence) *)
+      kd_first_step orient_rule_list;
+      kd_second_step orient_rule_list;
+      kd_third_step orient_rule_list;
+      kd_fourth_step orient_rule_list;
+
+      (* On essaye avec un ordre moins fort (n'assure pas la convergence) *)
+      kd_first_step weak_orient_rule_list;
+      kd_second_step weak_orient_rule_list;
+      kd_third_step weak_orient_rule_list;
+      kd_fourth_step weak_orient_rule_list
+    end;
 
     abort !error_msg
   with Return rs -> rs

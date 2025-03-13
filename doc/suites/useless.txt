@@ -1,0 +1,124 @@
+Le nombre de noeuds du graph annexe (c'est-à-dire les noeuds qui ne participe pas aux implications) :
+
+
+f(0) = 0
+f(1) = 1
+f(2) = 4
+f(3) = 9
+f(4) = 33
+
+
+Correspond à trois suites connus si on commence avec n - 1 et on ignore 0 :
+
+
+---
+
+
+A048757 Sum_{i=0..2n} (C(2n,i) mod 2)*Fibonacci(i+2) = Sum_{i=0..n} (C(n,i) mod 2)*Fibonacci(2i+2).
+
+1, 4, 9, 33, 56, 203, 441, 1596, 2585, 9353, 20304, 73461, 124033, 448756, 974169, 3524577, 5702888, 20633243, 44791065, 162055596, 273617239, 989956471, 2149017696, 7775219067, 12591974497, 45558191716, 98898651657
+
+
+OFFSET
+0,2
+COMMENTS
+The history of 1-D CA Rule 90 starting from the seed pattern 1 interpreted as Zeckendorffian expansion.
+Also, product of distinct terms of A001566 and appropriate Fibonacci or Lucas numbers: a(n) = FL(n+2)Product(L(2^i)^bit(n,i),i=0..) Here L(2^i) = A001566 and FL(n) = n-th Fibonacci number if n even, n-th Lucas number if n odd. bit(n,i) is the i-th digit (0 or 1) in the binary expansion of n, with the least significant digit being bit(n,0).
+LINKS
+Table of n, a(n) for n=0..26.
+Antti Karttunen, On Pascal's Triangle Modulo 2 in Fibonacci Representation, Fibonacci Quarterly, 42 (2004), 38-46.
+EXAMPLE
+1 = Fib(2) = 1;
+101 = Fib(4) + Fib(2) = 3 + 1 = 4;
+10001 = Fib(6) + Fib(2) = 8 + 1 = 9;
+1010101 = Fib(8) + Fib(6) + Fib(4) + Fib(2) = 21 + 8 + 3 + 1 = 33; etc.
+MATHEMATICA
+Table[Sum[Mod[Binomial[2n, i], 2] Fibonacci[i + 2], {i, 0, 2n}], {n, 0, 19}] (* Alonso del Arte, Apr 27 2014 *)
+CROSSREFS
+a(n) = A022290(A038183(n)) = A022290(A048723(5, n)) = A003622(A051656(n)) = A075148(n, 2)*A050613(n). Third row of A050609, third column of A050610.
+Cf. A054433.
+KEYWORD
+easy,nonn
+AUTHOR
+Antti Karttunen, Jul 13 1999
+STATUS
+approved
+
+
+---
+
+
+A054433 Numbers formed by interpreting the reduced residue set of every even number as a Zeckendorf Expansion.
+
+1, 4, 9, 33, 80, 174, 588, 1596, 3135, 9950, 28512, 56268, 196040, 496496, 888300, 3524577, 9224880, 18118362, 63239220, 150527400, 310190454, 1129200138, 2971168704, 5834056536, 18513646430, 53213956640, 104687896833
+
+
+OFFSET
+1,2
+LINKS
+Amiram Eldar, Table of n, a(n) for n = 1..2392
+FORMULA
+a(n) = A054433_as_sum(2*n).
+MAPLE
+with(combinat, fibonacci); # one_or_zero given at A054431.
+A054433_as_sum := proc(n) local i; RETURN(add((one_or_zero(igcd(n, i))*fibonacci(i+1)), i=1..(n-1))); end;
+MATHEMATICA
+r[n_] := Sum[If[GCD[n, k] == 1, Fibonacci[n + 1 - k], 0], {k, 1, n}]; r /@ (2*Range[27]) (* Amiram Eldar, Oct 19 2019 *)
+CROSSREFS
+Cf. A054432, A048757, A051258, A063683.
+KEYWORD
+nonn
+AUTHOR
+Antti Karttunen
+STATUS
+approved
+
+
+---
+
+
+A320920 a(n) is the smallest number m such that binomial(m,n) is nonzero and is divisible by n!.
+
+1, 4, 9, 33, 28, 165, 54, 1029, 40832, 31752, 28680, 2588680, 2162700, 12996613, 12341252, 4516741125, 500367376, 133207162881, 93770874890, 7043274506259, 40985291653137, 70766492123145, 321901427163142, 58731756479578128, 676814631896875010, 6820060161969750025
+
+
+OFFSET
+1,2
+COMMENTS
+a(n) is such that a nontrivial n-symmetric permutation of [1..a(n)] might exist.
+LINKS
+Bert Dobbelaere, Table of n, a(n) for n = 1..34
+Bert Dobbelaere, Python program
+Tanya Khovanova, 3-Symmetric Permutations
+EXAMPLE
+The sequence of binomial coefficients C(n,3) starts as: 0, 0, 1, 4, 10, 20, 35, 56, 84, 120, 165, and so on. The smallest nonzero number divisible by 3! is 84, which is C(9,3). Therefore a(3) = 9.
+MATHEMATICA
+a[n_] := Module[{w, m, bc}, {w, m} = {n!, n}; bc[i_] := Binomial[n-1, i] ~Mod~ w; While[True, bc[n] = (bc[n-1] + bc[n]) ~Mod~ w; If[bc[n] == 0, Return[m]]; For[i = n-1, i >= 0, i--, bc[i] = (bc[i-1] + bc[i]) ~Mod~ w]; m++]];
+Array[a, 12] (* Jean-François Alcover, May 31 2019, after Chai Wah Wu *)
+PROG
+(Python)
+from sympy import factorial, binomial
+def A320920(n):
+    w, m = int(factorial(n)), n
+    bc = [int(binomial(n-1, i)) % w for i in range(n+1)]
+    while True:
+        bc[n] = (bc[n-1]+bc[n]) % w
+        if bc[n] == 0:
+            return m
+        for i in range(n-1, 0, -1):
+            bc[i] = (bc[i-1]+bc[i]) % w
+        m += 1 # Chai Wah Wu, Oct 25 2018
+CROSSREFS
+Cf. A042948, A316775, A320919.
+KEYWORD
+nonn
+AUTHOR
+Tanya Khovanova, Oct 24 2018
+EXTENSIONS
+a(14)-a(15) from Alois P. Heinz, Oct 24 2018
+a(16)-a(17) from Chai Wah Wu, Oct 25 2018
+a(18)-a(19) from Giovanni Resta, Oct 26 2018
+a(20) from Giovanni Resta, Oct 27 2018
+a(21) and beyond from Bert Dobbelaere, Feb 11 2020
+STATUS
+approved

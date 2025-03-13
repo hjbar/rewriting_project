@@ -33,6 +33,13 @@ let compute_number_notleafs rules implies =
 
   println_flush @@ Format.sprintf "Number of not-leafs : %d" nb
 
+(* CALCULE LE NOMBRE DE NOEUDS "INUTILES" *)
+
+let compute_number_useless arr =
+  let nb = Array.fold_left (fun acc implies -> if implies then acc else acc + 1) 0 arr in
+
+  println_flush @@ Format.sprintf "Number of useless-nodes : %d" nb
+
 (* CALCULE TOUTES LES STATS *)
 
 let compute_all_stats ~alpha_len ~word_len =
@@ -42,17 +49,20 @@ let compute_all_stats ~alpha_len ~word_len =
   let rules = get_all_rules ~alpha_len ~word_len in
 
   (* On récupère les implications *)
-  let implies, _arr = Imply.compute_implies rules ht in
+  let implies, arr = Imply.compute_implies rules ht in
   Imply.simplify_implies implies;
 
-  (* On calcul le nombre d'arrêtes *)
+  (* On calcule le nombre d'arrêtes *)
   compute_number_egdes implies;
 
-  (* On calcul le nombre de feuilles *)
+  (* On calcule le nombre de feuilles *)
   compute_number_leafs rules implies;
 
-  (* On calcul le nombre de non-feuilles *)
-  compute_number_notleafs rules implies
+  (* On calcule le nombre de non-feuilles *)
+  compute_number_notleafs rules implies;
+
+  (* On calcule le nombre de noeuds "inutiles" *)
+  compute_number_useless arr
 
 (* MAIN *)
 
