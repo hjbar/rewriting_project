@@ -1,98 +1,4 @@
-(*=== INCOMPLET ===*)
-
-Weak completion of :
-R880: ab --> baba
-to :
-K2: bgg --> gb
-K1: bgd --> g
-K0: dg --> ggd
-R: a --> d
-R: db --> g
-
----
-
-Weak completion of :
-R877: ab --> baaba
-to :
-K9: bgggg --> gb
-K8: dbgg --> gdb
-K6: bgggbgg --> dbgbdb
-K5: bggdb --> dbbgg
-K4: bgbgg --> dbbdb
-K3: bgggd --> dbg
-K2: dbdb --> bgg
-K1: bgd --> db
-K0: dg --> ggd
-R: a --> d
-R: ddb --> g
-
----
-
-Weak completion of :
-R1217: abb --> bbabb
-to :
-K3: abc --> cbc
-K1: ac --> cc
-R1217: bbc --> c
-R: abb --> c
-
----
-
-Weak completion of :
-R885: ab --> babbb
-to :
-K4: aaab --> caab
-K2: ac --> cc
-K1: aabb --> babc
-K0: cab --> aab
-R885: cb --> ab
-R: babb --> c
-
----
-
-Weak completion of :
-R910: aba --> abbab
-to :
-K5: cacca --> ccccc
-K4: caccb --> cccc
-K3: ccca --> cacc
-K2: cccb --> cac
-K1: caa --> ccc
-K0: cbc --> ca
-R: ab --> c
-
----
-
-Weak completion of :
-R890: ab --> bbaab
-to :
-K5: bbcbbbc --> c
-K2: aab --> bbc
-K1: bbcbc --> cbbbc
-K0: ac --> cbbbc
-R890: bbbbc --> ab
-R: abbc --> c
-
----
-
-Weak completion of :
-R1031: abaab --> ababa
-to :
-K16: ccb --> cbc
-K14: cbl --> fc
-K12: cbf --> fcb
-K11: cbcl --> fcc
-K10: clcb --> fcc
-K9: flcb --> ffc
-K8: ccl --> clc
-K6: fcl --> flc
-K5: cf --> fc
-K4: fff --> cb
-K3: clf --> flc
-K1: flf --> c
-K0: ffl --> c
-R: lb --> f
-R: a --> l
+(*=== 5 systèmes complétés de façon non-convergente ===*)
 
 ---
 
@@ -121,3 +27,50 @@ K2: aac --> cca
 K0: aab --> c
 R541: bca --> c
 R: bca --> c
+
+---
+
+Weak completion of :
+R1217: abb --> bbabb
+to :
+K3: abe --> ebe
+K1: ae --> ee
+R1217: bbe --> e
+R: abb --> e
+
+---
+
+Weak completion of :
+R541: aab --> baaba
+to :
+K8: bakk --> kaba
+K3: bkba --> kb
+K2: bakba --> kab
+K1: aak --> kka
+K0: aab --> kba
+R541: bkk --> kba
+R: baa --> k
+
+---
+
+Weak completion of :
+R1087: abab --> baaba
+to :
+K18: ebd --> ee
+K17: eba --> ee
+K16: ae --> eb
+K15: ebb --> ee
+K14: ea --> eb
+K11: ebe --> ee
+K10: dd --> eb
+K9: eee --> ee
+K8: db --> e
+K7: ad --> e
+K6: eeb --> ee
+K4: de --> ee
+K3: bee --> ee
+K1: ed --> ee
+R1087: beb --> eb
+R: aa --> d
+R: ab --> d
+R: da --> e

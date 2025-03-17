@@ -1,8 +1,0 @@
-Weak completion of :
-R216: ab --> baba
-to :
-K2: bgg --> gb
-K1: bgd --> g
-K0: dg --> ggd
-R: a --> d
-R: db --> g
