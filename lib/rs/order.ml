@@ -101,8 +101,8 @@ let orient_rs_gen k = List.map (orient_rule_gen k)
 
 (* Liste des orientations *)
 
-let orient_rule_list : (Rule.rule -> Rule.rule) list =
-  List.map orient_rule_gen [ Default; InvDefault; Dico; InvDico ]
+let orient_rule_list : (kind_orient * (Rule.rule -> Rule.rule)) list =
+  List.map (fun kind -> (kind, orient_rule_gen kind)) [ Default; InvDefault; Dico; InvDico ]
 
-let weak_orient_rule_list : (Rule.rule -> Rule.rule) list =
-  List.map orient_rule_gen [ Length; InvLength ]
+let weak_orient_rule_list : (kind_orient * (Rule.rule -> Rule.rule)) list =
+  List.map (fun kind -> (kind, orient_rule_gen kind)) [ Length; InvLength ]

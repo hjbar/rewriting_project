@@ -109,83 +109,97 @@ let knuth_bendix ?(fast = true) ?(limit_norm = max_int) ?(limit_pairs = max_int)
   (* Message d'erreur en cas d'échec *)
   let error_msg = ref "" in
 
+  (* Cache pour ne pas re-calculer deux fois la même complétion *)
+  let cache = Hashtbl.create 16 in
+
   (* On teste différentes orientations *)
   let kd_first_step orient_rule_list =
     List.iter
       begin
-        fun orient_rule ->
-          try return @@ kd_bis orient_rule rs
-          with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
+        fun (kind, orient_rule) ->
+          if not @@ Hashtbl.mem cache (kind, rs) then begin
+            try return @@ kd_bis orient_rule rs
+            with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
+          end;
+
+          Hashtbl.replace cache (kind, rs) ()
       end
       orient_rule_list
   in
 
-  (* On teste des générateurs *)
-  let kd_second_step orient_rule_list =
-    let gen_right = get_gen_right rs in
-
-    let tries gen_left =
-      List.iter
-        begin
-          fun orient_rule ->
-            List.iter
-              begin
-                fun s ->
-                  let rs = rs @ [ Rule.make s gen_right ] in
-
-                  try return @@ kd_bis orient_rule rs
-                  with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
-              end
-              gen_left
-        end
-        orient_rule_list
-    in
-
+  (* On teste les différentes nouvelles règles *)
+  let kd_second_step orient_rule_list rules =
     List.iter
       begin
-        fun (_, w1, w2) ->
-          tries @@ get_gen_left w1;
-          tries @@ get_gen_left w2
+        fun (kind, orient_rule) ->
+          List.iter
+            begin
+              fun rule ->
+                let rs = rs @ [ rule ] in
+
+                if not @@ Hashtbl.mem cache (kind, rs) then begin
+                  try return @@ kd_bis orient_rule rs
+                  with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
+                end;
+
+                Hashtbl.replace cache (kind, rs) ()
+            end
+            rules
       end
-      rs
+      orient_rule_list
   in
 
-  (* On teste d'étendre les générateurs *)
-  let kd_third_step orient_rule_list =
-    let gen_right = get_gen_right rs in
-    let used_gen = get_used_gen rs in
-
+  (* On teste les différents nouveaux mots *)
+  let kd_third_step orient_rule_list words =
     let tries word =
       List.iter
         begin
-          fun orient_rule ->
+          fun (kind, orient_rule) ->
             List.iter
               begin
-                fun s ->
-                  try
-                    let w = s ^ word in
-                    let rs = rs @ [ Rule.make w gen_right ] in
-                    return @@ kd_bis orient_rule rs
-                  with Abort err_s ->
-                    begin
-                      error_msg := Format.sprintf "%s%s\n" !error_msg err_s;
-                      try
-                        let w = word ^ s in
-                        let rs = rs @ [ Rule.make w gen_right ] in
-                        return @@ kd_bis orient_rule rs
+                fun (gen, s) ->
+                  let () =
+                    let word = s ^ word in
+                    let rs = rs @ [ Rule.make gen word ] in
+
+                    if not @@ Hashtbl.mem cache (kind, rs) then begin
+                      try return @@ kd_bis orient_rule rs
                       with Abort err_s ->
-                        begin
-                          error_msg := Format.sprintf "%s%s\n" !error_msg err_s;
-                          try
-                            let w = s ^ word ^ s in
-                            let rs = rs @ [ Rule.make w gen_right ] in
-                            return @@ kd_bis orient_rule rs
-                          with Abort err_s ->
-                            error_msg := Format.sprintf "%s%s\n" !error_msg err_s
-                        end
-                    end
+                        error_msg := Format.sprintf "%s%s\n" !error_msg err_s
+                    end;
+
+                    Hashtbl.replace cache (kind, rs) ()
+                  in
+
+                  let () =
+                    let word = word ^ s in
+                    let rs = rs @ [ Rule.make gen word ] in
+
+                    if not @@ Hashtbl.mem cache (kind, rs) then begin
+                      try return @@ kd_bis orient_rule rs
+                      with Abort err_s ->
+                        error_msg := Format.sprintf "%s%s\n" !error_msg err_s
+                    end;
+
+                    Hashtbl.replace cache (kind, rs) ()
+                  in
+
+                  let () =
+                    let word = s ^ word ^ s in
+                    let rs = rs @ [ Rule.make gen word ] in
+
+                    if not @@ Hashtbl.mem cache (kind, rs) then begin
+                      try return @@ kd_bis orient_rule rs
+                      with Abort err_s ->
+                        error_msg := Format.sprintf "%s%s\n" !error_msg err_s
+                    end;
+
+                    Hashtbl.replace cache (kind, rs) ()
+                  in
+
+                  ()
               end
-              used_gen
+              words
         end
         orient_rule_list
     in
@@ -199,41 +213,81 @@ let knuth_bendix ?(fast = true) ?(limit_norm = max_int) ?(limit_pairs = max_int)
       rs
   in
 
-  (* On teste d'étendre les générateurs avec toutes les configurations *)
-  let kd_fourth_step orient_rule_list =
-    let gen_right = get_gen_right rs in
+  (* On teste les différentes sous-ensembles de nouvelles règles *)
+  let kd_fourth_step orient_rule_list subset_rules =
+    List.iter
+      begin
+        fun (kind, orient_rule) ->
+          List.iter
+            begin
+              fun rules ->
+                let rs = rs @ rules in
 
-    let tries word gens =
+                if not @@ Hashtbl.mem cache (kind, rs) then begin
+                  try return @@ kd_bis orient_rule rs
+                  with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
+                end;
+
+                Hashtbl.replace cache (kind, rs) ()
+            end
+            subset_rules
+      end
+      orient_rule_list
+  in
+
+  (* On teste les différents sous-ensembles nouveaux mots *)
+  let kd_fifth_step orient_rule_list subsets_words =
+    let tries word =
       List.iter
         begin
-          fun orient_rule ->
+          fun (kind, orient_rule) ->
             List.iter
               begin
-                fun s ->
-                  try
-                    let w = s ^ word in
-                    let rs = rs @ [ Rule.make w gen_right ] in
-                    return @@ kd_bis orient_rule rs
-                  with Abort err_s ->
-                    begin
-                      error_msg := Format.sprintf "%s%s\n" !error_msg err_s;
-                      try
-                        let w = word ^ s in
-                        let rs = rs @ [ Rule.make w gen_right ] in
-                        return @@ kd_bis orient_rule rs
+                fun subsets ->
+                  let () =
+                    let words = List.map (fun (gen, s) -> Rule.make gen (s ^ word)) subsets in
+                    let rs = rs @ words in
+
+                    if not @@ Hashtbl.mem cache (kind, rs) then begin
+                      try return @@ kd_bis orient_rule rs
                       with Abort err_s ->
-                        begin
-                          error_msg := Format.sprintf "%s%s\n" !error_msg err_s;
-                          try
-                            let w = s ^ word ^ s in
-                            let rs = rs @ [ Rule.make w gen_right ] in
-                            return @@ kd_bis orient_rule rs
-                          with Abort err_s ->
-                            error_msg := Format.sprintf "%s%s\n" !error_msg err_s
-                        end
-                    end
+                        error_msg := Format.sprintf "%s%s\n" !error_msg err_s
+                    end;
+
+                    Hashtbl.replace cache (kind, rs) ()
+                  in
+
+                  let () =
+                    let words = List.map (fun (gen, s) -> Rule.make gen (word ^ s)) subsets in
+                    let rs = rs @ words in
+
+                    if not @@ Hashtbl.mem cache (kind, rs) then begin
+                      try return @@ kd_bis orient_rule rs
+                      with Abort err_s ->
+                        error_msg := Format.sprintf "%s%s\n" !error_msg err_s
+                    end;
+
+                    Hashtbl.replace cache (kind, rs) ()
+                  in
+
+                  let () =
+                    let words =
+                      List.map (fun (gen, s) -> Rule.make gen (s ^ word ^ s)) subsets
+                    in
+                    let rs = rs @ words in
+
+                    if not @@ Hashtbl.mem cache (kind, rs) then begin
+                      try return @@ kd_bis orient_rule rs
+                      with Abort err_s ->
+                        error_msg := Format.sprintf "%s%s\n" !error_msg err_s
+                    end;
+
+                    Hashtbl.replace cache (kind, rs) ()
+                  in
+
+                  ()
               end
-              gens
+              subsets_words
         end
         orient_rule_list
     in
@@ -241,94 +295,53 @@ let knuth_bendix ?(fast = true) ?(limit_norm = max_int) ?(limit_pairs = max_int)
     List.iter
       begin
         fun (_, w1, w2) ->
-          tries w1 (sub_strings w1);
-          tries w2 (sub_strings w2)
+          tries w1;
+          tries w2
       end
       rs
-  in
-
-  (* On teste tous les sous-ensembles des générateurs *)
-  let kd_fifth_step orient_rule_list =
-    let gens = all_gen rs in
-
-    List.iter
-      begin
-        fun orient_rule ->
-          List.iter
-            begin
-              fun rs' ->
-                let rs = rs @ rs' in
-
-                try return @@ kd_bis orient_rule rs
-                with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
-            end
-            gens
-      end
-      orient_rule_list
-  in
-
-  (* On teste tous les sous-ensembles des générateurs *)
-  let kd_sixth_step orient_rule_list =
-    let gens = all_sub_gen rs in
-
-    List.iteri
-      begin
-        fun i orient_rule ->
-          if debug then Format.printf "round %d@\n%!" i;
-
-          List.iter
-            begin
-              fun rs' ->
-                let rs = rs @ rs' in
-
-                try return @@ kd_bis orient_rule rs
-                with Abort s -> error_msg := Format.sprintf "%s%s\n" !error_msg s
-            end
-            gens
-      end
-      orient_rule_list
   in
 
   (* Si on ne réussit pas, on soulève une erreur *)
   let is_weak = ref false in
   try
+    let new_rules = new_rules rs in
+    let new_words = new_words rs in
+    let new_subset_rules = new_subset_rules rs in
+    let new_subset_words = new_subset_words rs in
+
     if fast then begin
       is_weak := false;
       kd_first_step orient_rule_list;
-      kd_second_step orient_rule_list;
-      kd_third_step orient_rule_list;
+      kd_second_step orient_rule_list new_rules;
+      kd_third_step orient_rule_list new_words;
 
       is_weak := true;
       kd_first_step weak_orient_rule_list;
-      kd_second_step weak_orient_rule_list;
-      kd_third_step weak_orient_rule_list;
+      kd_second_step weak_orient_rule_list new_rules;
+      kd_third_step weak_orient_rule_list new_words;
 
       is_weak := false;
-      kd_fourth_step orient_rule_list;
-      kd_fifth_step orient_rule_list;
-      kd_sixth_step orient_rule_list;
+      kd_fourth_step orient_rule_list new_subset_rules;
+      kd_fifth_step orient_rule_list new_subset_words;
 
       is_weak := true;
-      kd_fourth_step weak_orient_rule_list;
-      kd_first_step weak_orient_rule_list;
-      kd_sixth_step weak_orient_rule_list
+      kd_fourth_step weak_orient_rule_list new_subset_rules;
+      kd_fifth_step weak_orient_rule_list new_subset_words
     end
     else begin
       is_weak := false;
       kd_first_step orient_rule_list;
-      kd_second_step orient_rule_list;
-      kd_third_step orient_rule_list;
-      kd_fourth_step orient_rule_list;
-      kd_fifth_step orient_rule_list;
-      kd_sixth_step orient_rule_list;
+      kd_second_step orient_rule_list new_rules;
+      kd_third_step orient_rule_list new_words;
+      kd_fourth_step orient_rule_list new_subset_rules;
+      kd_fifth_step orient_rule_list new_subset_words;
 
       is_weak := true;
       kd_first_step weak_orient_rule_list;
-      kd_second_step weak_orient_rule_list;
-      kd_third_step weak_orient_rule_list;
-      kd_fourth_step weak_orient_rule_list;
-      kd_fifth_step weak_orient_rule_list;
-      kd_sixth_step weak_orient_rule_list
+      kd_second_step weak_orient_rule_list new_rules;
+      kd_third_step weak_orient_rule_list new_words;
+      kd_fourth_step weak_orient_rule_list new_subset_rules;
+      kd_fifth_step weak_orient_rule_list new_subset_words
     end;
 
     abort !error_msg
