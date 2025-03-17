@@ -1,11 +1,11 @@
-Le nombre d'arrêtes dans le graphe des implications :
+zsh:1: command not found: q
 
 
 f(0) = 0
 f(1) = 0
 f(2) = 7
 f(3) = 76
-f(4) = 468
+f(4) = 500
 
 
 Ne correspond à aucune suite connue (cf oies.org).

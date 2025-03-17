@@ -5,71 +5,43 @@ f(0) = 0
 f(1) = 1
 f(2) = 4
 f(3) = 9
-f(4) = 33
+f(4) = 25
 
 
-Correspond à trois suites connus si on commence avec n - 1 et on ignore 0 :
+Correspond à trois suites connus :
 
 
 ---
 
 
-A048757 Sum_{i=0..2n} (C(2n,i) mod 2)*Fibonacci(i+2) = Sum_{i=0..n} (C(n,i) mod 2)*Fibonacci(2i+2).
+A055851 : a(n) and floor(a(n)/6) are both squares; i.e., squares that remain squares when written in base 6 and last digit is removed.
 
-1, 4, 9, 33, 56, 203, 441, 1596, 2585, 9353, 20304, 73461, 124033, 448756, 974169, 3524577, 5702888, 20633243, 44791065, 162055596, 273617239, 989956471, 2149017696, 7775219067, 12591974497, 45558191716, 98898651657
-
+0, 1, 4, 9, 25, 100, 729, 2401, 9604, 71289, 235225, 940900, 6985449, 23049601, 92198404, 684502569, 2258625625, 9034502500, 67074266169, 221322261601, 885289046404, 6572593581849, 21687323011225, 86749292044900
 
 OFFSET
-0,2
+1,3
 COMMENTS
-The history of 1-D CA Rule 90 starting from the seed pattern 1 interpreted as Zeckendorffian expansion.
-Also, product of distinct terms of A001566 and appropriate Fibonacci or Lucas numbers: a(n) = FL(n+2)Product(L(2^i)^bit(n,i),i=0..) Here L(2^i) = A001566 and FL(n) = n-th Fibonacci number if n even, n-th Lucas number if n odd. bit(n,i) is the i-th digit (0 or 1) in the binary expansion of n, with the least significant digit being bit(n,0).
+For the first 3 terms, the above "base 6" interpretation is questionable, since they have only 1 digit in base 6. It is understood that dropping this digit yields 0. - M. F. Hasler, Jan 15 2012
+Base-6 analog of A055792 (base 2), A055793 (base 3), A055808 (base 4), A055812 (base 5), A204517 (base 7), A204503 (base 9) and A023110 (base 10). - M. F. Hasler, Jan 15 2012
 LINKS
-Table of n, a(n) for n=0..26.
-Antti Karttunen, On Pascal's Triangle Modulo 2 in Fibonacci Representation, Fibonacci Quarterly, 42 (2004), 38-46.
-EXAMPLE
-1 = Fib(2) = 1;
-101 = Fib(4) + Fib(2) = 3 + 1 = 4;
-10001 = Fib(6) + Fib(2) = 8 + 1 = 9;
-1010101 = Fib(8) + Fib(6) + Fib(4) + Fib(2) = 21 + 8 + 3 + 1 = 33; etc.
-MATHEMATICA
-Table[Sum[Mod[Binomial[2n, i], 2] Fibonacci[i + 2], {i, 0, 2n}], {n, 0, 19}] (* Alonso del Arte, Apr 27 2014 *)
-CROSSREFS
-a(n) = A022290(A038183(n)) = A022290(A048723(5, n)) = A003622(A051656(n)) = A075148(n, 2)*A050613(n). Third row of A050609, third column of A050610.
-Cf. A054433.
-KEYWORD
-easy,nonn
-AUTHOR
-Antti Karttunen, Jul 13 1999
-STATUS
-approved
-
-
----
-
-
-A054433 Numbers formed by interpreting the reduced residue set of every even number as a Zeckendorf Expansion.
-
-1, 4, 9, 33, 80, 174, 588, 1596, 3135, 9950, 28512, 56268, 196040, 496496, 888300, 3524577, 9224880, 18118362, 63239220, 150527400, 310190454, 1129200138, 2971168704, 5834056536, 18513646430, 53213956640, 104687896833
-
-
-OFFSET
-1,2
-LINKS
-Amiram Eldar, Table of n, a(n) for n = 1..2392
+Table of n, a(n) for n=1..24.
+M. F. Hasler, Truncated squares, OEIS wiki, Jan 16 2012
+Index to sequences related to truncating digits of squares.
 FORMULA
-a(n) = A054433_as_sum(2*n).
-MAPLE
-with(combinat, fibonacci); # one_or_zero given at A054431.
-A054433_as_sum := proc(n) local i; RETURN(add((one_or_zero(igcd(n, i))*fibonacci(i+1)), i=1..(n-1))); end;
-MATHEMATICA
-r[n_] := Sum[If[GCD[n, k] == 1, Fibonacci[n + 1 - k], 0], {k, 1, n}]; r /@ (2*Range[27]) (* Amiram Eldar, Oct 19 2019 *)
+a(n) = A204518(n)^2. - M. F. Hasler, Jan 15 2012
+Empirical g.f.: -x^2*(9*x^8+100*x^7+25*x^6-162*x^5-296*x^4-74*x^3+9*x^2+4*x+1) / ((x-1)*(x^2+x+1)*(x^6-98*x^3+1)). - Colin Barker, Sep 15 2014
+EXAMPLE
+a(5) = 100 because 100 = 10^2 = 244 base 6 and 24 base 6 = 16 = 4^2.
+PROG
+(PARI) b=6; for(n=1, 2e9, issquare(n^2\b) & print1(n^2, ", ")) \\ M. F. Hasler, Jan 15 2012
 CROSSREFS
-Cf. A054432, A048757, A051258, A063683.
+Cf. A023110.
 KEYWORD
-nonn
+base,nonn
 AUTHOR
-Antti Karttunen
+Henry Bottomley, Jul 14 2000
+EXTENSIONS
+More terms added and offset changed to 1 by M. F. Hasler, Jan 16 2012
 STATUS
 approved
 
@@ -77,48 +49,70 @@ approved
 ---
 
 
-A320920 a(n) is the smallest number m such that binomial(m,n) is nonzero and is divisible by n!.
 
-1, 4, 9, 33, 28, 165, 54, 1029, 40832, 31752, 28680, 2588680, 2162700, 12996613, 12341252, 4516741125, 500367376, 133207162881, 93770874890, 7043274506259, 40985291653137, 70766492123145, 321901427163142, 58731756479578128, 676814631896875010, 6820060161969750025
+A238334 : Squares that do not contain a shorter substring that is a square.
 
+0, 1, 4, 9, 25, 36, 576, 676, 5776, 27556, 33856, 538756, 586756, 665856, 682276, 763876, 767376, 853776, 872356, 2637376, 2775556, 2835856, 5635876, 6885376, 7376656, 22886656, 23755876, 23775376, 26275876, 26687556, 26873856, 32672656, 32878756, 37527876
 
 OFFSET
-1,2
-COMMENTS
-a(n) is such that a nontrivial n-symmetric permutation of [1..a(n)] might exist.
+1,3
 LINKS
-Bert Dobbelaere, Table of n, a(n) for n = 1..34
-Bert Dobbelaere, Python program
-Tanya Khovanova, 3-Symmetric Permutations
-EXAMPLE
-The sequence of binomial coefficients C(n,3) starts as: 0, 0, 1, 4, 10, 20, 35, 56, 84, 120, 165, and so on. The smallest nonzero number divisible by 3! is 84, which is C(9,3). Therefore a(3) = 9.
+Giovanni Resta, Table of n, a(n) for n = 1..10000
+Michael S. Branicky, Python program
+Wikipedia, Substring
 MATHEMATICA
-a[n_] := Module[{w, m, bc}, {w, m} = {n!, n}; bc[i_] := Binomial[n-1, i] ~Mod~ w; While[True, bc[n] = (bc[n-1] + bc[n]) ~Mod~ w; If[bc[n] == 0, Return[m]]; For[i = n-1, i >= 0, i--, bc[i] = (bc[i-1] + bc[i]) ~Mod~ w]; m++]];
-Array[a, 12] (* Jean-François Alcover, May 31 2019, after Chai Wah Wu *)
+fQ[n_] := Module[{d = IntegerDigits[n], len, ds, sq}, len = Length[d]; ds = FromDigits /@ Flatten[Table[Partition[d, i, 1], {i, len - 1}], 1]; sq = Select[ds, IntegerQ[Sqrt[#]] &]; sq == {}]; Select[Range[0, 10000]^2, fQ]
 PROG
-(Python)
-from sympy import factorial, binomial
-def A320920(n):
-    w, m = int(factorial(n)), n
-    bc = [int(binomial(n-1, i)) % w for i in range(n+1)]
-    while True:
-        bc[n] = (bc[n-1]+bc[n]) % w
-        if bc[n] == 0:
-            return m
-        for i in range(n-1, 0, -1):
-            bc[i] = (bc[i-1]+bc[i]) % w
-        m += 1 # Chai Wah Wu, Oct 25 2018
+(Python) # see link for faster version for producing b-file
+from math import isqrt
+from itertools import count, islice
+def issquare(n): return isqrt(n)**2 == n
+def cond(s):
+    if len(s) == 1: return True
+    if any(d in s for d in "0149"): return False
+    ss = (s[i:i+l] for i in range(len(s)) for l in range(2, len(s)))
+    return not any(issquare(int(u)) for u in ss)
+def agen(): yield from (k**2 for k in count(0) if cond(str(k**2)))
+print(list(islice(agen(), 34))) # Michael S. Branicky, Feb 23 2023
 CROSSREFS
-Cf. A042948, A316775, A320919.
+Cf. A130448.
 KEYWORD
-nonn
+nonn,base
 AUTHOR
-Tanya Khovanova, Oct 24 2018
+T. D. Noe, Mar 05 2014
+STATUS
+approved
+
+
+---
+
+
+A117678 : Squares for which the multiplicative digital root is also a square.
+
+0, 1, 4, 9, 25, 100, 169, 196, 225, 256, 400, 529, 576, 625, 676, 900, 961, 1024, 1089, 1156, 1225, 1296, 1521, 1600, 2025, 2209, 2304, 2401, 2500, 2601, 2704, 2809, 2916, 3025, 3136, 3481, 3600, 3844, 3969, 4096, 4225, 4356, 4489, 4900, 5041, 5184, 5329
+
+OFFSET
+1,3
+COMMENTS
+From Robert Israel, Oct 22 2015: (Start)
+1, 9, and squares in A034048 and A034051.
+Are there infinitely many squares in A034051? (End)
+LINKS
+Nathaniel Johnston, Table of n, a(n) for n = 1..5000
+MAPLE
+A007954 := proc(n) return mul(d, d=convert(n, base, 10)): end: A117678 := proc(n) option remember: local k, m: if(n=1)then return 0:fi: for k from procname(n-1)+1 do m:=k^2: while(length(m)>1)do m:=A007954(m): od: if(m in {0, 1, 4, 9})then return k: fi: od: end: seq(A117678(n)^2, n=1..47); # Nathaniel Johnston, May 05 2011
+MATHEMATICA
+Select[Range[0, 73]^2, IntegerQ@ Sqrt[FixedPoint[Times @@ IntegerDigits@ # &, #] &@ #] &] (* Michael De Vlieger, Oct 22 2015 *)
+PROG
+(PARI) t(k) = {while(k>9, k=prod(i=1, #k=digits(k), k[i])); k}
+for(n=0, 100, if(issquare(t(n^2)), print1(n^2, ", "))); \\ Altug Alkan, Oct 22 2015
+CROSSREFS
+Cf. A000290, A031347, A034048, A034051, A116978.
+KEYWORD
+nonn,easy,base
+AUTHOR
+Luc Stevens (lms022(AT)yahoo.com), Apr 12 2006
 EXTENSIONS
-a(14)-a(15) from Alois P. Heinz, Oct 24 2018
-a(16)-a(17) from Chai Wah Wu, Oct 25 2018
-a(18)-a(19) from Giovanni Resta, Oct 26 2018
-a(20) from Giovanni Resta, Oct 27 2018
-a(21) and beyond from Bert Dobbelaere, Feb 11 2020
+Offset and some terms corrected by Nathaniel Johnston, May 05 2011
 STATUS
 approved
