@@ -40,23 +40,6 @@ R: da --> e
 ---
 
 Weak completion of :
-R1209: abb --> babbb
-to :
-K10: accac --> ccccc
-K8: bcac --> ccc
-K7: abac --> cac
-K6: accc --> ccac
-K5: bcc --> ac
-K4: aac --> ccc
-K2: aabb --> bac
-K1: abc --> cc
-K0: cabb --> ac
-R1209: cb --> abb
-R: babb --> c
-
----
-
-Weak completion of :
 R1217: abb --> bbabb
 to :
 K3: abe --> ebe
